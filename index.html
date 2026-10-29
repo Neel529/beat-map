@@ -810,7 +810,7 @@ ok:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6
 
 // ---------- map
 const map=L.map("map",{zoomControl:false,attributionControl:true}).setView([26.89,75.79],13);
-L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",{maxZoom:20,subdomains:"abcd",attribution:"© OpenStreetMap © CARTO"}).addTo(map);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(map);
 const layer=L.layerGroup().addTo(map);
 const routeLayer=L.layerGroup().addTo(map);
 let me=null,meMarker=null,meCircle=null,follow=false;
@@ -848,8 +848,8 @@ function onPos(p){
 }
 let watching=false;
 function startWatch(){if(watching||!navigator.geolocation)return;watching=true;navigator.geolocation.watchPosition(onPos,e=>{watching=false;toast("Location is off. Allow location for this site in your browser settings.")},{enableHighAccuracy:true,maximumAge:5000,timeout:20000})}
-$("#bMe").onclick=()=>{startWatch();if(me){follow=!follow;$("#bMe").classList.toggle("on",follow);map.setView(me,Math.max(map.getZoom(),16))}else{follow=true;$("#bMe").classList.add("on")}};
-try{navigator.permissions&&navigator.permissions.query({name:"geolocation"}).then(r=>{if(r.state==="granted")startWatch()})}catch(e){}
+$("#bMe").onclick=()=>{if(!watching)watching=false,startWatch();navigator.geolocation&&navigator.geolocation.getCurrentPosition(onPos,()=>{},{enableHighAccuracy:true,timeout:15000});if(me){follow=!follow;$("#bMe").classList.toggle("on",follow);map.setView(me,Math.max(map.getZoom(),16))}else{follow=true;$("#bMe").classList.add("on")}};
+startWatch();
 map.on("dragstart",()=>{if(follow){follow=false;$("#bMe").classList.remove("on")}});
 
 // ---------- toast
@@ -1008,7 +1008,7 @@ function moreView(b){
  <hr><div class="h">Backup</div><p class="sub">${D.bk?"Last backup "+new Date(D.bk).toLocaleString("en-IN")+". ":"No backup yet. "}${nLog} visits logged. Your records live only on this phone, so save a backup every few days.</p>
  <div class="grid2"><button class="btn" id="exp">Save backup</button><label class="btn alt" style="cursor:pointer">Load backup<input type="file" id="imp" accept=".json,application/json" hidden></label>
  <button class="btn line" id="csv">Shop list (CSV)</button><button class="btn line" id="csvLog">Visit log (CSV)</button></div>
- <hr><div class="h">About the pins</div><p class="sub">Solid pins are at the shop's exact spot (from its online listing). Dashed pins are approximate (street level). When you're standing at a dashed one, open it and tap <b>I'm here</b> to fix it for good. Map © OpenStreetMap contributors, © CARTO. Road routes by OSRM.</p>`;
+ <hr><div class="h">About the pins</div><p class="sub">Solid pins are at the shop's exact spot (from its online listing). Dashed pins are approximate (street level). When you're standing at a dashed one, open it and tap <b>I'm here</b> to fix it for good. Map © OpenStreetMap contributors. Road routes by OSRM.</p>`;
  $("#exp").onclick=()=>{D.bk=Date.now();save();dl("beatmap-backup-"+today()+".json",JSON.stringify(D),"application/json");render(true)};
  $("#imp").onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{try{const nd=JSON.parse(t);(nd.added||[]).forEach(a=>{if(!byId[a.id]){S.push(a);byId[a.id]=a;mk(a)}});D=Object.assign(D,nd);save();S.forEach(refreshOne);redraw();render();toast("Backup loaded.")}catch(err){toast("That file isn't a Beat Map backup.")}})};
  $("#csv").onclick=()=>{const rows=[["id","list","store_name","type","address","area","sub_area","phone","status","visits","last_visit","follow_up","last_note","lat","lng","pin"]];
