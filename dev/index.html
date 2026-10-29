@@ -689,6 +689,9 @@ button,input,select,textarea{font:inherit;color:inherit}
 .fab{width:46px;height:46px;border-radius:50%;border:0;background:var(--card);box-shadow:var(--sh);display:grid;place-items:center;cursor:pointer;flex:0 0 46px}
 .fab svg{width:22px;height:22px}
 .fab.on{background:var(--brand);color:#fff}
+.fab.me{width:56px;height:56px;flex-basis:56px;background:#2563eb;color:#fff}.fab.me.on{background:#1e40af;box-shadow:0 0 0 4px rgba(37,99,235,.3),var(--sh)}.fab.me svg{width:26px;height:26px}
+.pillBtn{height:40px;padding:0 14px;border-radius:20px;border:0;background:var(--card);box-shadow:var(--sh);font-weight:600;font-size:14px;cursor:pointer;align-self:flex-end}
+#rightBtns{align-items:flex-end}
 #rightBtns{position:fixed;z-index:500;right:12px;display:flex;flex-direction:column;gap:10px;transition:bottom .25s}
 /* chips row */
 #chips{position:fixed;z-index:499;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 64px);display:flex;gap:8px;padding:0 12px;overflow-x:auto;scrollbar-width:none}
@@ -697,10 +700,10 @@ button,input,select,textarea{font:inherit;color:inherit}
 .chip.on{background:var(--brand);color:#fff}
 .chip i{width:10px;height:10px;border-radius:50%;display:inline-block}
 /* sheet */
-#sheet{position:fixed;z-index:600;left:0;right:0;bottom:0;background:var(--card);border-radius:20px 20px 0 0;box-shadow:0 -6px 30px rgba(0,0,0,.18);display:flex;flex-direction:column;height:42vh;transition:height .25s ease;padding-bottom:env(safe-area-inset-bottom,0px)}
-#sheet.full{height:88vh}
-#sheet.min{height:118px}
-#handle{padding:8px 0 4px;display:grid;place-items:center;cursor:pointer;touch-action:none}
+#sheet{position:fixed;z-index:600;left:0;right:0;bottom:0;background:var(--card);border-radius:20px 20px 0 0;box-shadow:0 -6px 30px rgba(0,0,0,.18);display:flex;flex-direction:column;height:45vh;transition:height .22s ease;padding-bottom:env(safe-area-inset-bottom,0px)}
+#sheet.drag{transition:none}
+#sheetTop{touch-action:none;cursor:grab;user-select:none}
+#handle{padding:10px 0 8px;display:grid;place-items:center;cursor:pointer;touch-action:none}
 #handle b{width:42px;height:5px;border-radius:3px;background:#cfd4cc}
 #tabs{display:flex;gap:4px;padding:0 12px 8px;border-bottom:1px solid var(--line)}
 #tabs button{flex:1;border:0;background:none;padding:8px 4px;border-radius:10px;color:var(--mute);font-weight:600;font-size:14px;cursor:pointer}
@@ -764,12 +767,12 @@ table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:6px 4px;b
 </div>
 <div id="chips"></div>
 <div id="rightBtns">
- <button class="fab" id="bAdd" title="Add a shop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></button>
- <button class="fab" id="bMe" title="My location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></button>
+ <button class="pillBtn" id="bAdd" title="Add a shop">+ Add shop</button>
+ <button class="fab me" id="bMe" title="Show my location" aria-label="Show my location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></button>
 </div>
 <div id="sheet">
- <div id="handle"><b></b></div>
- <div id="tabs"><button data-t="beat" class="on">Beat</button><button data-t="near">Nearby</button><button data-t="fu">Follow-ups</button><button data-t="more">More</button></div>
+ <div id="sheetTop"><div id="handle"><b></b></div>
+ <div id="tabs"><button data-t="beat" class="on">Beat</button><button data-t="near">Nearby</button><button data-t="fu">Follow-ups</button><button data-t="more">More</button></div></div>
  <div id="body"></div>
 </div>
 <div id="toast" hidden></div>
@@ -857,18 +860,29 @@ let tT;function toast(html,btn,fn,ms=4500){const t=$("#toast");t.innerHTML=`<spa
 
 // ---------- sheet
 const sheet=$("#sheet");let tab="beat",view=null; // view: {k:'store',id} | {k:'log',id}
-function setSheet(m){sheet.classList.remove("full","min");if(m)sheet.classList.add(m);placeFabs()}
-function placeFabs(){const h=sheet.classList.contains("full")?.88*innerHeight:sheet.classList.contains("min")?118:.42*innerHeight;$("#rightBtns").style.bottom=(h+12)+"px";$("#rightBtns").style.display=sheet.classList.contains("full")?"none":"flex"}
-addEventListener("resize",placeFabs);
-let sy=null;$("#handle").addEventListener("pointerdown",e=>{sy=e.clientY});
-addEventListener("pointerup",e=>{if(sy===null)return;const dy=e.clientY-sy;sy=null;
- const cur=sheet.classList.contains("full")?2:sheet.classList.contains("min")?0:1;
- let n=Math.abs(dy)<8?(cur===2?1:cur+1):dy<0?Math.min(2,cur+1):Math.max(0,cur-1);
- setSheet(["min","",'full'][n])});
-document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{tab=b.dataset.t;view=null;document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("on",x===b));render();if(sheet.classList.contains("min"))setSheet("")});
+// draggable bottom sheet: snaps to map-only / half / full, or stays where you leave it
+const snaps=()=>[$("#sheetTop").offsetHeight+4,Math.round(innerHeight*.45),Math.round(innerHeight*.92)];
+let sheetH=null;
+function setH(h,anim=true){const s=snaps();h=Math.max(s[0],Math.min(s[2],h));sheetH=h;sheet.classList.toggle("drag",!anim);sheet.style.height=h+"px";placeFabs()}
+function setSheet(m){const s=snaps();setH(m==="min"?s[0]:m==="full"?s[2]:s[1])}
+function isFull(){return sheetH>=snaps()[2]-4}function isMin(){return sheetH<=snaps()[0]+4}
+function placeFabs(){const h=sheetH||sheet.offsetHeight;$("#rightBtns").style.bottom=(h+12)+"px";$("#rightBtns").style.display=h>innerHeight*.75?"none":"flex"}
+addEventListener("resize",()=>setH(sheetH||innerHeight*.45));
+let dg=null;
+$("#sheetTop").addEventListener("pointerdown",e=>{dg={y:e.clientY,h:sheet.offsetHeight,moved:false,t:Date.now()};});
+addEventListener("pointermove",e=>{if(!dg)return;const dy=e.clientY-dg.y;if(Math.abs(dy)>6)dg.moved=true;if(dg.moved)setH(dg.h-dy,false)});
+addEventListener("pointerup",e=>{if(!dg)return;const d=dg;dg=null;sheet.classList.remove("drag");
+ if(!d.moved){if(e.target.closest("#handle")){const s=snaps();setH(isMin()?s[1]:isFull()?s[1]:s[2])}return}
+ noClick=true;setTimeout(()=>noClick=false,300);const s=snaps(),h=sheetH,v=(d.h-h)/(Date.now()-d.t);
+ if(Math.abs(v)>0.6){setH(v>0?(h<s[1]?s[0]:s[1]):(h>s[1]?s[2]:s[1]))}       // flick
+ else{const near=s.reduce((a,b)=>Math.abs(b-h)<Math.abs(a-h)?b:a);if(Math.abs(near-h)<60)setH(near)} // snap if close, else stay
+});
+// keep clicks on tabs working after a drag
+let noClick=false;document.addEventListener("click",e=>{if(noClick){noClick=false;e.stopPropagation();e.preventDefault()}},true);
+document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{tab=b.dataset.t;view=null;document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("on",x===b));render();if(isMin())setSheet("")});
 function badge(){const n=dueList().length;const b=document.querySelector('#tabs [data-t=fu]');b.innerHTML="Follow-ups"+(n?`<span class="badge">${n}</span>`:"")}
 let lastSoft=0;function softRender(){if(view)return;const t=Date.now();if(t-lastSoft<4000)return;lastSoft=t;render(true)}
-function render(keepScroll){const body=$("#body");const sc=body.scrollTop;
+function render(keepScroll){const body=$("#body");if(!(view&&view.k==="add")){const cp=$("#crossPin");if(cp)cp.remove()}const sc=body.scrollTop;
  if(view&&view.k==="store")body.innerHTML="",storeView(body,view.id);
  else if(view&&view.k==="log")body.innerHTML="",logView(body,view.id);
  else{body.innerHTML="";({beat:beatView,near:nearView,fu:fuView,more:moreView})[tab](body)}
@@ -1003,12 +1017,14 @@ function moreView(b){
  const by={};S.forEach(s=>{const x=by[s.loc]||(by[s.loc]={n:0,d:0,st:0,ex:0});x.n++;if(stOf(s)!=="todo")x.d++;if(stOf(s)==="stock")x.st++;if(exact(s))x.ex++});
  const c={};Object.keys(ST).forEach(k=>c[k]=0);S.forEach(s=>c[stOf(s)]++);
  const nLog=Object.values(D.log).reduce((a,v)=>a+v.length,0);
- b.innerHTML=`<div class="h">Progress</div><div class="stat" style="grid-template-columns:repeat(5,1fr);margin:8px 0">${Object.entries(ST).map(([k,v])=>`<div><b style="color:var(${v[1]})">${c[k]}</b>${v[0]}</div>`).join("")}</div>
+ b.innerHTML=`<div class="h">Filters</div><div class="sub">Show these on the map</div><div class="seg" style="margin:8px 0">${Object.entries(LN).map(([k,v])=>`<button data-fl="${k}" class="${D.lists[k]?"on":""}">${v}</button>`).join("")}</div><div class="seg" style="margin-bottom:6px"><button data-fs="" class="${D.stF?"":"on"}">Any status</button>${Object.entries(ST).map(([k,v])=>`<button data-fs="${k}" class="${D.stF===k?"on":""}">${v[0]}</button>`).join("")}</div><hr><div class="h">Progress</div><div class="stat" style="grid-template-columns:repeat(5,1fr);margin:8px 0">${Object.entries(ST).map(([k,v])=>`<div><b style="color:var(${v[1]})">${c[k]}</b>${v[0]}</div>`).join("")}</div>
  <div style="overflow-x:auto"><table><tr><th>Area</th><th>Visited</th><th>Stocked</th><th>Exact pins</th></tr>${Object.entries(by).map(([k,x])=>`<tr><td>${esc(k)}</td><td>${x.d}/${x.n}</td><td>${x.st}</td><td>${x.ex}/${x.n}</td></tr>`).join("")}</table></div>
  <hr><div class="h">Backup</div><p class="sub">${D.bk?"Last backup "+new Date(D.bk).toLocaleString("en-IN")+". ":"No backup yet. "}${nLog} visits logged. Your records live only on this phone, so save a backup every few days.</p>
  <div class="grid2"><button class="btn" id="exp">Save backup</button><label class="btn alt" style="cursor:pointer">Load backup<input type="file" id="imp" accept=".json,application/json" hidden></label>
  <button class="btn line" id="csv">Shop list (CSV)</button><button class="btn line" id="csvLog">Visit log (CSV)</button></div>
  <hr><div class="h">About the pins</div><p class="sub">Solid pins are at the shop's exact spot (from its online listing). Dashed pins are approximate (street level). When you're standing at a dashed one, open it and tap <b>I'm here</b> to fix it for good. Map © OpenStreetMap contributors. Road routes by OSRM.</p>`;
+ b.querySelectorAll("[data-fl]").forEach(x=>x.onclick=()=>{D.lists[x.dataset.fl]=!D.lists[x.dataset.fl];save();redraw();render(true)});
+ b.querySelectorAll("[data-fs]").forEach(x=>x.onclick=()=>{D.stF=x.dataset.fs;save();redraw();render(true)});
  $("#exp").onclick=()=>{D.bk=Date.now();save();dl("beatmap-backup-"+today()+".json",JSON.stringify(D),"application/json");render(true)};
  $("#imp").onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{try{const nd=JSON.parse(t);(nd.added||[]).forEach(a=>{if(!byId[a.id]){S.push(a);byId[a.id]=a;mk(a)}});D=Object.assign(D,nd);save();S.forEach(refreshOne);redraw();render();toast("Backup loaded.")}catch(err){toast("That file isn't a Beat Map backup.")}})};
  $("#csv").onclick=()=>{const rows=[["id","list","store_name","type","address","area","sub_area","phone","status","visits","last_visit","follow_up","last_note","lat","lng","pin"]];
@@ -1021,7 +1037,7 @@ const csvT=rows=>"﻿"+rows.map(r=>r.map(v=>'"'+String(v??"").replace(/"/g,'""')
 function dl(name,text,type){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>a.remove(),200)}
 
 // ---------- store view
-function openStore(id){view={k:"store",id};const s=byId[id];if(!layer.hasLayer(markers[id]))layer.addLayer(markers[id]);map.setView(pos(s),Math.max(map.getZoom(),17),{animate:true});if(sheet.classList.contains("min"))setSheet("");render()}
+function openStore(id){view={k:"store",id};const s=byId[id];if(!layer.hasLayer(markers[id]))layer.addLayer(markers[id]);map.setView(pos(s),Math.max(map.getZoom(),17),{animate:true});if(isMin())setSheet("");render()}
 function storeView(b,id){
  const s=byId[id];const st=stOf(s);const lg=(D.log[id]||[]).slice().reverse();const d=me?dist(me,pos(s)):null;
  b.innerHTML=`<div class="row" style="justify-content:space-between;flex-wrap:nowrap"><button class="btn sm line" id="back">‹ Back</button><span class="pill" style="background:var(${ST[st][1]});color:#fff">${ST[st][0]}</span></div>
@@ -1082,7 +1098,7 @@ $("#q").oninput=e=>{const t=e.target.value.trim().toLowerCase();const r=$("#resu
 map.on("click",()=>{$("#results").hidden=true});
 
 // ---------- add shop
-$("#bAdd").onclick=()=>{view={k:"add"};setSheet("");map.setView(me||map.getCenter(),18);
+$("#bAdd").onclick=()=>{const old=$("#crossPin");if(old)old.remove();view={k:"add"};setSheet("");map.setView(me||map.getCenter(),18);
  const cp=document.createElement("div");cp.id="crossPin";cp.innerHTML='<svg width="34" height="44" viewBox="0 0 34 44"><path d="M17 43s15-15 15-26A15 15 0 0 0 2 17c0 11 15 26 15 26z" fill="#dc2626" stroke="#fff" stroke-width="2.5"/><circle cx="17" cy="17" r="5" fill="#fff"/></svg>';document.body.appendChild(cp);
  const b=$("#body");b.innerHTML=`<div class="h">Add a shop</div><div class="sub">Move the map so the red pin sits on the shop.</div>
  <label class="f" for="an">Shop name</label><input class="f" id="an" placeholder="e.g. Sharma Kirana">
@@ -1099,7 +1115,7 @@ $("#bAdd").onclick=()=>{view={k:"add"};setSheet("");map.setView(me||map.getCente
 };
 
 // ---------- boot
-drawChips();redraw();placeFabs();render();
+drawChips();redraw();setSheet("");render();
 if(D.active!=null&&D.plans[D.active]){drawRoute();map.fitBounds(D.plans[D.active].ids.map(id=>pos(byId[id])),{padding:[60,60],maxZoom:17})}
 </script>
 </body>
