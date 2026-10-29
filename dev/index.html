@@ -730,6 +730,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .grow{flex:1;min-width:0}
 .nm{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dist{font-size:13px;color:var(--mute);white-space:nowrap;font-variant-numeric:tabular-nums}
+a.tel{color:var(--visit);font-weight:600;text-decoration:none;white-space:nowrap}
 .pill{display:inline-block;font-size:12px;padding:2px 8px;border-radius:10px;background:#eef1ec;color:var(--mute);margin-right:4px}
 .pill.ok{background:#e3f4e8;color:var(--stock)}
 .pill.warn{background:#fdf0dc;color:#9a5b00}
@@ -806,6 +807,7 @@ const today=()=>dayKey(new Date());
 const addDays=n=>{const d=new Date();d.setDate(d.getDate()+n);return dayKey(d)};
 const fmtT=t=>{const d=new Date(t);return d.toLocaleDateString("en-IN",{day:"numeric",month:"short"})+", "+d.toLocaleTimeString("en-IN",{hour:"numeric",minute:"2-digit"})};
 function dist(a,b){const R=6371000,dl=(b[0]-a[0])*Math.PI/180,dg=(b[1]-a[1])*Math.PI/180,x=Math.sin(dl/2)**2+Math.cos(a[0]*Math.PI/180)*Math.cos(b[0]*Math.PI/180)*Math.sin(dg/2)**2;return 2*R*Math.asin(Math.sqrt(x))}
+const telA=ph=>`<a class="tel" href="tel:${esc(String(ph).replace(/[^+\d]/g,""))}" onclick="event.stopPropagation()">📞 ${esc(ph)}</a>`;
 const fmtD=m=>m<1000?Math.round(m/10)*10+" m":(m/1000).toFixed(m<10000?1:0)+" km";
 const IC={call:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>',
 nav:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 11 18-8-8 18-2-8z"/></svg>',
@@ -911,11 +913,11 @@ function beatView(b){
   <div class="bar" style="margin:10px 0 12px"><i style="width:${p.ids.length?done/p.ids.length*100:0}%"></i></div>`);
   if(nx){const d=me?dist(me,pos(nx)):null;
    b.insertAdjacentHTML("beforeend",`<div class="card next"><div class="sub">NEXT STOP${d!=null?" · "+fmtD(d)+" away":""}</div>
-   <div class="h" style="margin-top:2px">${esc(nx.n)}</div><div class="sub">${LN[nx.l]} · ${esc(nx.a||nx.s)}</div>
+   <div class="h" style="margin-top:2px">${esc(nx.n)}</div><div class="sub">${LN[nx.l]} · ${esc(nx.a||nx.s)}</div>${nx.ph?`<div style="margin-top:4px">${telA(nx.ph)}</div>`:""}
    ${exact(nx)?"":'<div style="margin-top:6px"><span class="pill warn">Approximate pin, ask locally</span></div>'}
    <div class="grid3" style="margin-top:12px">
     <a class="btn alt" href="${gUrl(nx)}" target="_blank" rel="noopener">${IC.nav}Go</a>
-    ${nx.ph?`<a class="btn alt" href="tel:${esc(nx.ph)}">${IC.call}Call</a>`:'<button class="btn alt" disabled style="opacity:.4">No phone</button>'}
+    ${nx.ph?`<a class="btn alt" href="tel:${esc(nx.ph.replace(/[^+\d]/g,""))}">${IC.call}Call</a>`:'<button class="btn alt" disabled style="opacity:.4">No phone</button>'}
     <button class="btn" id="arr">${IC.ok}Arrived</button></div>
    <div class="row" style="margin-top:8px;justify-content:space-between"><button class="btn sm line" id="skp">Skip for today</button><button class="btn sm line" id="det">Details</button></div></div>`);
    $("#arr").onclick=()=>openLog(nx.id);$("#skp").onclick=()=>{D.skip[nx.id]=today();save();drawRoute();render()};$("#det").onclick=()=>openStore(nx.id);
@@ -923,7 +925,7 @@ function beatView(b){
   const lst=document.createElement("div");lst.className="list";lst.style.marginTop="10px";
   p.ids.forEach((id,i)=>{const s=byId[id];const st=stOf(s);const sk=D.skip[id]===today();
    const it=document.createElement("div");it.className="it";
-   it.innerHTML=`<span class="num" style="background:var(${ST[st][1]});${sk?"opacity:.4":""}">${i+1}</span><div class="grow"><div class="nm">${esc(s.n)}</div><div class="sub">${st!=="todo"?ST[st][0]:sk?"Skipped today":esc(s.s)}${s.ph?" · "+esc(s.ph):""}</div></div><span class="dist">${me?fmtD(dist(me,pos(s))):""}</span>`;
+   it.innerHTML=`<span class="num" style="background:var(${ST[st][1]});${sk?"opacity:.4":""}">${i+1}</span><div class="grow"><div class="nm">${esc(s.n)}</div><div class="sub">${st!=="todo"?ST[st][0]:sk?"Skipped today":esc(s.s)}${s.ph?" · "+telA(s.ph):""}</div></div><span class="dist">${me?fmtD(dist(me,pos(s))):""}</span>`;
    it.onclick=()=>openStore(id);lst.appendChild(it)});
   b.appendChild(lst);
   $("#endB").onclick=()=>{D.active=null;save();routeLayer.clearLayers();routeInfo="";redraw();render()};
@@ -995,7 +997,7 @@ function fuView(b){
  const mkList=(arr,lbl)=>{const l=document.createElement("div");l.className="list";
   if(!arr.length)l.innerHTML=`<p class="sub">${lbl}</p>`;
   arr.forEach(([id,d])=>{const s=byId[id];const it=document.createElement("div");it.className="it";const od=d<today();
-   it.innerHTML=`<span class="dot" style="background:var(${od?"--no":"--int"})"></span><div class="grow"><div class="nm">${esc(s.n)}</div><div class="sub">${od?"Overdue · "+d:d===today()?"Today":d}${s.ph?" · "+esc(s.ph):""}</div></div>${s.ph?`<a class="btn sm alt" href="tel:${esc(s.ph)}" onclick="event.stopPropagation()">${IC.call}</a>`:""}`;
+   it.innerHTML=`<span class="dot" style="background:var(${od?"--no":"--int"})"></span><div class="grow"><div class="nm">${esc(s.n)}</div><div class="sub">${od?"Overdue · "+d:d===today()?"Today":d}${s.ph?" · "+telA(s.ph):""}</div></div>${s.ph?`<a class="btn sm alt" href="tel:${esc(s.ph.replace(/[^+\d]/g,""))}" onclick="event.stopPropagation()">${IC.call}</a>`:""}`;
    it.onclick=()=>openStore(id);l.appendChild(it)});return l};
  b.appendChild(mkList(due,"Nothing due. Set a follow-up when you log a visit."));
  if(up.length){b.insertAdjacentHTML("beforeend",`<div class="h" style="margin-top:14px">Coming up</div>`);b.appendChild(mkList(up.slice(0,15),""))}
@@ -1045,8 +1047,8 @@ function storeView(b,id){
  <div class="sub">${LN[s.l]} · ${esc(s.t)}${d!=null?" · "+fmtD(d)+" away":""}</div>
  <div style="margin:8px 0">${esc(s.a)||"<i>No street address listed</i>"}</div>
  <div>${exact(s)?'<span class="pill ok">Exact pin</span>':'<span class="pill warn">Approximate pin</span>'}${s.c?"":'<span class="pill warn">Unverified lead</span>'}${D.fu[id]?`<span class="pill">Follow up ${esc(D.fu[id])}</span>`:""}</div>
- ${s.ph?`<div style="margin-top:8px;font-size:16px">${esc(s.ph)}</div>`:""}
- <div class="grid3" style="margin-top:12px"><a class="btn alt" href="${gUrl(s)}" target="_blank" rel="noopener">${IC.nav}Go</a>${s.ph?`<a class="btn alt" href="tel:${esc(s.ph)}">${IC.call}Call</a>`:'<button class="btn alt" disabled style="opacity:.4">No phone</button>'}<button class="btn" id="lg">Log visit</button></div>
+ ${s.ph?`<div style="margin-top:10px;font-size:17px">${telA(s.ph)}</div>`:""}
+ <div class="grid3" style="margin-top:12px"><a class="btn alt" href="${gUrl(s)}" target="_blank" rel="noopener">${IC.nav}Go</a>${s.ph?`<a class="btn alt" href="tel:${esc(s.ph.replace(/[^+\d]/g,""))}">${IC.call}Call</a>`:'<button class="btn alt" disabled style="opacity:.4">No phone</button>'}<button class="btn" id="lg">Log visit</button></div>
  <div class="row" style="margin-top:8px"><button class="btn sm line" id="fix">📍 I'm here, fix pin</button><select class="btn sm line" id="addB" style="max-width:55%"><option value="">+ Add to a beat</option>${D.plans.map((p,i)=>`<option value="${i}">${esc(p.name)}</option>`).join("")}</select></div>
  ${s.no?`<p class="sub" style="margin-top:10px">${esc(s.no)}</p>`:""}
  <hr><div class="h" style="font-size:15px">Visit history</div>${lg.length?lg.map(v=>`<div class="hist"><b>${fmtT(v.t)}</b> · ${esc(OUT[v.out]?OUT[v.out][0]:v.out)}${v.who?"<br>Met "+esc(v.who):""}${v.qty?" · "+v.qty+" jars":""}${v.smp?" · "+v.smp+" samples":""}${v.note?"<br>"+esc(v.note):""}</div>`).join(""):'<p class="sub">No visits yet.</p>'}
