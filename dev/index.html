@@ -697,6 +697,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 #chips{position:fixed;z-index:499;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 64px);display:flex;gap:8px;padding:0 12px;overflow-x:auto;scrollbar-width:none}
 #chips::-webkit-scrollbar{display:none}
 .chip{flex:0 0 auto;height:34px;padding:0 14px;border-radius:17px;border:0;background:var(--card);box-shadow:0 2px 8px rgba(0,0,0,.12);cursor:pointer;font-size:14px;white-space:nowrap;display:flex;align-items:center;gap:6px}
+select.chip{appearance:none;-webkit-appearance:none;padding-right:14px;font-weight:600;width:auto;max-width:180px;field-sizing:content}
 .chip.on{background:var(--brand);color:#fff}
 .chip i{width:10px;height:10px;border-radius:50%;display:inline-block}
 /* sheet */
@@ -830,15 +831,18 @@ const markers={};
 function mk(s){const m=L.marker(pos(s),{icon:pinIcon(s)});m.on("click",()=>openStore(s.id));markers[s.id]=m;return m}
 S.forEach(mk);
 let chipF={list:null,st:""};
-function visible(s){if(!D.lists[s.l])return false;if(D.stF&&stOf(s)!==D.stF)return false;return true}
+const _area={};function areaOf(s){if(s.l!=="P"&&s.loc!=="Other")return s.loc;if(_area[s.id]!==undefined)return _area[s.id];let b=null,bd=1500;S.forEach(o=>{if(o.l==="P"||o.loc==="Other")return;const d=dist(pos(s),pos(o));if(d<bd){bd=d;b=o.loc}});return _area[s.id]=b}
+function visible(s){if(!D.lists[s.l])return false;if(D.locF&&areaOf(s)!==D.locF)return false;if(D.stF&&stOf(s)!==D.stF)return false;return true}
 function redraw(){layer.clearLayers();S.forEach(s=>{markers[s.id].setIcon(pinIcon(s));if(visible(s)||beatNum(s.id))layer.addLayer(markers[s.id])});drawChips();badge()}
 function refreshOne(s){markers[s.id].setIcon(pinIcon(s));markers[s.id].setLatLng(pos(s))}
 
 // chips
+function zoomArea(){const pts=S.filter(visible).map(pos);if(pts.length)map.fitBounds(pts,{padding:[50,50],maxZoom:16})}
 function drawChips(){
  const c=$("#chips");
- c.innerHTML=Object.entries(LN).map(([k,v])=>`<button class="chip${D.lists[k]?" on":""}" data-l="${k}">${v}</button>`).join("")+
+ c.innerHTML=`<select class="chip${D.locF?" on":""}" id="areaSel" aria-label="Area"><option value="">All areas ▾</option>${AREAS.map(a=>`<option${a===D.locF?" selected":""}>${esc(a)}</option>`).join("")}</select>`+Object.entries(LN).map(([k,v])=>`<button class="chip${D.lists[k]?" on":""}" data-l="${k}">${v}</button>`).join("")+
  Object.entries(ST).map(([k,v])=>`<button class="chip${D.stF===k?" on":""}" data-s="${k}"><i style="background:var(${v[1]})"></i>${v[0]}</button>`).join("");
+ $("#areaSel").onchange=e=>{D.locF=e.target.value;save();redraw();zoomArea();if(tab==="near"||tab==="more")render(true)};
  c.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{D.lists[b.dataset.l]=!D.lists[b.dataset.l];save();redraw()});
  c.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{D.stF=D.stF===b.dataset.s?"":b.dataset.s;save();redraw()});
 }
@@ -903,6 +907,7 @@ function order(ids,start){
  return r.map(i=>ids[i]);
 }
 const locs=[...new Set(S.filter(s=>s.l!=="P").map(s=>s.loc))].concat(["Patanjali stores"]);
+const AREAS=locs.filter(l=>l!=="Patanjali stores");
 function remaining(p){return p.ids.filter(id=>stOf(byId[id])==="todo"&&!D.skip[id]&&!doneToday(id))}
 function doneToday(id){return (D.log[id]||[]).some(v=>dayKey(v.t)===today())}
 function beatView(b){
@@ -938,7 +943,7 @@ function beatView(b){
  <label class="f">Shops per beat</label><div class="seg" id="pN">${[8,10,12,15].map(n=>`<button data-n="${n}" class="${n===(D.pn||10)?"on":""}">${n}</button>`).join("")}</div>
  <div class="row" style="margin-top:12px"><button class="btn big" id="mk">Make beats</button>${me?'<button class="btn big alt" id="near12">Beat from where I am</button>':""}</div>`);
  b.querySelectorAll("#pN button").forEach(x=>x.onclick=()=>{D.pn=+x.dataset.n;save();b.querySelectorAll("#pN button").forEach(y=>y.classList.toggle("on",y===x))});
- $("#mk").onclick=()=>{const lo=$("#pLoc").value;if(!lo){$("#pLoc").focus();return}makeBeats(lo)};
+ $("#mk").onclick=()=>{const lo=$("#pLoc").value;if(!lo){$("#pLoc").focus();return}if(lo!=="Patanjali stores"){D.locF=lo;save();redraw()}makeBeats(lo)};
  const n12=$("#near12");if(n12)n12.onclick=()=>{const n=D.pn||10;const pool=S.filter(s=>D.lists[s.l]&&stOf(s)==="todo"&&s.c).sort((a,b)=>dist(me,pos(a))-dist(me,pos(b))).slice(0,n);
   D.plans.unshift({name:"Near me · "+new Date().toLocaleDateString("en-IN",{day:"numeric",month:"short"}),ids:order(pool.map(s=>s.id),me)});startBeat(0)};
  if(D.plans.length){b.insertAdjacentHTML("beforeend",`<hr><div class="row" style="justify-content:space-between"><div class="h">Your beats</div><button class="btn sm line" id="clr">Clear all</button></div>`);
@@ -1020,12 +1025,13 @@ function moreView(b){
  const by={};S.forEach(s=>{const x=by[s.loc]||(by[s.loc]={n:0,d:0,st:0,ex:0});x.n++;if(stOf(s)!=="todo")x.d++;if(stOf(s)==="stock")x.st++;if(exact(s))x.ex++});
  const c={};Object.keys(ST).forEach(k=>c[k]=0);S.forEach(s=>c[stOf(s)]++);
  const nLog=Object.values(D.log).reduce((a,v)=>a+v.length,0);
- b.innerHTML=`<div class="h">Filters</div><div class="sub">Show these on the map</div><div class="seg" style="margin:8px 0">${Object.entries(LN).map(([k,v])=>`<button data-fl="${k}" class="${D.lists[k]?"on":""}">${v}</button>`).join("")}</div><div class="seg" style="margin-bottom:6px"><button data-fs="" class="${D.stF?"":"on"}">Any status</button>${Object.entries(ST).map(([k,v])=>`<button data-fs="${k}" class="${D.stF===k?"on":""}">${v[0]}</button>`).join("")}</div><hr><div class="h">Progress</div><div class="stat" style="grid-template-columns:repeat(5,1fr);margin:8px 0">${Object.entries(ST).map(([k,v])=>`<div><b style="color:var(${v[1]})">${c[k]}</b>${v[0]}</div>`).join("")}</div>
+ b.innerHTML=`<div class="h">Filters</div><div class="sub">Show these on the map</div><label class="f" for="areaSel2">Area</label><select class="f" id="areaSel2"><option value="">All areas</option>${AREAS.map(a=>`<option${a===D.locF?" selected":""}>${esc(a)}</option>`).join("")}</select><div class="seg" style="margin:8px 0">${Object.entries(LN).map(([k,v])=>`<button data-fl="${k}" class="${D.lists[k]?"on":""}">${v}</button>`).join("")}</div><div class="seg" style="margin-bottom:6px"><button data-fs="" class="${D.stF?"":"on"}">Any status</button>${Object.entries(ST).map(([k,v])=>`<button data-fs="${k}" class="${D.stF===k?"on":""}">${v[0]}</button>`).join("")}</div><hr><div class="h">Progress</div><div class="stat" style="grid-template-columns:repeat(5,1fr);margin:8px 0">${Object.entries(ST).map(([k,v])=>`<div><b style="color:var(${v[1]})">${c[k]}</b>${v[0]}</div>`).join("")}</div>
  <div style="overflow-x:auto"><table><tr><th>Area</th><th>Visited</th><th>Stocked</th><th>Exact pins</th></tr>${Object.entries(by).map(([k,x])=>`<tr><td>${esc(k)}</td><td>${x.d}/${x.n}</td><td>${x.st}</td><td>${x.ex}/${x.n}</td></tr>`).join("")}</table></div>
  <hr><div class="h">Backup</div><p class="sub">${D.bk?"Last backup "+new Date(D.bk).toLocaleString("en-IN")+". ":"No backup yet. "}${nLog} visits logged. Your records live only on this phone, so save a backup every few days.</p>
  <div class="grid2"><button class="btn" id="exp">Save backup</button><label class="btn alt" style="cursor:pointer">Load backup<input type="file" id="imp" accept=".json,application/json" hidden></label>
  <button class="btn line" id="csv">Shop list (CSV)</button><button class="btn line" id="csvLog">Visit log (CSV)</button></div>
  <hr><div class="h">About the pins</div><p class="sub">Solid pins are at the shop's exact spot (from its online listing). Dashed pins are approximate (street level). When you're standing at a dashed one, open it and tap <b>I'm here</b> to fix it for good. Map © OpenStreetMap contributors. Road routes by OSRM.</p>`;
+ $("#areaSel2").onchange=e=>{D.locF=e.target.value;save();redraw();zoomArea();render(true)};
  b.querySelectorAll("[data-fl]").forEach(x=>x.onclick=()=>{D.lists[x.dataset.fl]=!D.lists[x.dataset.fl];save();redraw();render(true)});
  b.querySelectorAll("[data-fs]").forEach(x=>x.onclick=()=>{D.stF=x.dataset.fs;save();redraw();render(true)});
  $("#exp").onclick=()=>{D.bk=Date.now();save();dl("beatmap-backup-"+today()+".json",JSON.stringify(D),"application/json");render(true)};
