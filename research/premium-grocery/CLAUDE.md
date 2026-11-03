@@ -17,6 +17,22 @@ These shops are almost never called "premium grocery". They show up as dry fruit
 - Go slowly on Google Maps (human pace). If you hit a CAPTCHA or block, stop that source and say so.
 - Ask Nilesh before anything that costs money, logs in, or posts anything.
 
+## Benchmark: shops Nilesh knows are premium (names as he remembers them, may be inexact)
+- Exotica (Raja Park)
+- Mashhoor Punjabi (Raja Park). Already in `existing_retail_grocery_stores.csv` as RP002 "Mashhoor Punjabi Kirana Store", but labelled plain "Kirana": it must come out as premium after scoring.
+- Night Jar (several locations in Jaipur). Check what it is: web search mostly shows "The Night Jar Cocktail Room" (Malviya Nagar) and "Kohhee by The Night Jar" (C-Scheme). Find the retail / gourmet outlets, if any, and say clearly if it's a café/bar and not a shop.
+- Town Market
+Nilesh may add more to `benchmark.txt`; read it if present.
+
+**Pass/fail rule:** the run is not finished until every benchmark shop has been found **by your method** (not typed in by hand) and scored. For each one record in `benchmark_check.md`: found by which query/sweep, score, class. If one is missed, write why (wrong words? not on the source? outside the swept area? scored low?), fix the method (add the search, widen the sweep, change the scoring), rerun that part, and note what else the fix surfaced.
+
+## Lesson from the first attempt (why these were missed)
+The original 571 shops came from listing sites (magicpin, directories) by category. Premium shops in Jaipur are mostly **not** on those sites, or are filed as plain "kirana" / "departmental". A quick web search for Exotica or Town Market returns almost nothing. They live on **Google Maps** (and Instagram / local city blogs). So:
+1. **Primary source = a Google Maps area sweep, not keyword search.** For each affluent area: centre the map there, search the generic categories ("grocery store", "supermarket", "departmental store", "dry fruits", "gourmet", "organic store"), scroll the whole results list, and open **every** result. Then pan to the neighbouring blocks and repeat until results stop being new. Use the "Similar places / People also search for" list on every good shop.
+2. **Re-score the already-listed retail shops** (`existing_retail_grocery_stores.csv`, 178 shops): open each on Google Maps and score it. Some premium shops are already there under a plain label (like Mashhoor Punjabi).
+3. **Secondary sources:** local Jaipur city blogs and listicles (e.g. allaboutjaipur.com articles on gourmet / organic / dry-fruit stores), "best gourmet store in Jaipur" type articles, and Instagram handles mentioned there. Every shop found this way must then be confirmed on Google Maps (address, coordinates).
+4. Keyword search with the vocabulary above is the **third** layer, to catch what the sweep missed.
+
 ## Search vocabulary (use all of it; names rarely say "premium")
 Search with these terms, alone and combined with each area. The scoring in step 3 decides what is premium, not the search term.
 
@@ -38,7 +54,7 @@ Search with these terms, alone and combined with each area. The scoring in step 
 
 ## Workflow (do the steps in order; save after each so work can resume)
 1. **Plan queries** → `queries.md`. Combine the search vocabulary above with each area, most promising first (dry fruits, gourmet/imported, organic, departmental store in affluent areas). Don't run every combination blindly: when an area keeps returning the same shops, move on. Note in `queries.md` which queries found new shops.
-2. **Collect candidates** → `candidates.csv` (name, area, address, phone, lat, lng, rating, review_count, source_url, maps_url, found_by_query). Sources, in this order:
+2. **Collect candidates** (sweep first, see 'Lesson' above; then re-score existing retail; then blogs; then keywords) → `candidates.csv` (name, area, address, phone, lat, lng, rating, review_count, source_url, maps_url, found_by_query). Sources, in this order:
    - Google Maps in the browser (Claude in Chrome): search each query, open each result, read name, category, address, phone, rating, review count, price level, coordinates from the URL (`!3d<lat>!4d<lng>` or `@lat,lng`).
    - magicpin category pages for Jaipur (Grocery, Dry Fruits, Organic, Gourmet) — store pages carry exact coordinates in `<meta name="ICBM">`.
    - Justdial / Zomato-style listings only via the browser, for phone numbers.
