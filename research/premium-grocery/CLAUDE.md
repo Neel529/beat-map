@@ -1,4 +1,25 @@
-# Premium grocery discovery — Jaipur
+# Jaipur retail: exact names + premium store discovery
+
+## Two jobs, in this order
+**Job A: exact names and status for every existing retail shop** (`existing_retail_grocery_stores.csv`, 178 shops). The names came from listing sites and are often vague or wrong ("… Kirana Store" added, spellings changed, generic names). Nilesh needs the **real name** of every shop, so he walks in knowing who he's visiting.
+**Job B: find the premium stores the listing sites missed** (everything from "Why this is hard" onward). Do Job A first: opening each existing shop on Maps is also how you re-score it for premium-ness.
+
+## Job A, step by step
+For each row of `existing_retail_grocery_stores.csv`:
+1. **Find the shop on Google Maps**, trying in this order and stopping at the first solid match:
+   a. search the **phone number** (if there is one);
+   b. search **name + area** (try the name without words like "Kirana Store / General Store / Departmental");
+   c. open the map at the row's **lat,lng** (if pin = exact) and look at the shops within ~50 m.
+2. A match is **solid** only if at least two of these agree: same phone, address/landmark, within ~50 m of the old pin, name clearly the same shop. Otherwise mark it `unsure`. Never pick a shop just because it's nearby.
+3. Record in `name_check.csv` (save every 10 rows):
+   `id, old_name, real_name, match (confirmed / renamed / unsure / not_found), status (open / temporarily closed / permanently closed / moved), maps_category, address, phone, lat, lng, rating, reviews, maps_url, evidence, premium_score, premium_class, why`
+   - `real_name` = exactly as on the Maps listing or the shop board in photos. Keep the shop's own spelling and words (e.g. "Mashoor Punjabi"); don't add or drop words.
+   - `evidence` = what matched (e.g. "phone + 30 m from pin").
+   - Score premium-ness with the rubric in step 3 below while you're on the page.
+4. At the end write `name_check_summary.md`: counts per match/status, list of renamed shops (old → real), closed shops, and the `unsure`/`not_found` ones Nilesh should check on the ground.
+Do **not** edit the original CSV; `name_check.csv` is the corrected version. After the 178 retail shops, ask Nilesh whether to run the same check on `existing_medical_stores.csv` (353) and `existing_patanjali_stores.csv` (40).
+
+## Job B: premium discovery
 
 You are helping Nilesh find **independent premium grocery / gourmet / dry-fruit / organic stores in Jaipur** that could stock ChoKhoChhe AmlaPrash (premium Chyawanprash-style product, about ₹700 for 500 g). He will visit them himself. The output will later be merged into the Beat Map app by Nilesh.
 
@@ -30,7 +51,7 @@ Nilesh may add more to `benchmark.txt`; read it if present.
 ## Lesson from the first attempt (why these were missed)
 The original 571 shops came from listing sites (magicpin, directories) by category. Premium shops in Jaipur are mostly **not** on those sites, or are filed as plain "kirana" / "departmental". A quick web search for Exotica or Town Market returns almost nothing. They live on **Google Maps** (and Instagram / local city blogs). So:
 1. **Primary source = a Google Maps area sweep, not keyword search.** For each affluent area: centre the map there, search the generic categories ("grocery store", "supermarket", "departmental store", "dry fruits", "gourmet", "organic store"), scroll the whole results list, and open **every** result. Then pan to the neighbouring blocks and repeat until results stop being new. Use the "Similar places / People also search for" list on every good shop.
-2. **Re-score the already-listed retail shops** (`existing_retail_grocery_stores.csv`, 178 shops): open each on Google Maps and score it. Some premium shops are already there under a plain label (like Mashhoor Punjabi).
+2. **Already-listed retail shops** are covered by Job A (their real names + premium score). Bring every one scored `premium` or `maybe` into the Job B results with `already_listed`.
 3. **Secondary sources:** local Jaipur city blogs and listicles (e.g. allaboutjaipur.com articles on gourmet / organic / dry-fruit stores), "best gourmet store in Jaipur" type articles, and Instagram handles mentioned there. Every shop found this way must then be confirmed on Google Maps (address, coordinates).
 4. Keyword search with the vocabulary above is the **third** layer, to catch what the sweep missed.
 
