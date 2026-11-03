@@ -1,0 +1,572 @@
+id,list,name,type,area,address,phone,lat,lng
+PJ001,P,Punjab Hosiery Sales,Patanjali Arogya Kendra,Patanjali stores,"Plot No 132/798/1061, Khaiyan No 28/277, Hotel Jai Mangal Palace, opp. Sindhi Camp Bus Stand, Jaipur",+917014764658,26.923015,75.800757
+PJ002,P,Rajendra Vid,Patanjali Chikitsalay,Patanjali stores,"House No 17, Radha Swami Bhawan, Bhrampuri, Jaipur",+919530375925,26.934325,75.821968
+PJ003,P,Mool Chand And Brothers,Patanjali Chikitsalay,Patanjali stores,"Hindi Bhawan, Sanganeri Gate, Agra Road, near Telephone Exchange, Jaipur",+919982431117,26.914617,75.828513
+PJ004,P,Patanjali Chikitsalay,Patanjali Chikitsalay,Patanjali stores,"Shop No 4, Shree Krishna Shopping Centre, Ajmer Road, near Laxmi Sweet Caterers, Jaipur",+918619888383,26.902414,75.772626
+PJ005,P,Aman Kanwat,Patanjali Chikitsalay,Patanjali stores,"Shop No 60 & 61, Jhotwara, Kalwar Road, Jaipur",+919667713322,26.947854,75.720101
+PJ006,P,Kanha Mega Store,Patanjali Mega Store,Patanjali stores,"A/91, Khirni Phatak Road, Tara Nagar, near Maharana Pratap School, Jaipur",+911413565758,26.93637,75.743465
+PJ007,P,Ganesham Mega Store,Patanjali Mega Store,Patanjali stores,"1/A1, Tonk Road, opp. Pink City Honda Showroom, Jaipur",+919610147147,26.873157,75.797585
+PJ008,P,Anju Gupta,Patanjali Chikitsalay,Patanjali stores,"G/23 & 24, City Plaza Mall, Jhotwara Road, near Space Cinema, Jaipur",+919352948864,26.935146,75.791855
+PJ009,P,Dilip Kumar Sharma,Patanjali Arogya Kendra,Patanjali stores,"Plot No 2, Mahal Road, Brij Vihar Vistar, near Jagatpura Overbridge, Jaipur",+918559928885,26.832256,75.841577
+PJ010,P,Agarwal Enterprises,Patanjali Mega Store,Patanjali stores,"500/356, Karolan Ka Barh, near KS Petrol Pump, Jaipur",+917300076573,26.80068,75.89181
+PJ011,P,Patanjali Chikitsalay,Patanjali Chikitsalay,Patanjali stores,"E57, Girdhar Marg, Sector 12, near Ghiya Hospital, Jaipur",+919829244045,26.846638,75.809921
+PJ012,P,Pooja Yadav,Patanjali Chikitsalay,Patanjali stores,"Plot No A/121, Shivanand Marg, Jaipur",+918696546546,26.855491,75.820156
+PJ013,P,Grace Distributors,Patanjali Mega Store,Patanjali stores,"53/175, Madhyam Marg, Jaipur",+919602100400,26.861751,75.762936
+PJ014,P,Ashok Kumar Singhal,Patanjali Chikitsalay,Patanjali stores,"27, Mira Marg Shopping Center, Madhyam Marg, Sector 10, Jaipur",+919414821188,26.850109,75.768098
+PJ015,P,K P Enterprises,Patanjali Chikitsalay,Patanjali stores,"Shop No 77, Vivek Vihar, Gandhi Path, Jaipur",+918278662551,26.905017,75.723028
+PJ016,P,Pushpanjali Ayurvedic & Organic Store,Patanjali Chikitsalay,Patanjali stores,"F/28, Basement, Gautam Marg, Jaipur",+919413236785,26.909864,75.743312
+PJ017,P,Patanjali Mega Store,Patanjali Mega Store,Patanjali stores,"Plot No 1/468A, Ajmer Road, Chitrakut Marg, Jaipur",+919571038744,26.900982,75.738796
+PJ018,P,Kamlesh Choudhary,Patanjali Chikitsalay,Patanjali stores,"Plot No 10, K/5 Scheme, Khatipura Road, Jaipur",+919460855551,26.921465,75.75259
+PJ019,P,Raghunath Enterprises,Patanjali Arogya Kendra,Patanjali stores,"R/1, Vaishnavi Tower, Sector 1, near Khandelwal Tower Crossing, Jaipur",+919413575598,26.954084,75.775709
+PJ020,P,Ashok Choudhary,Patanjali Chikitsalay,Patanjali stores,"Shop No 86, Ajmer Road, near Sagar Market, Jaipur",+919983999938,26.87138,75.695091
+PJ021,P,Neelam Sharma,Patanjali Arogya Kendra,Patanjali stores,"Pratap Plaza, Agra Road, near Prem Nagar Pulia, Jaipur",+919602061191,26.886573,75.889722
+PJ022,P,Patanjali Arogya Kendra,Patanjali Arogya Kendra,Patanjali stores,"11/111/101, Tonk Road, Jaipur",+919414775246,26.798221,75.816324
+PJ023,P,Rudra Enterprises,Patanjali Arogya Kendra,Patanjali stores,"163, Murlipura Scheme, Shiv Nagar 1, near SBI Bank, Jaipur",+917737030451,26.972928,75.765346
+PJ024,P,Subhash Chand Gupta,Patanjali Chikitsalay,Patanjali stores,"G/11, Tulip Enclave, Central Spine, Jaipur",+919461664099,26.961948,75.779266
+PJ025,P,Manoharpur Gram Seva Sahakari Samiti,Patanjali Arogya Kendra,Patanjali stores,"Ground Floor, Phase 2, Main Market Road, near bus stand, Jaipur",+919413967814,27.297872,75.94826
+PJ026,P,Patanjali store,Patanjali store,Patanjali stores,"Ground Floor, Samod Road, Nimadi, near Bypass Puliya, Jaipur",+919829389582,27.176361,75.738168
+PJ027,P,Patanjali store,Patanjali store,Patanjali stores,"Ground Floor, Jaipur",+919982510736,27.25049,75.651091
+PJ028,P,Shree Meera Govind SMG,Patanjali Gramin Arogya Kendra,Patanjali stores,"Ground Floor, Agarwal Dharamshala, Chomu, near Main Bus Stand, Jaipur",+919928214284,27.333795,75.698478
+PJ029,P,Manglam Arogya Kendra,Patanjali Gramin Arogya Kendra,Patanjali stores,"Shop No 2, Devthala, Jaipur",+919829591004,27.275756,75.729291
+PJ030,P,Patanjali Store,Patanjali Store,Patanjali stores,,,26.914847,75.781082
+PJ031,P,Patanjali Store,Patanjali Store,Patanjali stores,,,26.90222,75.772688
+PJ032,P,Patanjali Store,Patanjali Store,Patanjali stores,,,26.925187,75.816601
+PJ033,P,Patanjali Store,Patanjali Store,Patanjali stores,,,26.885172,75.78553
+PJ034,P,Patanjali Store,Patanjali Store,Patanjali stores,,,26.891016,75.799888
+PJ035,P,Patanjali Store,Patanjali Store,Patanjali stores,,,26.921369,75.752846
+PJ036,P,Patanjali Mega Store,Patanjali Mega Store,Patanjali stores,,,26.908884,75.756846
+PJ037,P,Patanjali Store,Patanjali Store,Patanjali stores,,,26.894267,75.770015
+PJ038,P,Patanjali Store,Patanjali Store,Patanjali stores,,,26.925196,75.816556
+PJ039,P,Patanjali Store,Patanjali Store,Patanjali stores,,,26.934232,75.822052
+PJ040,P,Patanjali Arogya Kendra,Patanjali Arogya Kendra,Patanjali stores,,,26.832338,75.8415
+CS001,R,The Country Store,Premium grocery / organic,C-Scheme,"F 411, Gautam Marg, Ashok Nagar, C-Scheme, Jaipur",+918952820782,26.909115,75.796566
+CS002,R,Shoppers Paradise,Supermarket / departmental,C-Scheme,"F 40, Jamnalal Bajaj Marg, Ashok Nagar, C-Scheme, Jaipur",+911414040076,26.906963,75.795729
+CS003,R,Super Store,Grocery,C-Scheme,"84 A, Dhuleshwar Garden, Sardar Patel Marg, C-Scheme, Jaipur",,26.914237,75.796218
+CS004,R,Organic Shop,Organic store,C-Scheme,"R-11, Yudhister Marg, C-Scheme, Jaipur",01412226126,26.909445,75.801526
+CS005,R,Relaxed Now,Organic / wellness (type unclear),C-Scheme,"9-B Patel Colony, opp. Government Press, C-Scheme, Jaipur",01414007778,26.908602,75.801981
+CS007,R,Naveen Kirana & General Store,Kirana,C-Scheme,"Near Nath Panwala Chauraha, C-Scheme, Jaipur",,26.908866,75.801628
+CS008,R,Mahalaxmi Kirana & General Store,Kirana,C-Scheme,"C-Scheme (landmark: near OTH), Jaipur",,26.90904,75.801674
+CS009,R,Ayursatwa,Herbal / Ayurvedic products,C-Scheme,"Near Panch Batti, Ashok Nagar, C-Scheme, Jaipur",,26.90831,75.796317
+CS010,R,Kerala Ayurveda Kendra,Ayurvedic medicine shop,C-Scheme,"Behind BJP Office, C-Scheme, Jaipur",,26.908754,75.80161
+CS011,R,Dry-Fruit Bouquet,Dry fruit / gifting,C-Scheme,"C-Scheme, Jaipur",,26.909223,75.801648
+CS012,R,K.K. Store,General store,C-Scheme,"Ashok Nagar, C-Scheme, Jaipur",,26.907606,75.796311
+CS013,R,Down to Earth,Organic store,C-Scheme,"Albert Hall, Ramniwas Garden, Jaipur",01412561589,26.910521,75.818226
+BP001,R,Singhal Traders,Grocery,Bani Park,"S-3 A, Kabir Marg, Jaipur",+919982958238,26.924586,75.789625
+BP002,R,Lall's Departmental Store,Departmental store,Bani Park,"S-7A, Kabir Marg, behind Sessions Court, Electric Circle, Jaipur",+911412207809,26.924768,75.792213
+BP003,R,Green And Good Eco Solutions,Organic store,Bani Park,"D-213 A, Bhaskar Marg, Jaipur",+911414047939,26.929466,75.789981
+BP004,R,The Organic Paradise Jaipur,Organic store,Bani Park,"G-7, Ganpati Enclave, Sector 2 Road, Central Spine, Jaipur",+919829180740,26.957404,75.77726
+BP005,R,Econbio Roots,Grocery / organic (name suggests),Bani Park,"F-501, Alankar Plaza, Central Spine, Sector 2, Jaipur",+917597217537,26.964149,75.781479
+BP006,R,Shri Vinayak Kirana & General Store,Kirana,Bani Park,"B-469, Sector 8, Old Vidyadhar Nagar, Jaipur",+911412234583,26.960021,75.78949
+BP007,R,Pinkcitykirana.com,Kirana / online grocery,Bani Park,"Krishna Colony, Naya Khera, Jaipur",+919887023212,26.952647,75.779224
+BP008,R,Agarwal Kirana & General Store,Kirana,Bani Park,"Near MKB School, Jaipur",,26.930077,75.793516
+BP009,R,Pritam Kirana & General Store,Kirana,Bani Park,"Near Jhotwara Road, Jaipur",,26.929678,75.79315
+BP010,R,Gopichand and Sons Kirana Store,Kirana,Bani Park,"Near Panipech Tiraha, Jaipur",,26.938192,75.796328
+BP011,R,Govind Kirana Store,Kirana,Bani Park,"Shop No 23, near Bypass Road, Sector 2, Jhotwara, Jaipur",+919413181690,26.95634,75.77849
+SN001,R,National Super Market,Supermarket,Shyam Nagar,"33, Kirti Nagar, New Sanganer Road, Jaipur",+917300009714,26.89657,75.770682
+SN002,R,Agrawal Provision Store,Provision / kirana,Shyam Nagar,"Shop 485, New Sanganer Road, Shiv Circle, Devi Nagar, Jaipur",+919829659331,26.885281,75.767915
+SN003,R,Laxmi Kirana Store,Kirana,Shyam Nagar,"70, Devi Nagar, New Sanganer Road, Sodala, Jaipur",+911412294173,26.885801,75.766027
+SN004,R,Singhal Departmental Store,Departmental store,Shyam Nagar,"16, New Sanganer Road, Katewa Nagar, Devi Nagar, Jaipur",,26.88339,75.76206
+SN005,R,Kirana King Super Store,Supermarket / kirana,Shyam Nagar,"Bharat Ashram Marg, Radha Vihar, Devi Nagar, Jaipur",,26.886413,75.763528
+SN006,R,Jaipur Organic Food,Organic (type unclear),Shyam Nagar,"Sodala, Jaipur",,26.885319,75.771543
+CL001,R,Patanjali Store,Patanjali store,Civil Lines,"282-C, Kamala Nehru Nagar, Rai Colony, Ganpati Nagar, Civil Lines, Jaipur",,26.892436,75.772879
+CL002,R,O B Andco,Grocery,Civil Lines,"Madrampur, Civil Lines, Jaipur",+919829068848,26.910677,75.786813
+CL003,R,J B Industries,Grocery / household,Civil Lines,"Madrampur, Civil Lines, Jaipur",+918048759511,26.911477,75.786119
+CL004,R,Satya Narayan Harish Shankar,Grocery / household,Civil Lines,"Madrampur, Civil Lines, Jaipur",,26.910805,75.787323
+CL005,R,Zero – Zero Waste Store,Zero-waste / sustainable grocery,Civil Lines,"Jagdish Vihar, Civil Lines, Jaipur",,26.906478,75.784084
+RP001,R,Super-V Market (Chanan Das Parmanand Dry Fruits),Dry fruits / premium grocery,Raja Park,"23, Adarsh Nagar Lane 3, B-15 Adarsh Nagar Market Rd, Gurudwara Crossing, Raja Park, Jaipur",+919001044946,26.897199,75.827074
+RP002,R,Mashhoor Punjabi Kirana Store,Kirana,Raja Park,"260, Fashion Street, Raja Park, Jaipur",+919829095527,26.896115,75.82669
+RP003,R,Goa Kaju Wala,Dry fruits / premium food,Raja Park,"13, Anand Bhawan, Gurunanakpura, Raja Park, Jaipur",,26.890773,75.829529
+RP004,R,Planet Organic,Organic store,Raja Park,"Near Shanker Samosa, Raja Park, Jaipur",,26.894918,75.830549
+RP006,R,Long Life Departmental Store,Departmental store,Raja Park,"372, Lane No 1, Raja Park, Jaipur",+911412246576,26.895024,75.82906
+RP007,R,Gulab Chand Departmental Store,Departmental store,Raja Park,"Shop 13, Main Road, near Roshan Restaurant, Raja Park, Jaipur",+919587532484,26.89408,75.826025
+RP008,R,Bharat Departmental Store (Aaramshop),Departmental store,Raja Park,"Shop 45, near AC Market, Mata Mandir, Raja Park, Jaipur",,26.894662,75.830137
+RP009,R,Ekta Super Store,Supermarket / kirana,Raja Park,"Shop 2, Bhatia Bhawan, Raja Park, Jaipur",+919309002813,26.896568,75.830335
+RP010,R,Dinabandhu Store,General store,Raja Park,"Opp. Gali No 1, Panchwati Circle, Raja Park, Jaipur",+919461504355,26.895002,75.829143
+RP011,R,Shri Ram Kirana Store,Kirana,Raja Park,"Shop 1, Plot 422, Gali No 2, Panchwati Circle corner, Raja Park, Jaipur",+919024431888,26.894164,75.829825
+RP012,R,Deepak Store,General store,Raja Park,"378/1, Panchwati Circle, Raja Park, Jaipur",,26.89464,75.830331
+RP013,R,Raghav Traders,Grocery,Raja Park,"Shop 24, 29 Ram Gali No 2, Frontier Colony, Raja Park, Jaipur",+919414241613,26.894701,75.830416
+RP014,R,Kamal Kirana Store,Kirana,Raja Park,"Shop 285, Sindhi Colony, Jawahar Nagar, Raja Park, Jaipur",+919460870761,26.900365,75.838219
+RP015,R,Gajanand Store,General store,Raja Park,"Shop 173, Sindhi Colony, Jawahar Nagar, Raja Park, Jaipur",,26.895165,75.830117
+RP016,R,Bhagwan Kirana Store,Kirana,Raja Park,"B-18, Jawahar Nagar Road, Raja Park, Jaipur",+919462753158,26.898833,75.833333
+RP017,R,Ambey General Store,General store,Raja Park,"Lane 2, Raja Park, Jaipur",,26.895294,75.828828
+RP018,R,Vikky General Store,General store,Raja Park,"Shop 7, Raja Park, Jaipur",,26.894447,75.830497
+RP019,R,Sonu Di Hatti,Grocery / household,Raja Park,"Plot 522, Gali No 6, Raja Park, Jaipur",,26.892409,75.828045
+RP020,R,Kanha Kirana and General Store,Kirana,Raja Park,"Raja Park, Raja Park, Jaipur",,26.895008,75.830187
+RP022,R,Harish Kirana & General Store,Kirana,Raja Park,"Shop 71, Shri Nath Vihar, Jamdoli, Agra Road, Raja Park, Jaipur",+919772670218,26.891885,75.826163
+RMN001,R,"Go Earth / Radha Madhav Ayurvedic, Patanjali & Organic Store",Organic + Ayurvedic store,Malviya Nagar,"Near Satkar Shopping Centre, Malviya Nagar, Jaipur",,26.851297,75.817954
+RMN002,R,Yadav Ayurvedic Store,Ayurvedic store,Malviya Nagar,"Apex Circle, Usha Colony, Sector 1, Malviya Nagar, Jaipur",+919509660666,26.854575,75.824603
+RMN003,R,Krishna Ayurvedic Store,Ayurvedic / Patanjali products,Malviya Nagar,"Opp. Water Works Office, near Satkar Shopping Centre, Malviya Nagar, Jaipur",,26.850983,75.818351
+RMN004,R,Morarka Organic Food,Organic store,Malviya Nagar,"D-Block, Malviya Nagar, Jaipur",,26.853652,75.815184
+RMN005,R,Patanjali Store,Patanjali store,Malviya Nagar,"C-1-B, Ashok Vihar, Sector 3, Malviya Nagar, Jaipur",,26.847211,75.817355
+RMN006,R,Riddhi Siddhi Departmental Store,Departmental store,Malviya Nagar,"6/53, Radha Vihar, Sector 6, Malviya Nagar, Jaipur",+919414795114,26.844128,75.808818
+RMN007,R,Yogesh Ghar Saman,General store,Malviya Nagar,"Plot 316, Sector 7, Malviya Nagar, Jaipur",+919460060085,26.842731,75.807626
+RMN009,R,Jai Govind Kirana Store,Kirana,Malviya Nagar,"Ganeshwar Mandir Road, Sector 3, Malviya Nagar, Jaipur",+919828837620,26.84774,75.817174
+RMN010,R,Yes Kirana Store,Kirana,Malviya Nagar,"Bus Stop, Manoharpura, Malviya Nagar, Jaipur",+918290406986,26.83617,75.83104
+RMN011,R,Goyal Kirana & General Store,Kirana,Malviya Nagar,"Near C2 Plaza, Malviya Nagar, Jaipur",,26.854382,75.814729
+RMN012,R,Laxmi Kirana General Store,Kirana,Malviya Nagar,"Near Kardhani Shopping Centre, Malviya Nagar, Jaipur",,26.854122,75.814491
+RMN013,R,Agarwal Kirana Store,Kirana,Malviya Nagar,"Sector 11, Malviya Nagar, Jaipur",,26.849837,75.819154
+RMN014,R,Jain Kirana Store,Kirana,Malviya Nagar,"Sector 2, Malviya Nagar, Jaipur",,26.85365,75.815253
+RMN015,R,Jagdamba Kirana General Store,Kirana / FMCG,Malviya Nagar,"Malviya Nagar, Malviya Nagar, Jaipur",,26.855925,75.820456
+TR001,R,Jaipur Organic,Organic store,Tonk Road,"K-8, Income Tax Colony, opp. Durgapura Goshala, Tonk Road, Jaipur",+911412545203,26.851133,75.792494
+TR002,R,Sunrise Organic Shoppe,Organic store,Tonk Road,"301, Mahavir Nagar-II, opp. Indian Oil petrol pump, near PNB, Maharani Farm, Tonk Road, Jaipur",+919887399005,26.847658,75.788491
+TR003,R,Star Dry Fruits (Pratyusha's Food Palace),Dry fruits / premium food,Tonk Road,"Tonk Road, opp. Jaipur Hospital, Jai Ambey Nagar, Gopalpura Mod, Jaipur",+918048033919,26.866192,75.79199
+TR004,R,Kirana India,Kirana / grocery,Tonk Road,"E-25/2, SL Marg, Income Tax Colony, Lal Bahadur Nagar, Durgapura, Jaipur",+918766160160,26.850388,75.797014
+TR005,R,Agarwal Kirana Store,Kirana,Tonk Road,"Shop 50, Tonk Road, Mahaveer Nagar, Jaipur",+919828539253,26.862343,75.788138
+TR006,R,Krishna Departmental Store,Departmental store,Tonk Road,"Shop 30, Mahaveer Nagar 2, Jaipur",+919799136001,26.852134,75.782944
+TR007,R,Kamlesh Departmental Store,Departmental store,Tonk Road,"NH-12 Tonk Road, Durga Vihar, Hardev Colony, Jaipur",+918560030341,26.82976,75.794326
+TR008,R,Mahaveer Medical & Ayurvedic Store,Chemist + Ayurvedic,Tonk Road,"Infront of Ahinsa Park street, Barkat Nagar, Jaipur",,26.879578,75.799911
+TR009,R,Santosh Kirana Store,Kirana,Tonk Road,"Near JP Colony Chauraha, Barkat Nagar, Jaipur",,26.878639,75.79945
+TR010,R,Dausa Kirana Store,Kirana,Tonk Road,"Barkat Nagar, Jaipur",,26.878802,75.799516
+TR013,R,Shri Ram Departmental Store,Departmental store,Tonk Road,"192/322, Sector 19, Kumbha Marg, Pratap Nagar, Jaipur",+919314524116,26.804811,75.831585
+TR014,R,Chawla Kirana & General Store,Kirana,Tonk Road,"Shop 23, Tirupati Balaji Nagar, Pratap Nagar, Jaipur",+919460012111,26.812927,75.805572
+TR015,R,Yash Traders,Grocery,Tonk Road,"34/501, Haldi Ghati Marg, Pratap Nagar, Jaipur",+919214813836,26.802443,75.804804
+TR016,R,Kalpana Traders,Grocery,Tonk Road,"S No 34/40, Pratap Nagar, Jaipur",+919351451550,26.80268,75.804525
+VN001,R,The Organic Store,Organic store,Vaishali Nagar,"Shop 27, JDA Shopping Centre, Gautam Marg, Vaishali Nagar, Jaipur",+919828026761,26.911157,75.744231
+VN002,R,Kaju Badam Store,Dry fruits / premium food,Vaishali Nagar,"Shop 1, B-226, Vaishali Marg, opp. Karnataka Bank, Vaishali Nagar, Jaipur",+919509102222,26.914928,75.741214
+VN003,R,Kanhaiya Dry Fruits,Dry fruits,Vaishali Nagar,"Near Style and Scissor, Vaishali Nagar, Jaipur",,26.894048,75.72412
+VN004,R,Organic Food (Neaselkul),Organic store,Vaishali Nagar,"Neaselkul, Vaishali Marg, Vaishali Nagar, Jaipur",+919413663389,26.914548,75.74088
+VN005,R,Ravi Kirana Store,Kirana,Vaishali Nagar,"75-A, Nityanand Nagar, Prince Road, opp. Sarovar Portico Hotel, Vaishali Nagar, Jaipur",+917976565932,26.904052,75.750231
+VN006,R,Shree Store,General store,Vaishali Nagar,"71-72 Shopping Centre, Girnar Colony, Nityanand Nagar, Vaishali Nagar, Jaipur",+918432406191,26.904775,75.748864
+VN007,R,Goyal General Store,General store,Vaishali Nagar,"Queens Road, Moti Nagar, Nityanand Nagar, Vaishali Nagar, Jaipur",+919602420402,26.903995,75.752237
+VN008,R,Rani Sati Departmental Store,Departmental store,Vaishali Nagar,"Shop 92, Street 5, Queens Road, Vaishali Nagar, Jaipur",,26.902015,75.749686
+VN009,R,Aman General Store,General store,Vaishali Nagar,"Shop 17, Nursery Circle, Vaishali Nagar, Jaipur",+918677800318,26.914885,75.740559
+VN010,R,Mangal Kirana Store,Kirana,Vaishali Nagar,"Market, Vaishali Nagar, Vaishali Nagar, Jaipur",+919950265569,26.893906,75.724608
+VN011,R,Hyper Mart,Supermarket,Vaishali Nagar,"D-6/434, Rajawat Manor, Chitrakoot Yojna, Vaishali Nagar, Jaipur",+918003077775,26.896931,75.738984
+VN012,R,K Mart,Supermarket,Vaishali Nagar,"C-9/10, Chitrakoot, Vaishali Nagar, Jaipur",+918003077775,26.899582,75.738948
+VN013,R,Yadav Kirana Store,Kirana,Vaishali Nagar,"Opp. Vaishali Hospital, Vaishali Nagar, Jaipur",,26.893761,75.724471
+VN014,R,Kamal Kirana & General Store,Kirana,Vaishali Nagar,"Vaishali Nagar, Vaishali Nagar, Jaipur",,26.893764,75.724164
+VN015,R,Manhotra Grocery Store,Grocery,Vaishali Nagar,"Pawan Putra Colony, Karni Vihar, Vaishali Nagar, Jaipur",,26.912056,75.750174
+VN016,R,Choudhary Kirana And General Store,Kirana,Vaishali Nagar,"B-67, Gandhi Path West, Moti Nagar, Vaishali Nagar, Jaipur",+919983662010,26.905454,75.749694
+VN017,R,A To Z Store,General store,Vaishali Nagar,"R-22, SKL Shopping Centre, C-Block, Gandhi Path, Vaishali Nagar, Jaipur",+918005926337,26.905024,75.750189
+VN018,R,Rajesh Kirana Store,Kirana,Vaishali Nagar,"911 Sanjay Nagar, 80 Feet Road, Vaishali Nagar, Jaipur",+917597654697,26.898667,75.746833
+VN019,R,Vimal Kirana & General Store,Kirana,Vaishali Nagar,"S.No 13, 80 Feet Road, Vaishali Nagar, Jaipur",+919875274350,26.898752,75.746869
+VN020,R,Sunil Kirana Store,Kirana,Vaishali Nagar,"Sirsi Road, Vaishali Nagar, Jaipur",+917877469525,26.903448,75.749154
+VN021,R,Laxmi General Store,General store,Vaishali Nagar,"Sirsi Road, Vaishali Nagar, Jaipur",+918696026218,26.904031,75.749171
+VN022,R,Suraj Departmental Store,Departmental store,Vaishali Nagar,"Shop 2, Kanak Vrindavan, Manglam City Road, Sirsi Road, Vaishali Nagar, Jaipur",,26.903488,75.748729
+VN023,R,Bhatia General And Provisional Store,Provision store,Vaishali Nagar,"3, Manglam City Road, Sirsi Road, Vaishali Nagar, Jaipur",,26.90416,75.748985
+VN024,R,S. D. Kirana & General Store,Kirana,Vaishali Nagar,"Shop 36-37, Sirsi Mod, Sirsi Road, Vaishali Nagar, Jaipur",,26.904101,75.749727
+NN001,R,Panchmewa Dry Fruit Hub,Dry fruits,Nirman Nagar,"Near Chhabra Restaurant, Ranisati Nagar, Nirman Nagar, Jaipur",,26.886708,75.74483
+NN003,R,Ocean Supermarket,Supermarket,Nirman Nagar,"Shop 346, Janpath, Ranisati Nagar, Nirman Nagar, Jaipur",+918562042081,26.886224,75.745195
+NN004,R,Bairathi Departmental Store,Departmental store,Nirman Nagar,"96, Kings Road, Rail Nagar, Shiv Shakti Nagar, Brijlalpura, Nirman Nagar, Jaipur",+919829610406,26.883321,75.752495
+NN006,R,Kirana King (RJ14 444),Kirana / supermarket,Nirman Nagar,"Nirman Nagar, Nirman Nagar, Jaipur",,26.888095,75.755551
+NN007,R,Vijay Store,General store,Nirman Nagar,"Kings Road, Nirman Nagar, Jaipur",,26.887026,75.751376
+NN008,R,Grihasti Department,Departmental store,Nirman Nagar,"15, Nirman Nagar, Nirman Nagar, Jaipur",,26.888459,75.755023
+JB001,R,Touch Of Nature,"Grocery (natural products, by name)",Jawahar Nagar & Bapu Nagar,"4-Ta-20, Sector 4, Jaipur",,26.886889,75.836396
+JB002,R,The Family Point,General / departmental store,Jawahar Nagar & Bapu Nagar,"3-NA-28, Mahavir Marg, Sector 3, Jaipur",+919057084855,26.889584,75.837814
+JB003,R,Kirana King (RJ14 450),Kirana / supermarket,Jawahar Nagar & Bapu Nagar,"Shop CC-8, Shopping Centre, Jaipur",+919024329344,26.897373,75.834952
+JB004,R,Kirana King (RJ14 442),Kirana / supermarket,Jawahar Nagar & Bapu Nagar,"Shop 13, Tooti Puliya, Sector 5, Jaipur",+919829258862,26.886472,75.828084
+JB005,R,Sathi Department,Departmental store,Jawahar Nagar & Bapu Nagar,"4/489, Jaipur",+918824325607,26.888667,75.834667
+JB006,R,Supriyar General Store,General store,Jawahar Nagar & Bapu Nagar,"Tila No 6-A, Sector 4, Jaipur",+918290092068,26.886833,75.836833
+JB007,R,Jai Mata Di General Store,General store,Jawahar Nagar & Bapu Nagar,"B-6, Jaipur",+919610050277,26.89037,75.833091
+JB008,R,Deepak Kirana Store,Kirana,Jawahar Nagar & Bapu Nagar,"Jawahar Nagar Road, Jaipur",+919079032282,26.897548,75.835313
+JB009,R,Parnami Bazaar,General store,Jawahar Nagar & Bapu Nagar,"Sector 4, Jaipur",,26.889913,75.835053
+JB010,R,Prakash Kirana Store,Kirana,Jawahar Nagar & Bapu Nagar,"Shop 1, 5 No Bus Stand, Jaipur",,26.888797,75.83348
+JB011,R,Mini Store,General store,Jawahar Nagar & Bapu Nagar,"Sector 1, Jaipur",,26.897861,75.838837
+JB012,R,Lakshmi Kirana Store,Kirana,Jawahar Nagar & Bapu Nagar,"Near Mama Ka Hotel, Jaipur",,26.889863,75.833459
+JB014,R,Super Store,Supermarket,Jawahar Nagar & Bapu Nagar,"Shop 10-12, Pragati Path, Bajaj Nagar, near Gandhi Nagar Railway Station, Jaipur",+919351439080,26.875159,75.80176
+JB015,R,Ration Deal,Grocery,Jawahar Nagar & Bapu Nagar,"C-86A, Nand Kishore Pareek Road, JLN Marg, Jaipur",+919660858888,26.886915,75.812564
+JB016,R,Raja Supari & Provision Bhandar,Provision store,Jawahar Nagar & Bapu Nagar,"Shop 161-A, Bapu Bazar, Jaipur",,26.917508,75.834013
+JB017,R,Prem Traders,Departmental store,Jawahar Nagar & Bapu Nagar,"City Pulse Mall, Narayan Singh Road, Rambagh, Jaipur",,26.892391,75.811499
+JB018,R,Agarwal General Store,General store,Jawahar Nagar & Bapu Nagar,"SB-109, Tonk Road, Lal Kothi, Jaipur",+918947004600,26.891084,75.805424
+JB019,R,Kamlesh Kirana Store,Kirana,Jawahar Nagar & Bapu Nagar,"Tonk Road, opp. Moti Sons, Everest Colony, Vidhayak Nagar, Lal Kothi, Jaipur",,26.890534,75.804827
+RMS001,R,The Organic Food Store,Organic store,Mansarovar,"Near Swadesh Opticians, Madhyam Marg, Patel Marg, Mansarovar, Jaipur",,26.86535,75.762007
+RMS002,R,My Organic Shop,Organic store,Mansarovar,"80/90, Patel Marg, Mansarovar, Jaipur",+917665791480,26.864696,75.762496
+RMS003,R,Nice & Natural Lifestyles,Natural products (type unclear),Mansarovar,"G-4, Peris Tower, 122/125, near Reliance Fresh, Vijay Path Chauraha, Mansarovar, Jaipur",,26.860084,75.758648
+RMS004,R,Gdf Dryfruits Mart,Dry fruits,Mansarovar,"Shop 84, 262 Madhyam Marg, near Mansarovar Plaza, Mansarovar, Jaipur",,26.855679,75.766026
+RMS005,R,Darsh Nuts & Dry Fruits,Dry fruits,Mansarovar,"7, Riddhi Siddhi Crossing, Link Road, Mansarovar, Jaipur",,26.869665,75.773392
+RMS006,R,The Dry Fruit Hub,Dry fruits,Mansarovar,"Near Madhyam Marg, Mansarovar, Jaipur",,26.856124,75.76833
+RMS008,R,Mahaveer Departmental Store,Departmental store,Mansarovar,"61/287, Shraddha Marg, Narayan Pura, Sector 6, Mansarovar, Jaipur",,26.862774,75.756515
+RMS009,R,Vinayak Super Market,Supermarket,Mansarovar,"Vishveshvaraiya Nagar Extension, Arjun Nagar, Mansarovar, Jaipur",,26.86733,75.776697
+RMS010,R,Suman Traders,Departmental store,Mansarovar,"54/144, Heera Path, Mansarovar, Jaipur",+919828013021,26.84492,75.7708
+RMS011,R,Mini Mart,General store,Mansarovar,"CD 442, Dadu Dayal Nagar, near Water Tank, opp. Shiv Temple, Mansarovar, Jaipur",+919024515152,26.854528,75.763973
+RMS012,R,Pandit Ji,Grocery / household,Mansarovar,"23A, Mukta Nagar, Mansarovar, Jaipur",+917689086387,26.855327,75.760388
+RMS013,R,Freshworldmart,Food & household,Mansarovar,"Mansarovar (plus code RQV6+M52), Mansarovar, Jaipur",+917976545542,26.844145,75.760386
+RMS014,R,Deepak Kirana Store,Kirana,Mansarovar,"Rajat Path, Mansarovar, Jaipur",,26.850118,75.762095
+RMS015,R,Ramesh Kirana Store,Kirana,Mansarovar,"Near Kiran Path Circle, Mansarovar, Jaipur",,26.854197,75.759914
+JG001,R,Induz Organic,Organic store,Jagatpura & Mahal Road,"Old Mill, opp. Jagatpura Railway Station, Main Market, Jagatpura, Jaipur",+919602419776,26.83588,75.831383
+JG002,R,Aryavarta Organics Pvt Ltd,Organic (company / shop),Jagatpura & Mahal Road,"Old Mill, opp. Jagatpura Railway Station, Main Market, Jagatpura, Jaipur",+918769278980,26.835451,75.831888
+JG003,R,Royal Mart,Supermarket,Jagatpura & Mahal Road,"Ramnagariya, Jagatpura, Jaipur",+918741000010,26.815242,75.863205
+JG004,R,Kalpataru Departmental Store,Departmental store,Jagatpura & Mahal Road,"46, Akhil Nagar Marg, Saraswati Nagar Extension, Chainpura, Jagatpura, Jaipur",+919351580801,26.839173,75.81052
+JG005,R,Grahpurti Departmental Store,Departmental store,Jagatpura & Mahal Road,"Plot C-9, Shankar Colony, near Terminal 2, Jagatpura, Jaipur",+918947037594,26.833295,75.815825
+JG006,R,Mahalaxmi Kirana Store,Kirana,Jagatpura & Mahal Road,"Brij Vihar, Jagatpura, Jaipur",+919460949227,26.830976,75.836663
+JG007,R,Arvind Kumar Choudhary's Big Mart,Supermarket,Jagatpura & Mahal Road,"Shop 6, Mahima Panorama, Jagatpura, Jaipur",+918769106329,26.814187,75.864099
+JG008,R,G-Mart,Supermarket,Jagatpura & Mahal Road,"Mahima Panache, near NRI Colony Road, Ravindra Nagar-A, Jagatpura, Jaipur",,26.81854,75.831957
+JG009,R,Khandelwal Traders Departmental Store,Departmental store,Jagatpura & Mahal Road,"B-40, Railway Colony, Jagatpura, Jaipur",+911412753204,26.831423,75.843646
+JG010,R,D.K. Departmental Store,Departmental store,Jagatpura & Mahal Road,"Sector 9, Khatipura, Indira Gandhi Nagar, Jagatpura, Jaipur",+919314615886,26.84332,75.879303
+JG011,R,Jitendra General Store,General store,Jagatpura & Mahal Road,"Jagatpura, Jagatpura, Jaipur",+919680258989,26.817674,75.861717
+JG012,R,Raj General Store,General store,Jagatpura & Mahal Road,"Jagatpura (plus code RV96+3MG), Jagatpura, Jaipur",+919928815834,26.817677,75.861715
+JG013,R,Gurukripa Departmental Store,Departmental store,Jagatpura & Mahal Road,"G-13, Balaji Tower 7, Jagatpura, Jaipur",,26.803866,75.856323
+JG014,R,Royal Karol Supermarket,Supermarket,Jagatpura & Mahal Road,"Shop 37, Jagatpura, Jaipur",,26.834454,75.849225
+JG015,R,Shree Ji Kirana and General Store,Kirana,Jagatpura & Mahal Road,"190/1, Mahadev Nagar Street 5F, Ramnagariya, Jagatpura, Jaipur",,26.82328,75.859116
+JG016,R,N.D. Provision Store,Provision store,Jagatpura & Mahal Road,"Near Jagatpura Phatak, Jagatpura, Jaipur",,26.833373,75.834454
+JG017,R,Mahal Departmental Store,Departmental store,Jagatpura & Mahal Road,"Jagatpura (Mahal Road area, by name), Jagatpura, Jaipur",,26.819726,75.858236
+JG018,R,R K Departmental Store,Departmental store,Jagatpura & Mahal Road,"Near Bank of Baroda, Jagatpura, Jaipur",,26.817349,75.861146
+GA001,R,Pure Organic & Naturals,Organic store,Gandhi Path & Ajmer Road,"B-2/426, Roshan Marg, Jaipur",+919152356740,26.905159,75.73567
+GA002,R,Swastik Departmental Store,Departmental store,Gandhi Path & Ajmer Road,"7A, Gandhi Path, Acharya Vinoba Bhave Nagar, Block E, Jaipur",+919929996991,26.906127,75.739711
+GA003,R,D&D Wholesale Supermart,Supermarket (wholesale-priced),Gandhi Path & Ajmer Road,"Gandhi Path West, Moti Nagar, Jaipur",+918290471927,26.918919,75.758083
+GA004,R,Sangra Kirana Store,Kirana,Gandhi Path & Ajmer Road,"7, Gandhi Path, Girnar Colony, Block E, Jaipur",+918696536231,26.90554,75.744092
+GA005,R,Mohit General Store,General store,Gandhi Path & Ajmer Road,"Shop 76, Pratap Market, Gandhi Path, Jaipur",,26.909599,75.718177
+GA006,R,Ok Grocers,Departmental store,Gandhi Path & Ajmer Road,"Near Sambhar Sweet, Vaishali Nagar, Jaipur",,26.911659,75.735523
+GA007,R,Vaishali Grocery & General Store,General store,Gandhi Path & Ajmer Road,"Vaishali Nagar, Jaipur",,26.911646,75.734668
+GA008,R,One Stop Departmental Store,Departmental store,Gandhi Path & Ajmer Road,"B-177, Sector 4, opp. Stadium, Bhomiya Marg, Jaipur",+911414021120,26.901526,75.733833
+GA009,R,Jai Shree Kirana Store,Kirana,Gandhi Path & Ajmer Road,"Shop A-42, Stadium, Jaipur",+919828126808,26.901614,75.734753
+GA010,R,The Value Store,General store,Gandhi Path & Ajmer Road,"Shop 2/182, Jaipur",,26.89781,75.742348
+GA011,R,National Super Market,Supermarket,Gandhi Path & Ajmer Road,"Opp. Asopa Hospital, Ajmer Road, near Om Sweets, Jaipur",+919636362131,26.890954,75.741964
+GA012,R,Parchun Grocers,Grocery,Gandhi Path & Ajmer Road,"Ajmer Highway, Jaipur",,26.892218,75.775532
+GA013,R,Shree Radha Govind Super Market,Supermarket,Gandhi Path & Ajmer Road,"Ajmer Highway (map pin 26.8974, 75.7540), Jaipur",,26.897406,75.754018
+GA014,R,Santosh Kirana Store,Kirana,Gandhi Path & Ajmer Road,"1-A, Ajmer Road, Ram Colony, Sodala, Jaipur",+919328651182,26.899787,75.767268
+GA015,R,Patanjali Store,Patanjali store,Gandhi Path & Ajmer Road,"Near Vivek Vihar Metro Station, New Sanganer Road, Ganesh Nagar, Sodala, Jaipur",+918505006390,26.899515,75.766855
+GA016,R,Shree Shyam Departmental Store,Departmental store,Gandhi Path & Ajmer Road,"Kailashpuri, Ramnagar Extension, Ramnagar, Jaipur",,26.897232,75.772483
+MC001,M,Plutus Health & Medicare,Chemist (24 hours),C-Scheme,"7A, Vivekanand Marg, C-Scheme",+911412387496,26.908597,75.810625
+MC002,M,Shree Mahaveer Medicose (also listed as Shekhawati Medical),Chemist,C-Scheme,"Plot A-7, Vivekanand Marg, near Heart & General Hospital, C-Scheme",+919214444232,26.908622,75.811017
+MC003,M,Easyaid Medical,Chemist,C-Scheme,"5A, Vivekanand Marg, Panch Batti, C-Scheme",+918955536450,26.908545,75.812081
+MC004,M,Shree Dhar Life Care Medical Store,Chemist,C-Scheme,"C-6, Vivekanand Marg, C-Scheme",+918432627474,26.908373,75.813012
+MC005,M,Milan Medical Store,Chemist,C-Scheme,"Shop 37, Subhash Marg, C-Scheme",+919414303941,26.906742,75.795686
+MC006,M,Kailash Medicos & Provision Store,Chemist + provisions,C-Scheme,"Shop 34, Subhash Marg, C-Scheme",+919252713997,26.908669,75.800045
+MC007,M,Health Line Pharmacy,Chemist,C-Scheme,"Shop 7, Bagadiya Bhawan, Subhash Marg, C-Scheme",+919001091404,26.907775,75.799053
+MC008,M,Madhu Medicals,Chemist,C-Scheme,"Bagadia Bhawan, Navgarh House, Sansar Chand Road",+919414216252,26.909293,75.800143
+MC009,M,Himanshu Medical And Provision Store,Chemist + provisions,C-Scheme,"Shop D-3, Malviya Marg, opp. SBI, C-Scheme",+919829054242,26.912345,75.804039
+MC010,M,Himanshu Medical & General Store,Chemist + general,C-Scheme,"Vijay Bhawan, Dhuleshwar Garden, opp. Hotel Aashish, Panch Batti",+919887196275,26.915619,75.797764
+MC011,M,Sanjay Medical Store,Chemist,C-Scheme,"Shop 93, near Panch Batti, MI Road",+911412363073,26.91001,75.806726
+MC012,M,Agarwal Medical Store,Chemist,C-Scheme,"5, Hathroi, Ajmer Road, opp. Hotel Diana Palace, Panch Batti, Patel Colony",,26.915142,75.796805
+MC013,M,Satvik Medical Center,Chemist,C-Scheme,"G-05, Jagdish Enclave, Hawa Sadak",,26.910338,75.795829
+MC014,M,Shubhangi Medicos,Hospital chemist,C-Scheme,"Room 304, 3rd floor, SR Kalla Hospital, 78 Dhuleshwar Bagh, C-Scheme",,26.913118,75.797163
+MC015,M,Bharat Medical Stores,Chemist,C-Scheme,"Opp. SMS Hospital, Diwan Ji Ki Nasiya, Tonk Road",+911412374905,26.906196,75.814858
+MC016,M,Kuchaman Medical Hall,Chemist,C-Scheme,"Shop 2, Deewan Ji Ki Nasiya, opp. SMS Hospital, Tonk Road",+919829053138,26.906064,75.814667
+MC017,M,Shiv Medical & General Store,Chemist + general,C-Scheme,"Shop 13, Modi Dharamshala Building, opp. SMS Hospital, Tonk Road",+919571900609,26.906024,75.814627
+MC018,M,Hindustan Medical Stores,Chemist,C-Scheme,"Shop 14, near Saras Dairy, SMS Hospital, Rambagh",+918963096405,26.906383,75.814943
+MC019,M,Sona Medicals,Chemist,C-Scheme,"Opp. SMS Hospital Gate 2, Tonk Road",+919829495537,26.905662,75.814713
+MC020,M,Maya Medicals,Chemist,C-Scheme,"SMS Hospital Gate 2, basement parking",+919784993399,26.899439,75.81252
+MC021,M,Bhawani Medicose,Chemist,C-Scheme,"Four Flats, Hira Bagh, near SMS Hospital, Ram Singh Road",+919828017762,26.901243,75.813776
+MC022,M,Vishal Medical And General Store,Chemist + general,C-Scheme,"14, Unic Shardul Apartment, near JK Lon Hospital",+919199288384,26.899712,75.812946
+MC023,M,Gems Medicos,Chemist,C-Scheme,"25/B, Chetak Marg, JK Lon Hospital",+919829180028,26.90022,75.818642
+MC027,M,Super Pharma,Chemist,C-Scheme,"21, Bhagwan Das Road, Ashok Nagar",,26.914601,75.808486
+MC028,M,Kailash Medical,Chemist,C-Scheme,"F-191, Chaitanya Marg, C-Scheme",,26.908675,75.800079
+MC029,M,Manak Medicos,Chemist,C-Scheme,"Nehru Road, C-Scheme",,26.915091,75.8041
+MC030,M,Shri Dev Pharma,Chemist,C-Scheme,C-Scheme,+919829041450,26.9089,75.8021
+MC031,M,Parasnath Medical And General Store,Chemist + general,C-Scheme,"Shop 3, Tonk Road, opp. SMS Hospital",,26.907215,75.815014
+MC032,M,Sharma Medical Stores,Chemist,C-Scheme,"Shop 5, Sawai Ram Singh Road, opp. SMS Hospital",,26.907065,75.815518
+MC033,M,S J Medical & General Store,Chemist,C-Scheme,Opp. SMS Hospital,,26.907776,75.814581
+MC034,M,Rajesh Medical Hall & General Store,Chemist + general,C-Scheme,"Nathu Paan Wale Ka Chauraha, C-Scheme",,26.909492,75.802274
+MC035,M,Kerala Ayurveda Kendra,Ayurvedic medicine shop,C-Scheme,"Behind BJP Office, C-Scheme",,26.908325,75.802374
+MB001,M,Jaipur Medical And Provision Store,Chemist + provisions,Bani Park,"D-10, Todarmal Marg, Bani Park",+919784655363,26.960364,75.7799
+MB002,M,Indian Health Medical Store (branch 2),Chemist,Bani Park,"Shop 2, Kabir Marg, Sen Colony, Bani Park",+917610028381,26.961094,75.779609
+MB003,M,Alok Medical & General Store,Chemist + general,Bani Park,"C-03, opp. Tambi Petrol Pump, Jhotwara Road, Shastri Nagar",+911412280924,26.933526,75.796468
+MB004,M,Medical Centre & Provisions,Chemist + provisions,Bani Park,"Plot A-1, Jhotwara Road, near Power House Road, opp. Pareek Public School",+919829628643,26.935666,75.795598
+MB005,M,Natani Medical Corner And General Store,Chemist + general,Bani Park,"Near Pital Factory, Shastri Nagar Road, Mukherjee Colony",+911412280071,26.933269,75.797179
+MB006,M,Guru Kripa Medical & General Store,Chemist + general,Bani Park,"P.No. 1-C-171, Shiv Shakti Colony, Gurjar Basti, Shastri Nagar",+919829570447,26.941869,75.801425
+MB007,M,Laxmi Medical Store,Chemist,Bani Park,"A-39, Subhash Nagar Road, Shastri Nagar",,26.93747,75.796125
+MB008,M,R S Medical,Chemist,Bani Park,"Kanwatiya Hospital, Kanwatiya Circle, Shastri Nagar",+919887051969,26.94861,75.80195
+MB009,M,Shri Balaji Medical,Chemist,Bani Park,"Kanwatiya Circle, Shastri Nagar",+919784466743,26.94838,75.80209
+MB010,M,Uma Medical Provisional Stores,Chemist + provisions,Bani Park,"G-7, Hari Bax Kanwatiya Hospital, Kanwatiya Circle, Shastri Nagar",+919829142488,26.94821,75.80206
+MB011,M,Deepak Medical Hall,Chemist,Bani Park,"6-8 Suman Apartment, near Hari Bax Kanwatiya Hospital, Ram Nagar",+919829033750,26.94817,75.79972
+MB012,M,Laxmi Medical And Provisional Store,Chemist + provisions,Bani Park,"Lanka Puri, Ram Nagar, Shastri Nagar",+919950141454,26.952154,75.799681
+MB013,M,Monu Medical And Provision Store,Chemist + provisions,Bani Park,"Kanta Puri, Housing Board Sector 2, Ram Nagar, Shastri Nagar",+919352396749,26.952707,75.801328
+MB014,M,Hanumangarh Medical Store,Chemist,Bani Park,"Shop 2, opp. Metro Pillar 183, Station Road, Polo Victory Cinema, Kanti Nagar",+919413580398,26.921528,75.796577
+MB015,M,Medicines Shanter,Chemist,Bani Park,"Shop 9, opp. Janana Hospital, Station Road, Chandpole",+911414004796,26.9259,75.80697
+MB016,M,Bharat Dispensary,Chemist,Bani Park,"Shop 25, NBC Road, Kamala Nehru Nagar, Hasanpura",+911412222046,26.916136,75.777838
+MB017,M,Shree Ram Medical And Provision Store,Chemist + provisions,Bani Park,"G-5, Shree Govindam Complex, near Biyani College, LS Nagar, Naya Khera",+918094476550,26.955662,75.779807
+MB018,M,Shruti Medical & General Store,Chemist + general,Bani Park,"B-50, Unnati Tower, Sector 2, Central Spine",+919829904070,26.959771,75.778482
+MB019,M,Medicine Center,Chemist,Bani Park,"B-32, Unnati Tower, Sector 2, Central Spine",,26.959945,75.77854
+MB020,M,Kusum Medicoz Store,Chemist,Bani Park,"Sector 3, Naya Khera, Prithvi Nagar",+919829599112,26.954546,75.783328
+MB021,M,Aapno Pharmacy,Chemist,Bani Park,"Sector 2 Road, Central Spine",+919116826859,26.967565,75.782949
+MB022,M,Shree Shyam Kripa Medicos,Chemist,Bani Park,"G-24, Ganpati Tower, Central Spine",+919636583103,26.957408,75.777458
+MB023,M,Health Line Pharmacy And Provision Store,Chemist + provisions,Bani Park,"Mall Road, Sector 3, Naya Khera",+919899694871,26.955327,75.779147
+MB024,M,Pooja Pharmacy,Chemist,Bani Park,"G-11, Ganpati Tower, near Biyani Girls College, Sector 2, Central Spine",,26.957301,75.77794
+MB025,M,Krishna Pharmacy and General Store,Chemist + general,Bani Park,"Opp. Shekhawati Hospital, Sector 2, Central Spine",,26.959102,75.778346
+MB026,M,Radhey Medical,Chemist,Bani Park,"Near Akash Marg, Jalwayu Vihar, Jagdamba Colony",+916375962109,26.960365,75.780927
+MB027,M,Mayank Medical & Departmental Store,Chemist + departmental,Bani Park,"Below SBI, Road No 4, Vishwakarma Industrial Area",+919351425696,26.977767,75.773851
+MB031,M,Avani Pharmacy,Chemist,Bani Park,"A-7/2, Amani Shah Road, Hari Nagar, Police Line, Shastri Nagar",,26.954955,75.782298
+MB032,M,Ajanta Medical & Provision Store,Chemist + provisions,Bani Park,"Near Collectorate Circle, Bani Park",,26.960743,75.779487
+MB033,M,Neha Medical & General Store,Chemist + general,Bani Park,Near Bani Park Hospital,,26.96089,75.77955
+MB034,M,Abhinav Pharmacy,Chemist,Bani Park,Bani Park Hospital,,26.960086,75.779732
+MS001,M,Basant Medicine Corner,Chemist,Shyam Nagar,"H-7, Janpath, Sodala",+919001078999,26.891836,75.760257
+MS002,M,Disha Medicals & Provisional Store,Chemist + provisions,Shyam Nagar,"Shop F-112, Janpath, opp. Bansal Hospital",+919414210022,26.892653,75.763036
+MS003,M,Bhatnagar Pharmacy,Chemist,Shyam Nagar,"Plot 24, Basement, Janpath Road",,26.8911,75.758589
+MS004,M,Kamla Medical & Provisional Store,Chemist + provisions (24 hours),Shyam Nagar,"72, Sanganer Road, Devi Nagar",+918233029674,26.885886,75.765674
+MS005,M,Hare Rama Medical & General Store,Chemist + general,Shyam Nagar,"Shop 1, 724 Devi Nagar",+918000934220,26.887714,75.759954
+MS006,M,Ashwini Medical And General Store,Chemist + general,Shyam Nagar,"Shop 1, Bharat Ashram, Devi Nagar, New Sanganer Road",+919950723305,26.882768,75.767225
+MS007,M,Agrasen Medical,Hospital chemist,Shyam Nagar,"Agrasen Hospital, 76 Bharat Ashram Marg, Katewa Nagar, Devi Nagar",,26.885533,75.764584
+MS008,M,Shyam Medical Store,Chemist,Shyam Nagar,"515B, Bharat Ashram Marg, Katewa Nagar, Devi Nagar",+919587862100,26.88718,75.760954
+MS009,M,Khanak Medical Store,Chemist,Shyam Nagar,"Plot 515, Shop 1, Devi Nagar, Sodala",+919828803110,26.887186,75.761061
+MS010,M,Aakansha Medicals,Chemist,Shyam Nagar,"30, behind Mahashaya Market, Sanganer Road, Devi Nagar, Sodala",+919928091625,26.886114,75.766005
+MS011,M,Isha Medical & General Store,Chemist + general,Shyam Nagar,"Plot 494, New Sanganer Road, Katewa Nagar, Devi Nagar",+919414536147,26.883664,75.760753
+MS012,M,Sharma Medicines,Chemist,Shyam Nagar,"New Sanganer Road, near Devi Vihar, Katewa Nagar",+919985690504,26.88627,75.76399
+MS013,M,Shah Medical Store,Chemist,Shyam Nagar,"New Sanganer Road, near Devi Vihar",+919829059771,26.888636,75.763245
+MS014,M,Naveen Medical,Chemist,Shyam Nagar,"New Sanganer Road, near Devi Vihar, Katewa Nagar",+919982112080,26.88663,75.76272
+MS015,M,Ekta Medical,Chemist,Shyam Nagar,"New Sanganer Road, near Vivek Vihar, Katewa Nagar",+919460867557,26.887845,75.765295
+MS016,M,Sanjeevani Medical,Chemist,Shyam Nagar,"New Sanganer Road, Shyam Nagar",+919928027253,26.89164,75.76574
+MS017,M,Chandra Medical Store,Chemist,Shyam Nagar,"Vishwa Nagar, opp. Reliance Fresh, New Sanganer Road",+911415130719,26.89238,75.76927
+MS018,M,Sonu Medical And General Store,Chemist + general,Shyam Nagar,"Shop 258, Laxman Colony",+917062523755,26.888425,75.761268
+MS019,M,Goyal Medical & General Store,Chemist + general,Shyam Nagar,"223, Shree Gopal Nagar, 60 Feet Road, Mahesh Nagar, Gopalpura Mod",+919414775625,26.880597,75.776905
+MS020,M,Jai Mata Di Medical Store,Chemist,Shyam Nagar,"A-275, near Samudayik Kendra, Mahesh Nagar",+919929614343,26.882831,75.778414
+MS021,M,Shri Siddharth Medical Store,Chemist,Shyam Nagar,"Plot 300, Shop 1, Gopalpura Bypass Road, Shri Gopal Nagar",+919828367475,26.880073,75.763122
+MS022,M,Medicure Medical Store,Chemist,Shyam Nagar,"Shop 5, Hatwara Road, opp. ESI Hospital, Sodala",+919460023380,26.908876,75.775809
+MS023,M,Sharma Medicine Corner,Chemist,Shyam Nagar,"Ajmer Road, Ashok Pura, Sodala",+911412220472,26.899841,75.767142
+MS024,M,Raj Medical,Chemist,Shyam Nagar,"Shop 257-A, Gurjar Ki Thadi, Champa Nagar, Shanti Nagar",+919214502187,26.875372,75.766416
+MS027,M,Saumaya Medical Store,Chemist,Shyam Nagar,"B-5, Sankhala Bhawan, Goverdhan Colony",,26.887193,75.76674
+MS028,M,Shri Girraj Medicals,Chemist,Shyam Nagar,"Plot 93, Devi Nagar, New Sanganer Road",,26.886806,75.766908
+MS029,M,Shree Shyam Medical & Departmental Store,Chemist + departmental,Shyam Nagar,"Near Shiv Puri Colony, opp. KS Ford, Metro Pillar 113",,26.904152,75.771666
+MS030,M,Health Pharmacy,Chemist,Shyam Nagar,"Near Pillar 103, Shyam Nagar, Sodala",,26.90392,75.771872
+MS031,M,Aastha Medical & Ayurvedic Store,Chemist + Ayurvedic,Shyam Nagar,"379, Surender Pal Singh Marg, Katewa Nagar, Vivek Vihar",,26.88897,75.764698
+ML001,M,Zeriva Pharmacy,Chemist,Civil Lines,"4, Hawa Sadak Road, Civil Lines",+918058070837,26.902405,75.786792
+ML002,M,Medineeds Medical & Provision Store,Chemist + provisions,Civil Lines,"Shop 53, Raj Bhawan Road, Civil Lines",+918824762991,26.907903,75.782971
+ML003,M,Medi Hub,Chemist,Civil Lines,"52, Raj Bhawan Road, Jai Ambey Colony",+919928222946,26.907844,75.782943
+ML004,M,Saroj Medical,Chemist,Civil Lines,"73 Hari Bagh, Raj Bhawan Road",+919269067299,26.906541,75.78401
+ML005,M,Medicine Centre,Chemist,Civil Lines,"Shop 20, Raj Bhawan Road, Civil Lines",+911412214383,26.911068,75.78368
+ML006,M,Medicine Shop and Provision Store,Chemist + provisions,Civil Lines,"Shop 9, between Metro Pillars 39–40, 22 Godown, Civil Lines",,26.902118,75.785735
+ML007,M,Mittal Pharma Pvt Ltd,Pharmacy,Civil Lines,"12 Mangal Manch Garden, Nand Puri, 22 Godown",,26.901588,75.786465
+ML008,M,Gautam 3G Medi Shoppe,Chemist,Civil Lines,"Opp. SBI, near Ram Mandir, 22 Godown, Hawa Sadak",+911412210188,26.902366,75.785878
+ML009,M,Shree Balaji Medical & General Store,Chemist + general,Civil Lines,"G-, Nand Plaza, Hawa Sadak Road",+919829089659,26.901195,75.783566
+ML010,M,K.K. Medicos,Chemist,Civil Lines,"Near Ram Mandir, Hawa Sadak, Civil Lines",+918890077955,26.902461,75.786647
+ML011,M,A-One Medicure,Chemist,Civil Lines,"22 Godown, Patel Nagar",+919461308997,26.901614,75.788595
+ML012,M,Gupta Medical & General Store,Chemist + general,Civil Lines,"40 Shri Ram Colony, Hawa Sadak",+919828816281,26.899963,75.783793
+ML013,M,Suraj Medical & General Store,Chemist + general,Civil Lines,"Nandpuri Road, Hawa Sadak",+919461302897,26.899257,75.78407
+ML014,M,Rakesh Medical And General Store,Chemist + general,Civil Lines,"Shop 4, Nandpuri Market",+911412213400,26.901777,75.789457
+ML015,M,Raj Medical Store,Chemist,Civil Lines,"Opp. Dr. Vyas Hospital, near Geetanjali Tower, Ajmer Road",+919829599228,26.908151,75.779245
+ML016,M,Diabetes Welfare Medical Store,Chemist,Civil Lines,"94-A, opp. Dr. S.K. Sharma Hospital, Galaxy Specialty Centre, Ajmer Road, Madrampur",+919950371683,26.905593,75.776811
+ML017,M,Ashwini Medicos,Chemist,Civil Lines,"Shop 12, Yogi Marg, Ajmer Road",+919929442223,26.910369,75.782625
+ML018,M,Ganpati Medical Store,Chemist,Civil Lines,"Opp. Moomal Hotel, Ajmer Road",,26.908693,75.779021
+ML019,M,Jay Shri Devi Medicose,Chemist,Civil Lines,"Jamuna Kunj, Ajmer Road, Sodala",,26.908059,75.779558
+ML020,M,Om Medical & Provision Store,Chemist + provisions,Civil Lines,"Shop 3, C-6, Jamna Nagar, Ajmer Road, Sodala",,26.905971,75.779355
+ML021,M,Maitreyi Medicals,Chemist,Civil Lines,"C-60, Jamuna Nagar, Sodala",,26.906493,75.779885
+ML022,M,Medicine House,Chemist,Civil Lines,"4T3 Bhagirath Plaza, Ajmer Road, near ESI Dispensary No. 4, Sodala",,26.906592,75.779867
+ML023,M,Ridhi Sidhi Medical Store,Chemist,Civil Lines,"Hari Marg, Keshav Nagar, Sodala",+919413352245,26.904932,75.780246
+ML024,M,Harsh Medical & Provision Stores,Chemist + provisions,Civil Lines,"Shop 8, Kumawat Colony, Gayatri Nagar, Sodala",+919829591962,26.906214,75.776768
+ML026,M,Yadav Medicine Store,Chemist,Civil Lines,Civil Lines,+911412224435,26.906942,75.784542
+ML027,M,Shree Ram Medical Store,Chemist,Civil Lines,"Hawa Sadak, Nandpuri Colony",,26.899553,75.783952
+ML028,M,Apotik Rahat's,Chemist,Civil Lines,"Shivaji Nagar, Civil Lines",,26.905878,75.787396
+MR001,M,Raj Ayurvedic Kendra,Ayurvedic store,Raja Park,"Tadkeshwar Plaza, Panchwati Circle",+911414016749,26.894638,75.829854
+MR002,M,Angel Nutrition,Health & nutrition store,Raja Park,"Shop 6, 422-B, opp. Govt Panchwati School, near Panchwati Circle",+919529803883,26.89403,75.82988
+MR003,M,Health First Pharmacy,Chemist,Raja Park,"Shop 1, Panchwati Complex, Panchwati Circle",,26.895102,75.830299
+MR004,M,Bhatiya Medical & General Store,Chemist + general,Raja Park,"Near Panchwati Circle, Frontier Colony",+919530375845,26.89546,75.830812
+MR005,M,Shri Ram Medical & Provision Store,Chemist + provisions,Raja Park,"Sector 2, Sindhi Colony",+919180032118,26.896911,75.837123
+MR006,M,Parshav Medical,Chemist,Raja Park,"Plot 332/7, Uday Marg, Shanti Path, near Police Station",+919928699278,26.894745,75.830117
+MR007,M,Aryan Medical,Chemist,Raja Park,"B-102A, Gali 7, Udai Marg, Tilak Nagar, Raja Park",,26.894605,75.830687
+MR008,M,Nagpal Medical Store,Chemist,Raja Park,"244, Lane 5, Gurunanakpura",+919829262217,26.894889,75.822516
+MR009,M,Mahalaxmi Medicals,Chemist,Raja Park,"G-2, 244-45 Dhruv Marg, Parnami Block, Gurunanakpura",+919928694324,26.895,75.822377
+MR010,M,Mohit Medicose,Chemist,Raja Park,"Shop 6, opp. Parnami Hospital, Govind Marg",+919783461195,26.889322,75.821821
+MR011,M,Agarwal Medical Hall,Chemist,Raja Park,"Shop 3, B-17, Baraf Khana Chauraha, Govind Marg",,26.893663,75.827871
+MR012,M,Mahalaxmi Medical Store,Chemist,Raja Park,"Shop 5, Govind Marg, Baraf Khana, Adarsh Nagar",,26.89366,75.827564
+MR013,M,Mediline,Chemist,Raja Park,"Shop 2, 05-B Govind Marg, near Moti Doongri Circle",,26.894649,75.828096
+MR014,M,Vinay Medical & Surgicals,Chemist + surgical,Raja Park,"27, Govind Marg, Trimurti Circle",,26.894294,75.827658
+MR015,M,Mahaveer Medical Store,Chemist,Raja Park,"29 Uniyara Garden, Moti Doongri Road",,26.894439,75.82808
+MR016,M,Safeway Pharmacy,Chemist,Raja Park,"806-C, Basement, Ashok Chowk, opp. Radha Swami Satsang Bhawan",+919057580940,26.902518,75.829892
+MR017,M,Med Cure Plus Medical Center,Chemist,Raja Park,"Shop 57, near Mohan Dhaba, Anand Puri, Bees Dukan",+919784371717,26.902111,75.826237
+MR018,M,Medicine Plus,Chemist,Raja Park,"E-61, Shastri Market, Bees Dukan",,26.902252,75.826248
+MR019,M,10 Mg Medicos,Chemist,Raja Park,"Shop 52, 20 Dukan, near Geeta Bhawan, Shastri Market, Gurunanakpura",+917727834560,26.901601,75.826703
+MR020,M,Darshan Medical Hall,Chemist,Raja Park,"Shop 7, Shastri Market, Gurunanakpura, Bees Dukan",+911412611356,26.901916,75.825733
+MR021,M,Govind Medical & General Store,Chemist + general,Raja Park,"Shop 20, Anand Puri, Bees Dukan",+911412614654,26.90225,75.825779
+MR024,M,Hemguru Medicos,Chemist,Raja Park,"C-30A, Barafkhana, Adarsh Nagar",,26.898788,75.834145
+MR025,M,Radha Swami Medical Store,Chemist,Raja Park,"762, Ashok Chowk",,26.906903,75.829246
+MR026,M,Medicine Villa,Chemist,Raja Park,"Shop 45, 20 Dukan",,26.897999,75.827507
+MR027,M,Prince Medical Hall,Chemist,Raja Park,"Shop 5-6, Bees Dukan",,26.901813,75.826652
+MR028,M,Mangal / Sudeep / Kushal / Shiv Medical (4 shops),Chemists,Raja Park,Raja Park (no street given),+919414600090 / +911412653262 / +911412621943 / +919549040406,26.894745,75.830117
+MM001,M,Krishna Medical Store,Chemist + provisions,Malviya Nagar,"10/8, opp. Palika Bazar, behind World Trade Park, Sector 10",+919829023487,26.849469,75.810138
+MM002,M,M2 Pharmacy,Chemist (small local chain),Malviya Nagar,"E-58, Girdhar Marg, near Ghiya Hospital, Siddharth Nagar",+911412721968,26.846716,75.810072
+MM003,M,Dr. B. Lal Pharmacy,Chemist,Malviya Nagar,"26, Siddharth Nagar E, near Amit Bhardwaj Petrol Pump, Sector 12",+917357725777,26.846242,75.808413
+MM004,M,Bohra Medical Store,Chemist,Malviya Nagar,"Shop 1/442, Bohra Bhawan, Sector 1",+919314213042,26.850766,75.821938
+MM005,M,Alankar Medicals,Chemist,Malviya Nagar,"Shop 60, Satkar Shopping Centre, Sector 2",+919784018886,26.850896,75.818302
+MM006,M,Ravi Raj Medicose Store,Chemist,Malviya Nagar,"34, Satkar Shopping Complex, Sector 2",+918824024049,26.851013,75.818619
+MM007,M,Prabhu Medical Hall,Chemist,Malviya Nagar,"1/519, near Petrol Pump & Apex Hospital, Usha Colony, Sector 1",+919928138834,26.852572,75.823636
+MM008,M,Yadav Ayurvedic Store,Ayurvedic store,Malviya Nagar,"Apex Circle, Usha Colony, Sector 1",+919509660666,26.854575,75.824603
+MM009,M,Radha Medical,Chemist,Malviya Nagar,"Shop 43–48, near Apex Hospital",+919829472054,26.85392,75.827032
+MM010,M,Apex Family Pharmacy,Hospital chemist,Malviya Nagar,"Apex Hospitals, SP-4 & 6, Malviya Nagar Industrial Area",,26.854454,75.825021
+MM011,M,Vinita Medical & General Store,Chemist + general,Malviya Nagar,"1/328, near Moti Studio",+919828571123,26.85141,75.8216
+MM012,M,Anudeep Medical & General Store,Chemist + general,Malviya Nagar,"Plot 293, Sector 3",+919413764620,26.848763,75.817041
+MM013,M,Shree Sagar Medical And General Store,Chemist + general,Malviya Nagar,"3/237, Sector 3, Sabzi Mandi",+917427076118,26.847274,75.817486
+MM014,M,Sampurna Medicoz,Chemist,Malviya Nagar,"4/11-B, Vidyut Abhiyanta Colony, Sector 4",+919414066147,26.850199,75.816285
+MM015,M,Vardman Medical Store,Chemist,Malviya Nagar,"S-21, 22, Sector 12",,26.85264,75.82341
+MM016,M,Sara Medicals,Chemist,Malviya Nagar,"358, Malviya Nagar",,26.856268,75.82016
+MM017,M,Shubham Medicines,Ayurvedic (AYUSH) store,Malviya Nagar,"12/21, Girdhar Marg",,26.846129,75.810609
+MM018,M,Annapurna Medical And Provision Store,Chemist + provisions,Malviya Nagar,"Plot HH-81, Calgiri Marg, Block A",+919468665444,26.856004,75.819532
+MM019,M,Ujjwal Medical Store,Chemist + provisions,Malviya Nagar,"Shop 3, Calgiri Road, opp. Khalsa Palace",+919414859465,26.856647,75.818279
+MM020,M,Karol Medical & Provision Store,Chemist + provisions,Malviya Nagar,"UU-69, Shop 1-2, Calgiri Road",,26.855559,75.8199
+MM021,M,Shree Medicals,Hospital chemist,Malviya Nagar,"Shop 1, Calgiri Eye Hospital campus, Calgiri Road, Jhalana Gram",+919829239126,26.85593,75.821906
+MM022,M,R.H. Medical Store,Hospital chemist,Malviya Nagar,"Inside Rungta Hospital, Calgiri Marg, near Police Station, Jhalana Gram",+916375695369,26.857408,75.815245
+MM023,M,Mayank Medical & General Store,Chemist + general,Malviya Nagar,"Calgiri Marg, Jhalana Gram",,26.855996,75.821939
+MM024,M,Shubam Medical & Provision Store,Chemist + provisions,Malviya Nagar,"Shop 1, near Om Gas Godown, Jhalana Gram",+919799388753,26.857488,75.820544
+MM025,M,Batra Medical Hall,Chemist,Malviya Nagar,"B-10, Jhalana Gram",+911412622136,26.857413,75.81572
+MM028,M,Malviya Medicos & Department Store,Chemist + departmental,Malviya Nagar,Jhalana Gram,+919929595006,26.853775,75.824826
+MM029,M,Jyoti Medical Store,Chemist,Malviya Nagar,Jhalana Gram,+919828318381,26.856354,75.818963
+MM030,M,Soniya Medical,Chemist,Malviya Nagar,Sector 11,+911412524766,26.84931,75.81864
+MM031,M,"Go Earth / Radha Madhav Ayurvedic, Patanjali & Organic",Ayurvedic + organic,Malviya Nagar,Near Satkar Shopping Centre,,26.851258,75.818378
+MT001,M,Mahaveer Medical & Ayurvedic Store,Chemist + Ayurvedic,"Tonk Road (LB Nagar, Durgapura)","871, Kisan Marg, JP Phatak Link Road, near Ahinsa Park, Shanti Niketan Colony",+919828679444,26.874868,75.790755
+MT002,M,Lalit Pharmacy,Chemist,"Tonk Road (LB Nagar, Durgapura)","969, Piyush Villa, Kisan Marg, near Nitin Public School, Barkat Nagar",+911412591724,26.873822,75.789684
+MT003,M,Surya Medical Store,Chemist,"Tonk Road (LB Nagar, Durgapura)","Shop 6, Kisan Marg, Barkat Nagar",+919829610677,26.874167,75.791167
+MT004,M,Sudha Medical and General Store,Chemist + general,"Tonk Road (LB Nagar, Durgapura)","S-34, Adarsh Bazar, Gali 12, Tonk Phatak",,26.87449,75.790987
+MT005,M,Landmark Lifesciences,Pharmacy,"Tonk Road (LB Nagar, Durgapura)","H-6, Madhuban Colony, Kisan Marg, Tonk Road",,26.874679,75.791037
+MT006,M,Adish Medical and Provision Store,Chemist + provisions,"Tonk Road (LB Nagar, Durgapura)","7-A, Arjunpuri, near Imliwala Phatak",,26.874163,75.790524
+MT007,M,Heera Medical Store,Chemist,"Tonk Road (LB Nagar, Durgapura)","61 Milap Nagar, near Jaipuria Hospital",+919829007085,26.856387,75.799343
+MT008,M,Carewel Pharmacy,Chemist,"Tonk Road (LB Nagar, Durgapura)","64, Milap Nagar, near Govt Jaipuria Hospital, Tonk Road",,26.856616,75.79989
+MT009,M,Jaipuria Medicals,Chemist,"Tonk Road (LB Nagar, Durgapura)","5, Meena Colony, opp. Sanghi Farm, Tonk Road",,26.855175,75.795089
+MT010,M,Adarsh Pharmacy,Chemist,"Tonk Road (LB Nagar, Durgapura)","Shop 3, Chandrakala Colony, behind Water Tank, Durgapura",+919460778770,26.846916,75.79488
+MT011,M,Medicine Corner,Chemist,"Tonk Road (LB Nagar, Durgapura)","K-32, Income Tax Colony, Durgapura, Tonk Road",,26.851556,75.79167
+MT012,M,Siyaram Medical & Provisional Store,Chemist + provisions,"Tonk Road (LB Nagar, Durgapura)","Opp. Pashu Chikitsalaya, Dalda Factory Mod, Shreeji Nagar",+919887117661,26.849703,75.793716
+MT013,M,Sharda Medical & Provision Store,Chemist + provisions,"Tonk Road (LB Nagar, Durgapura)","Shop 378, near Dalda Factory, Durgapura",+919660918303,26.849726,75.793611
+MT014,M,SKLR Medical,Chemist,"Tonk Road (LB Nagar, Durgapura)","18 Main Road, Maharani Farm, Dalda Factory Flyover, Durgapura",,26.852026,75.791532
+MT015,M,Adinath Medical And Provision Store,Chemist + provisions,"Tonk Road (LB Nagar, Durgapura)","Shop 3, Yojana Gayatri Nagar, near Maharani Farm",+918118814204,26.852127,75.783036
+MT016,M,Mannu Medicals,Chemist,"Tonk Road (LB Nagar, Durgapura)","Plot 282, Shop 3, 2nd Maharani Farm Main Road, Mahaveer Nagar",+919414388367,26.852513,75.780709
+MT017,M,Ridhi Sidhi Medical Store,Chemist,"Tonk Road (LB Nagar, Durgapura)","Plot 542, Shop 1, Mahaveer Nagar, near Ayyappa Temple, Durgapura",+919983469533,26.853753,75.793423
+MT018,M,Vijay Medicals,Chemist,"Tonk Road (LB Nagar, Durgapura)","D-20, Mahesh Nagar, 80 Feet Road",+919314500057,26.881127,75.782628
+MT019,M,Om Medical & General Store,Chemist + general,"Tonk Road (LB Nagar, Durgapura)","A-308, 80 Feet Road, C Block, Kartarpura, Gopalpura Mod",+919828077040,26.881926,75.779114
+MT020,M,Rama Medicals,Chemist,"Tonk Road (LB Nagar, Durgapura)","A-208-B, Mahesh Nagar, 80 Feet Road",,26.880865,75.782888
+MT021,M,Mediserve Pharma,Chemist,"Tonk Road (LB Nagar, Durgapura)","116, Avadhpuri, 80 Feet Road, Mahesh Nagar",,26.881472,75.782393
+MT023,M,Keshav Medickos,Chemist,"Tonk Road (LB Nagar, Durgapura)","Shop 23-A, Chandrakala Colony, Panchsheel Enclave Road, Durgapura",,26.846461,75.796575
+MT024,M,Bhagwati Medical / Shri Shyam Medical / Kumawat Medical / Siddhi Vinayak Medical (4 shops),Chemists,"Tonk Road (LB Nagar, Durgapura)",Sanganer & Pratap Nagar (south Tonk Road),+919414570918 / +919460837901 / +919414303549 / +917737719980,26.809775,75.803637
+MT025,M,Garg Medical Store,Chemist,"Tonk Road (LB Nagar, Durgapura)","Near Jain Mandir, Tonk Road, Green Nagar, Suresh Nagar, Durgapura",+919414388124,26.84804,75.79175
+MT026,M,R D Medical & General Store,Chemist + general,"Tonk Road (LB Nagar, Durgapura)","Shop 28, Tonk Road, Jai Ambay Nagar, Durgapura",+911412722690,26.850581,75.790925
+MT027,M,Vinayak Medical,Chemist,"Tonk Road (LB Nagar, Durgapura)","Near Maharani Farm, Gayatri Nagar A, Durgapura",+919887820358,26.85214,75.78322
+MT028,M,Shekhatia Medical & General Store,Chemist + general,"Tonk Road (LB Nagar, Durgapura)","S-22, Maharani Farm, near Railway Overbridge, Mahaveer Nagar 2",+919928383541,26.852127,75.783036
+MT029,M,Parvati Medical & General Store,Chemist + general,"Tonk Road (LB Nagar, Durgapura)","Shri Vihar, Mahaveer Nagar, Durgapura",+919413156910,26.855335,75.790042
+MT030,M,Choudhary Medical,Chemist (24 hours),"Tonk Road (LB Nagar, Durgapura)","28/3, Bajrang Vihar, Durgapura",+917568041818,26.857623,75.786486
+MT031,M,Tambi Medicas,Chemist,"Tonk Road (LB Nagar, Durgapura)","Manavashram, Gopalpura Mod, Tonk Road, Kailash Puri Colony",+919414389048,26.85534,75.79514
+MV001,M,Shubham Ayurvedic Store,Ayurvedic store,Vaishali Nagar,"6, Queens Road, near ICICI ATM, Nityanand Nagar",+919782153851,26.904739,75.753036
+MV002,M,Shri Baba Ayurvedic Store,Ayurvedic store,Vaishali Nagar,"Main Queens Road, near SBI, Nityanand Nagar",+918824821008,26.904428,75.753042
+MV003,M,Kalpana Medical,Chemist,Vaishali Nagar,"Shop E-23, Amrapali Plaza",+919828555564,26.911455,75.744567
+MV004,M,New Royal Chemist,Chemist,Vaishali Nagar,"30, Gautam Marg, opp. Reliance Fresh, Block E",+911412358423,26.910064,75.743392
+MV005,M,Hanumant Medical Store,Chemist,Vaishali Nagar,"G-, Prestige Tower, Amrapali Marg, Sector 9",+919411900541,26.911214,75.745142
+MV006,M,Kaanha Medicals,Chemist,Vaishali Nagar,"Shop G-2, Ganesham Tower, Amrapali Marg",+919680091749,26.91153,75.745678
+MV007,M,Altross Pharmacy,Chemist,Vaishali Nagar,"G-1/G-2, Krishna Apartment, Gautam Marg, near Global Heart Hospital",+918955889468,26.909993,75.743607
+MV008,M,Dhruv Medicose,Chemist,Vaishali Nagar,"No. 1, Queens Road, Block E",,26.905717,75.751412
+MV009,M,Vilakshan,Chemist,Vaishali Nagar,"Shop 5, Vinay Apartment, behind Kanha Restaurant, Queens Road",+919782324610,26.903945,75.752754
+MV010,M,Jai Hanuman Medicals,Chemist,Vaishali Nagar,"700A, 1st floor, Vidyut Nagar A, Queens Road",,26.904493,75.752603
+MV011,M,Agarwal Medicine Store,Chemist,Vaishali Nagar,"14, Sarthi Marg, Bhan Nagar",,26.90035,75.751251
+MV012,M,Shipra Medical and General Store,Chemist + general,Vaishali Nagar,"A-152 Prince Road, Vidyut Nagar (also listed on Sarthi Marg, Vidyut Nagar B)",,26.90025,75.751216
+MV013,M,Health N Care Pharmaceuticals,Chemist,Vaishali Nagar,"C-9/21, Chitrakoot Marg, opp. Kebab & Curry, Akruti Apartments",+919414979058,26.900901,75.745992
+MV014,M,Doctor Plus Pharmacy,Chemist (small local chain),Vaishali Nagar,"Ground floor, Plot 3/394, Chitrakoot Scheme",,26.900799,75.736857
+MV015,M,Global Hospital Pharmacy,Hospital chemist,Vaishali Nagar,"Ground floor shop, C-1-27, Chitrakoot",,26.900413,75.736306
+MV016,M,Shree Ram Medical & General Store,Chemist + general,Vaishali Nagar,"Shop 2, Marudhar Vihar, Khatipura Circle",+911415143057,26.923106,75.745782
+MV017,M,Sadhna Medical and General Store,Chemist + general,Vaishali Nagar,"Jharkhand Mod, Khatipura Road",,26.923163,75.745656
+MV018,M,Gaurav Medical Store,Chemist,Vaishali Nagar,"Shop 4, Karni Palace Road",+919887663403,26.911242,75.735475
+MV019,M,Yash Medical,Chemist,Vaishali Nagar,"Shop 14, 76A Karni Palace Road, Panchyawala",,26.911001,75.735269
+MV020,M,Santosh Medical Hall,Chemist,Vaishali Nagar,"77, Maa Karni Nagar, Karni Palace Road, Panchyawala",,26.911054,75.735708
+MV023,M,Neeraj Medical & Ayurvedic Store,Chemist + Ayurvedic,Vaishali Nagar,"Shop 1/203, Amrapali Marg",,26.911239,75.73476
+MV024,M,Maa Durga Ayurved Shop & Agency,Ayurvedic store,Vaishali Nagar,"Shop A-48, Vikas Nagar",,26.892443,75.729269
+MV025,M,Imc Ayurvedic Product,Ayurvedic products,Vaishali Nagar,"D-Block, Vaishali Nagar",+919636966496,26.911664,75.744375
+MN001,M,My Body Nutrition (MBN),Health & nutrition store,Nirman Nagar,"Shop 2C, 263 Kings Road",+919799878335,26.889297,75.751398
+MN002,M,Shree Shyam Medical & General Store,Chemist + general,Nirman Nagar,"C-350, Kings Road",+911412232598,26.887776,75.751452
+MN003,M,Dev Medical Store,Chemist,Nirman Nagar,"Plot 91, Shop AB, Shiv Shakti Nagar, Kings Road",+919799603529,26.88491,75.752163
+MN004,M,Goyal Medical And General Store,Chemist + general,Nirman Nagar,"1, Kings Road",+919785007777,26.886024,75.751703
+MN005,M,Shri Vishwakarma Medicals,Chemist,Nirman Nagar,"Shop 2, 494 Rishabh Marg, Kings Road, Block C",+919529261264,26.88663,75.751464
+MN006,M,Shree Vishwakarma Medicose,Chemist,Nirman Nagar,"473/2, Kings Road",+918562803998,26.887043,75.751421
+MN007,M,Mahendra Medical Store,Chemist,Nirman Nagar,"Plot 90, Shop 5, near Samsung Showroom, Kings Road, Rail Nagar",+919166250632,26.88497,75.752124
+MN008,M,Shekhawati Medical And General Store,Chemist + general,Nirman Nagar,"Shop 10, Kings Road, near Mansarovar Metro Station, Padmavati Colony",+919414978516,26.881858,75.751968
+MN009,M,J.S. Medicare,Chemist,Nirman Nagar,"136, Shanti Nagar, Kings Road",,26.884378,75.752195
+MN010,M,Rama Medicose,Chemist,Nirman Nagar,"16, Uday Nagar-A, near Mansarovar Metro Station",+919812178777,26.882883,75.754114
+MN011,M,Krishna Medecos,Chemist,Nirman Nagar,"Shop 41/42, Rail Nagar, Shiv Shakti Nagar, Rani Sati Nagar",+918949106234,26.88567,75.751908
+MN012,M,Nandini Medical & Provision Store,Chemist + provisions,Nirman Nagar,"370A, Rani Sati Nagar, Brijlalpura",+919358277685,26.884974,75.746831
+MN013,M,Shruti Medical & Provision Store,Chemist + provisions,Nirman Nagar,"Shop 1/2, 370A, Rani Sati Nagar",+919636822425,26.883635,75.748521
+MN014,M,Prem Medicose,Chemist,Nirman Nagar,"138 Prem Niwas, Pandit T.N. Mishra Road",,26.885599,75.748383
+MN015,M,Tanu Medicos,Chemist,Nirman Nagar,"D-56, Shop 6, Gautam Marg, Block D",+919549101598,26.885449,75.749135
+MN016,M,Goyal Pharmacy (Nirman Nagar Health Care Centre),Chemist,Nirman Nagar,"382 AB, Janpath",+919694310333,26.887943,75.749628
+MN017,M,Radiant Homoeo Pharmacy,Homeopathic pharmacy,Nirman Nagar,"C-306, Nirman Nagar",+919772790193,26.88862,75.752064
+MN018,M,Ayurveda Store,Ayurvedic chemist,Nirman Nagar,"2122, Parshvanath Colony",+918290023233,26.889443,75.745666
+MN019,M,Kumawat Medical & General Store,Chemist + general,Nirman Nagar,"Shop 175, Baba Market, DCM, Ajmer Road, Teachers Colony",+919829544938,26.893931,75.746539
+MN020,M,Yash Medical,Chemist,Nirman Nagar,"4, Gopalpura Bypass, Ajmer Road, Teachers Colony",,26.893848,75.746205
+MN023,M,Medi Stop Pharmacy,Chemist,Nirman Nagar,"Shop 121, C-305, Janpath",,26.888621,75.75183
+MN024,M,Medi-Aid Solutions,Medical & wellness products,Nirman Nagar,"AB-411, Kings Road, Block A",,26.887368,75.751246
+MN025,M,Sri Sri Aphohan,Chemist,Nirman Nagar,"485, Rani Sati Nagar",,26.888735,75.749604
+MN026,M,Agarwal Medical Hall,Chemist,Nirman Nagar,"Shop 2A, Rani Sati Nagar Lane 6, Bhagwan Das Road",,26.886144,75.742117
+MN027,M,Sharma Ayurvedic Store,Ayurvedic store,Nirman Nagar,"Plot 224, Ajmer Road",,26.891492,75.744674
+MJ001,M,Hind Ayurvedic Pharmacy,Ayurvedic pharmacy,Jawahar Nagar & Bapu Nagar,"D/100, University Marg",+911412561756,26.88988,75.810004
+MJ002,M,Jhankar Medical & Provision Store,Chemist + provisions,Jawahar Nagar & Bapu Nagar,"Janta Store crossing, University Marg (also Shop 7, University Road)",+919784328415,26.889912,75.810027
+MJ003,M,Shri Yogi Medicals And General Store,Chemist + general,Jawahar Nagar & Bapu Nagar,"Shop A-4, Central Market, Bapu Nagar",+919772809444,26.890563,75.810199
+MJ004,M,Radhika Pharmaceutical,Chemist,Jawahar Nagar & Bapu Nagar,"D-55, Jyoti Marg, Bapu Nagar",+911412710645,26.889825,75.808361
+MJ005,M,Adarsh Medical & General Store,Chemist + general,Jawahar Nagar & Bapu Nagar,"B-133, Rajendra Marg, Bapu Nagar",+919414296295,26.888989,75.808302
+MJ006,M,S S Pharmacy,Hospital chemist,Jawahar Nagar & Bapu Nagar,"38, Soni Hospital Compound, JLN Marg",+911412571287,26.88265,75.8116
+MJ007,M,Mahaveer Medical Hall,Chemist,Jawahar Nagar & Bapu Nagar,"Opp. J.K. Lon Hospital, JLN Marg",,26.890436,75.809856
+MJ008,M,Raksha Medical Store,Chemist,Jawahar Nagar & Bapu Nagar,"B-15, Pragati Path, Bajaj Nagar",+911412705796,26.876777,75.801831
+MJ009,M,Sunita Medical & Provision Store,Chemist + provisions,Jawahar Nagar & Bapu Nagar,"A-27, Pragati Path, Bajaj Nagar",,26.876483,75.801925
+MJ010,M,Shri Govind Medical and Provision Store,Chemist + provisions,Jawahar Nagar & Bapu Nagar,"Shop 10, behind Gandhi Nagar Dispensary, Tonk Road",,26.877153,75.802201
+MJ011,M,Shree Ram Ramayya Medical Store,Chemist,Jawahar Nagar & Bapu Nagar,Gandhi Nagar Club Building,,26.876639,75.801992
+MJ012,M,Shivam Medicose,Chemist,Jawahar Nagar & Bapu Nagar,"Opp. Mandir Cinema, Tonk Road, Laxmi Colony, Gautam Nagar, Gandhi Nagar",+919314022200,26.881023,75.797749
+MJ013,M,Bhagwati Pharmacy,Chemist,Jawahar Nagar & Bapu Nagar,"B-13, Krishna Nagar-1, Janpath, Lal Kothi, Tonk Road",,26.885859,75.796314
+MJ014,M,Arogya Medical Shop,Chemist,Jawahar Nagar & Bapu Nagar,"Arjunpuri, Imli Phatak, Lal Kothi",+919414848501,26.88996,75.79385
+MJ015,M,Monilek Pharmacy,Hospital chemist,Jawahar Nagar & Bapu Nagar,"Monilek Hospital campus, Sector 4",,26.887102,75.834151
+MJ016,M,Patwa Medical Store,Chemist,Jawahar Nagar & Bapu Nagar,"766, Sindhi Colony, Jawahar Nagar",+911412603600,26.89648,75.836409
+MJ017,M,Sarvodaya Medicos,Chemist,Jawahar Nagar & Bapu Nagar,"7-TA-21, Surya Dev Mandir Marg, Geeta Mandir Area, Sector 7",+911412656469,26.89211,75.833387
+MJ018,M,Kumar Medical Store,Chemist,Jawahar Nagar & Bapu Nagar,"2, Pulia No 1, Sector 7",+911412604916,26.892334,75.833154
+MJ019,M,Shiv Medicals,Chemist,Jawahar Nagar & Bapu Nagar,"7-JHA-49, Sector 6",+919549040406,26.889905,75.833227
+MJ020,M,Nilkanth Medicals And General Store,Chemist + general,Jawahar Nagar & Bapu Nagar,"2, Sector 4",+918952877444,26.888864,75.833648
+MJ021,M,Harish Medical Store,Chemist,Jawahar Nagar & Bapu Nagar,"1st Building, Mobile Marg, adjacent Mobile Hospital",+916376679979,26.887269,75.834345
+MJ023,M,Bharat Medicals And General Store,Chemist + general,Jawahar Nagar & Bapu Nagar,"Sector 7, Jawahar Nagar",+919982959433,26.891976,75.833822
+MJ024,M,Sudeep Medicos,Chemist,Jawahar Nagar & Bapu Nagar,"Sector 6, Jawahar Nagar",+911412653262,26.890012,75.832979
+MJ025,M,Sanjeevani Health Care,Chemist,Jawahar Nagar & Bapu Nagar,"B-202A, Rajendra Marg",,26.888963,75.808859
+MJ026,M,Life Care Medical Store,Chemist,Jawahar Nagar & Bapu Nagar,"Janta Store Shopping Centre, University Marg",+919829200580,26.891755,75.824369
+MX001,M,Saket Medicos,Chemist,Mansarovar,"10, Meera Marg, Agarwal Farm",+911412784766,26.851642,75.770632
+MX002,M,Rajeev Medical Store,Chemist,Mansarovar,"5/S-16, Shopping Centre, SFS, Agarwal Farm",+919928491480,26.83855,75.77302
+MX003,M,G.D.M.N. Medical Store,Chemist,Mansarovar,"94, 49-50, Gokhale Marg, Agarwal Farm",,26.850438,75.769828
+MX004,M,Sharda Medicals,Chemist,Mansarovar,"90/1, Madhyam Marg, Sector 9",+919413901974,26.850842,75.768249
+MX005,M,Padma Medicos and General Store,Chemist + general,Mansarovar,"63/84, Heera Path, Madhyam Marg",,26.847076,75.769132
+MX006,M,Diddi Medicentre,Chemist,Mansarovar,"103/59, Patel Marg, Sector 7",+919928081059,26.85162,75.76755
+MX007,M,Healthline Medical and Provision Store,Chemist + provisions,Mansarovar,"Shop DS-01 & DS-02, Sector 18, Patel Marg",,26.847282,75.769464
+MX008,M,Arihant Medical and General Store,Chemist + general,Mansarovar,"Shop 9, 122/51-D, Vijay Path",+918107701905,26.847542,75.769314
+MX009,M,Anjali Medical & General Store,Chemist + general,Mansarovar,"Shop 6, Vijay Path, Madhyam Marg",+917742436096,26.84754,75.769446
+MX010,M,Pharma Bazaar,Chemist,Mansarovar,"Shop 1, 111/182, Ram Tirth Marg",,26.848092,75.769538
+MX011,M,Jain Medicals,Chemist,Mansarovar,"Plot 10/184A, near Chetna Path, Madhyam Marg, Swarn Path, Sector 1",+919782212372,26.872263,75.757261
+MX012,M,Vardhman Medical and Provision (C K Medical),Chemist + provisions,Mansarovar,"32/09, Swarn Path",+919314235950,26.866836,75.755294
+MX013,M,Bhavya Medical And General Store,Chemist + general,Mansarovar,"Shop S-4, Rajat Path",+919269782882,26.863465,75.747144
+MX014,M,Adinath Medical & Provision Store,Chemist + provisions,Mansarovar,"Shop 2, 56/40, Rajat Path crossing",,26.866237,75.755523
+MX015,M,Tanu Medicals,Chemist,Mansarovar,"38/74, Kiran Path",,26.86729,75.754468
+MX016,M,Amar Kaustubh Medicals,Chemist,Mansarovar,"Shop 1, 38/73, Kiran Path",,26.866894,75.755291
+MX017,M,Amar Medical and General Store,Hospital chemist,Mansarovar,"Amar Medical & Research Centre, Sector 3, Kiran Path",,26.866712,75.754671
+MX018,M,Nikant Pharma,Chemist,Mansarovar,"21/11, Kaveri Path",,26.866224,75.75534
+MX019,M,Health Care Medical & Provision Store,Chemist + provisions,Mansarovar,"Shop S-4, Zone 52, Shipra Path, opp. Metro Mas Hospital",,26.842329,75.769826
+MX020,M,Ganesh Medical Store,Chemist,Mansarovar,"52/35, Shipra Path, opp. Metro Mas Hospital",,26.841719,75.76953
+MX021,M,Doctor Plus Pharmacy,Chemist (small local chain),Mansarovar,"51/12, near Technology Park, Shipra Path",,26.841724,75.769959
+MX022,M,Surya Medical Store,Chemist,Mansarovar,"Shop 7, Sector 5 Shopping Centre, VT Road, Shipra Path",,26.841838,75.769645
+MX023,M,Indus Shri Ram Pharmacy,Hospital chemist,Mansarovar,"Ground floor, Indus Jaipur Hospital, Shipra Path",,26.84208,75.769424
+MX024,M,Careplus Pharmacy,Chemist,Mansarovar,"Devaram Plaza, Sundar Nagar, ISKCON Road",+918209394081,26.836797,75.758991
+MX025,M,Chopra Medical And Provision Store,Chemist + provisions,Mansarovar,"Sanganer Road, Padam Vihar",+919672198822,26.862528,75.754157
+MX026,M,Patanjali Arogya Kendra,Patanjali store,Mansarovar,"Kiran Path, Sector 4",+919602061191,26.866746,75.755032
+MX029,M,Mehta Medicals / Prabha Medicals (2 shops),Chemists,Mansarovar,"Sanganer Road, Sectors 7 & 9",+919829868520 / +919314298386,26.849769,75.768641
+MG001,M,Shyam Medical and General Store,Chemist + general,Jagatpura & Mahal Road,"Main Market, near Railway Phatak, Jagatpura",+919928424724,26.835278,75.856332
+MG002,M,Badal Medical & General Store,Chemist + general,Jagatpura & Mahal Road,"Shop 8, near Railway Phatak, Income Tax Colony",+917847777922,26.835413,75.855999
+MG003,M,Goyal Medical And General Store,Chemist + general,Jagatpura & Mahal Road,"Jagatpura Phatak, Income Tax Colony",+919509274142,26.834492,75.856239
+MG004,M,Kanchan Medical Store,Chemist,Jagatpura & Mahal Road,"Mayapuri, near Jagatpura Phatak",+919352511751,26.835115,75.855891
+MG005,M,Bhati Medical Store,Chemist,Jagatpura & Mahal Road,"Shop 43, Jagdish Vihar, Main Bus Stand",+911412759362,26.822414,75.862243
+MG006,M,Bhati Medical & General Store,Chemist + general,Jagatpura & Mahal Road,"Main Market, Jagatpura Road",+919784513554,26.822932,75.861681
+MG007,M,Mahi Medical Store,Chemist,Jagatpura & Mahal Road,"Shop 32, near Jagatpura Bus Stand",+919928072360,26.822314,75.862262
+MG008,M,Mithlesh Medical Store,Chemist,Jagatpura & Mahal Road,"Shop 204, near Jagatpura Bus Stand",+919460777586,26.822312,75.86145
+MG009,M,Pranav Medical Store & Dental Clinic,Chemist,Jagatpura & Mahal Road,"Main Market, Jagatpura",+919462069706,26.822366,75.862036
+MG010,M,Bharadwaj Medical Store,Chemist,Jagatpura & Mahal Road,"Main Market, Banshipuri, Mayapuri",+919636445137,26.834324,75.825061
+MG011,M,Om Medical Store,Chemist,Jagatpura & Mahal Road,"Near Punjab National Bank, Jagatpura",+919251570014,26.822606,75.86229
+MG012,M,Parasar Medical Store,Chemist,Jagatpura & Mahal Road,Railway Colony Bus Stop,+919214079570,26.822076,75.861744
+MG013,M,Vishnu Medical Store,Chemist,Jagatpura & Mahal Road,"41, near SBI, Vivek Vihar, Jagatpura",+919829566127,26.822051,75.861516
+MG014,M,Suresh Medicos,Chemist,Jagatpura & Mahal Road,"Sri Ram Colony, Jagatpura",+919352742384,26.822847,75.86211
+MG015,M,Gomati Medical Store,Chemist,Jagatpura & Mahal Road,"06, Brij Vatika, Jagatpura",,26.822613,75.861355
+MG016,M,Shreeji Pharmacy,Chemist,Jagatpura & Mahal Road,"98-A, Vishwavidyalaya Nagar, Santosh Vihar",+918562080805,26.818292,75.85588
+MG017,M,Pharmacy Point,Hospital chemist,Jagatpura & Mahal Road,"Ground floor, JNU Institute for Medical Sciences (JNUIMSRS), Kho Nagoriyan",,26.830641,75.842996
+MG018,M,Madhav Medicals And Provision Store,Chemist + provisions,Jagatpura & Mahal Road,"Shop 2/2, near Jagatpura Road, Mayapuri",+919928858080,26.83531,75.82725
+MG019,M,Vipul Medicals Store,Chemist,Jagatpura & Mahal Road,"Shop 42, near Jagatpura Road",+919828489663,26.839394,75.828375
+MG020,M,Good Health Pharmacy,Chemist,Jagatpura & Mahal Road,"Shop 52, Model Town, Jagatpura",+919461046524,26.844314,75.829613
+MG023,M,Komal Medical,Chemist,Jagatpura & Mahal Road,Jagatpura,+919660985004,26.817674,75.861717
+MG024,M,Maheshwari Medical,Chemist,Jagatpura & Mahal Road,"Mahadev Nagar, Jagatpura",,26.822366,75.863691
+MG025,M,Sarvoday Medical And Provision,Chemist + provisions,Jagatpura & Mahal Road,"Aarti Nagar, Railway Colony",,26.831202,75.843518
+MA001,M,Health First Pharmacy,Chemist,Gandhi Path & Ajmer Road,"6, Gandhi Path West",+917300066611,26.913647,75.732334
+MA002,M,Priya Medical,Chemist,Gandhi Path & Ajmer Road,"Shop 3, Neelkanth Building, Govind Nagar Mod",+919351556785,26.913806,75.732432
+MA003,M,Victory Medicals,Chemist,Gandhi Path & Ajmer Road,"Plot 87, Shop 94, Maa Hinglaj Nagar, Lalarpura Road",+919001031976,26.917132,75.732874
+MA004,M,Manish Medical & Provision,Chemist + provisions,Gandhi Path & Ajmer Road,"Nityanand Nagar, Gandhi Marg, Moti Nagar (Queens Rd)",+911412375286,26.917245,75.733293
+MA005,M,Shubh Medical Store,Chemist,Gandhi Path & Ajmer Road,"A-35, Ajmer Road, Vidyut Nagar",,26.916644,75.733059
+MA006,M,Swastik Health Care Pharmacy,Chemist,Gandhi Path & Ajmer Road,"D-144-145, BM Plaza, Jagdamba Nagar-D, Girdharipura, Ajmer Road",,26.895862,75.73856
+MA007,M,Asopa Medicose,Chemist,Gandhi Path & Ajmer Road,"93-B, Tagore Nagar, Ajmer Road",,26.89501,75.739091
+MA008,M,Amit Medical And General Store,Chemist + general,Gandhi Path & Ajmer Road,"Plot 1, Shop 2, Ajmer Road, Shalimar Bagh Colony, New Patel Nagar",+919772401528,26.895298,75.739033
+MA009,M,Khandelwal Medical & Provision,Chemist + provisions,Gandhi Path & Ajmer Road,"Opp. Rawal Hospital, Ajmer Road",+919828562607,26.864118,75.687462
+MA010,M,Shiv Medical & General,Chemist + general,Gandhi Path & Ajmer Road,"Opp. Ashok Hospital, Ajmer Road, Bhankrota",+919928082650,26.86415,75.687437
+MA011,M,Bhankrota Medical,Chemist,Gandhi Path & Ajmer Road,"Royal Jat Colony, Bhankrota",+919928940122,26.863452,75.688468
+MA012,M,Bhankrota Medical & General,Chemist + general,Gandhi Path & Ajmer Road,"Near Sagar Market, opp. Govt Hospital, Bhankrota",+919414068619,26.863623,75.687896
+MA013,M,Shri Vinayak Medical,Chemist,Gandhi Path & Ajmer Road,"Mukundpura Road, Bhankrota",+919782129953,26.863807,75.687584
+MA014,M,Koolwal Medical,Chemist,Gandhi Path & Ajmer Road,"JP Circle, Bhankrota",+919887488165,26.863441,75.687466
+MA015,M,Kumawat Medical & General,Chemist + general,Gandhi Path & Ajmer Road,"Kamla Nehru Nagar Road, Subhash Colony",+918104349166,26.863866,75.688418
+MA016,M,Yoge Medical,Chemist,Gandhi Path & Ajmer Road,"Ajmer Road, Subhash Colony, near KNN, Heerapura",+919887124885,26.864038,75.688584
+MA017,M,Saini Medical,Chemist,Gandhi Path & Ajmer Road,"Jaisingh Road, Narayan Y-Block, Bhankrota",+919928072236,26.864505,75.687695
+MA018,M,Dusad Medical & Provision Store,Chemist + provisions,Gandhi Path & Ajmer Road,"B-6, Pratap Stadium Marg, Chitrakoot",+919928256784,26.901606,75.735463
+MA019,M,Om Medical & Ayurvedic Center,Chemist + ayurvedic,Gandhi Path & Ajmer Road,"2/536, Roshan Marg, opp. Stadium North Gate, Chitrakoot",+919785772532,26.90171,75.736261
+MA020,M,Tanushi Madical Store,Chemist,Gandhi Path & Ajmer Road,"6/384, Chitrakoot",+919641091329,26.901773,75.735833
+MA021,M,Brother's Medical,Chemist,Gandhi Path & Ajmer Road,"Shop 1, Chitrakoot",+919983477710,26.901138,75.73409
+MA022,M,Dusad Med Store,Chemist,Gandhi Path & Ajmer Road,Chitrakoot (no street),+919664192949,26.902041,75.735781
+MA023,M,Treatwell Medical & General Store,Chemist + general,Gandhi Path & Ajmer Road,"House 22, Swastik Plaza, Ajmer Road",,26.895784,75.738856
+MA024,M,Shiv Medical And General Store,Chemist + general,Gandhi Path & Ajmer Road,"Shop 230, Ajmer Road, Mahatma Gandhi Nagar",,26.895403,75.738465
+MA025,M,Yogesh Medical And Provision Store,Chemist + provisions,Gandhi Path & Ajmer Road,"Shop 10, Vidhyut Nagar, Ajmer Road",,26.916785,75.732485
+MA026,M,Agarwal Medical Store,Chemist,Gandhi Path & Ajmer Road,"5, Hathroi, Ajmer Road",,26.895548,75.738515
