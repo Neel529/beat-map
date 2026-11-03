@@ -1,0 +1,179 @@
+﻿id,category,name,shop_type,area,address,phone,lat,lng,pin
+CS001,Retail / grocery,The Country Store,Premium grocery / organic,C-Scheme,"F 411, Gautam Marg, Ashok Nagar, C-Scheme, Jaipur",+918952820782,26.909115,75.796566,exact
+CS002,Retail / grocery,Shoppers Paradise,Supermarket / departmental,C-Scheme,"F 40, Jamnalal Bajaj Marg, Ashok Nagar, C-Scheme, Jaipur",+911414040076,26.906963,75.795729,exact
+CS003,Retail / grocery,Super Store,Grocery,C-Scheme,"84 A, Dhuleshwar Garden, Sardar Patel Marg, C-Scheme, Jaipur",,26.914237,75.796218,exact
+CS004,Retail / grocery,Organic Shop,Organic store,C-Scheme,"R-11, Yudhister Marg, C-Scheme, Jaipur",01412226126,26.909445,75.801526,approximate
+CS005,Retail / grocery,Relaxed Now,Organic / wellness (type unclear),C-Scheme,"9-B Patel Colony, opp. Government Press, C-Scheme, Jaipur",01414007778,26.908602,75.801981,approximate
+CS007,Retail / grocery,Naveen Kirana & General Store,Kirana,C-Scheme,"Near Nath Panwala Chauraha, C-Scheme, Jaipur",,26.908866,75.801628,approximate
+CS008,Retail / grocery,Mahalaxmi Kirana & General Store,Kirana,C-Scheme,"C-Scheme (landmark: near OTH), Jaipur",,26.90904,75.801674,approximate
+CS009,Retail / grocery,Ayursatwa,Herbal / Ayurvedic products,C-Scheme,"Near Panch Batti, Ashok Nagar, C-Scheme, Jaipur",,26.90831,75.796317,approximate
+CS010,Retail / grocery,Kerala Ayurveda Kendra,Ayurvedic medicine shop,C-Scheme,"Behind BJP Office, C-Scheme, Jaipur",,26.908754,75.80161,approximate
+CS011,Retail / grocery,Dry-Fruit Bouquet,Dry fruit / gifting,C-Scheme,"C-Scheme, Jaipur",,26.909223,75.801648,approximate
+CS012,Retail / grocery,K.K. Store,General store,C-Scheme,"Ashok Nagar, C-Scheme, Jaipur",,26.907606,75.796311,approximate
+CS013,Retail / grocery,Down to Earth,Organic store,C-Scheme,"Albert Hall, Ramniwas Garden, Jaipur",01412561589,26.910521,75.818226,approximate
+BP001,Retail / grocery,Singhal Traders,Grocery,Bani Park,"S-3 A, Kabir Marg, Jaipur",+919982958238,26.924586,75.789625,exact
+BP002,Retail / grocery,Lall's Departmental Store,Departmental store,Bani Park,"S-7A, Kabir Marg, behind Sessions Court, Electric Circle, Jaipur",+911412207809,26.924768,75.792213,exact
+BP003,Retail / grocery,Green And Good Eco Solutions,Organic store,Bani Park,"D-213 A, Bhaskar Marg, Jaipur",+911414047939,26.929466,75.789981,approximate
+BP004,Retail / grocery,The Organic Paradise Jaipur,Organic store,Bani Park,"G-7, Ganpati Enclave, Sector 2 Road, Central Spine, Jaipur",+919829180740,26.957404,75.77726,exact
+BP005,Retail / grocery,Econbio Roots,Grocery / organic (name suggests),Bani Park,"F-501, Alankar Plaza, Central Spine, Sector 2, Jaipur",+917597217537,26.964149,75.781479,exact
+BP006,Retail / grocery,Shri Vinayak Kirana & General Store,Kirana,Bani Park,"B-469, Sector 8, Old Vidyadhar Nagar, Jaipur",+911412234583,26.960021,75.78949,exact
+BP007,Retail / grocery,Pinkcitykirana.com,Kirana / online grocery,Bani Park,"Krishna Colony, Naya Khera, Jaipur",+919887023212,26.952647,75.779224,exact
+BP008,Retail / grocery,Agarwal Kirana & General Store,Kirana,Bani Park,"Near MKB School, Jaipur",,26.930077,75.793516,approximate
+BP009,Retail / grocery,Pritam Kirana & General Store,Kirana,Bani Park,"Near Jhotwara Road, Jaipur",,26.929678,75.79315,approximate
+BP010,Retail / grocery,Gopichand and Sons Kirana Store,Kirana,Bani Park,"Near Panipech Tiraha, Jaipur",,26.938192,75.796328,approximate
+BP011,Retail / grocery,Govind Kirana Store,Kirana,Bani Park,"Shop No 23, near Bypass Road, Sector 2, Jhotwara, Jaipur",+919413181690,26.95634,75.77849,exact
+SN001,Retail / grocery,National Super Market,Supermarket,Shyam Nagar,"33, Kirti Nagar, New Sanganer Road, Jaipur",+917300009714,26.89657,75.770682,exact
+SN002,Retail / grocery,Agrawal Provision Store,Provision / kirana,Shyam Nagar,"Shop 485, New Sanganer Road, Shiv Circle, Devi Nagar, Jaipur",+919829659331,26.885281,75.767915,exact
+SN003,Retail / grocery,Laxmi Kirana Store,Kirana,Shyam Nagar,"70, Devi Nagar, New Sanganer Road, Sodala, Jaipur",+911412294173,26.885801,75.766027,exact
+SN004,Retail / grocery,Singhal Departmental Store,Departmental store,Shyam Nagar,"16, New Sanganer Road, Katewa Nagar, Devi Nagar, Jaipur",,26.88339,75.76206,exact
+SN005,Retail / grocery,Kirana King Super Store,Supermarket / kirana,Shyam Nagar,"Bharat Ashram Marg, Radha Vihar, Devi Nagar, Jaipur",,26.886413,75.763528,exact
+SN006,Retail / grocery,Jaipur Organic Food,Organic (type unclear),Shyam Nagar,"Sodala, Jaipur",,26.885319,75.771543,approximate
+CL001,Retail / grocery,Patanjali Store,Patanjali store,Civil Lines,"282-C, Kamala Nehru Nagar, Rai Colony, Ganpati Nagar, Civil Lines, Jaipur",,26.892436,75.772879,approximate
+CL002,Retail / grocery,O B Andco,Grocery,Civil Lines,"Madrampur, Civil Lines, Jaipur",+919829068848,26.910677,75.786813,exact
+CL003,Retail / grocery,J B Industries,Grocery / household,Civil Lines,"Madrampur, Civil Lines, Jaipur",+918048759511,26.911477,75.786119,exact
+CL004,Retail / grocery,Satya Narayan Harish Shankar,Grocery / household,Civil Lines,"Madrampur, Civil Lines, Jaipur",,26.910805,75.787323,exact
+CL005,Retail / grocery,Zero – Zero Waste Store,Zero-waste / sustainable grocery,Civil Lines,"Jagdish Vihar, Civil Lines, Jaipur",,26.906478,75.784084,exact
+RP001,Retail / grocery,Super-V Market (Chanan Das Parmanand Dry Fruits),Dry fruits / premium grocery,Raja Park,"23, Adarsh Nagar Lane 3, B-15 Adarsh Nagar Market Rd, Gurudwara Crossing, Raja Park, Jaipur",+919001044946,26.897199,75.827074,exact
+RP002,Retail / grocery,Mashhoor Punjabi Kirana Store,Kirana,Raja Park,"260, Fashion Street, Raja Park, Jaipur",+919829095527,26.896115,75.82669,exact
+RP003,Retail / grocery,Goa Kaju Wala,Dry fruits / premium food,Raja Park,"13, Anand Bhawan, Gurunanakpura, Raja Park, Jaipur",,26.890773,75.829529,approximate
+RP004,Retail / grocery,Planet Organic,Organic store,Raja Park,"Near Shanker Samosa, Raja Park, Jaipur",,26.894918,75.830549,approximate
+RP006,Retail / grocery,Long Life Departmental Store,Departmental store,Raja Park,"372, Lane No 1, Raja Park, Jaipur",+911412246576,26.895024,75.82906,exact
+RP007,Retail / grocery,Gulab Chand Departmental Store,Departmental store,Raja Park,"Shop 13, Main Road, near Roshan Restaurant, Raja Park, Jaipur",+919587532484,26.89408,75.826025,exact
+RP008,Retail / grocery,Bharat Departmental Store (Aaramshop),Departmental store,Raja Park,"Shop 45, near AC Market, Mata Mandir, Raja Park, Jaipur",,26.894662,75.830137,exact
+RP009,Retail / grocery,Ekta Super Store,Supermarket / kirana,Raja Park,"Shop 2, Bhatia Bhawan, Raja Park, Jaipur",+919309002813,26.896568,75.830335,exact
+RP010,Retail / grocery,Dinabandhu Store,General store,Raja Park,"Opp. Gali No 1, Panchwati Circle, Raja Park, Jaipur",+919461504355,26.895002,75.829143,exact
+RP011,Retail / grocery,Shri Ram Kirana Store,Kirana,Raja Park,"Shop 1, Plot 422, Gali No 2, Panchwati Circle corner, Raja Park, Jaipur",+919024431888,26.894164,75.829825,exact
+RP012,Retail / grocery,Deepak Store,General store,Raja Park,"378/1, Panchwati Circle, Raja Park, Jaipur",,26.89464,75.830331,exact
+RP013,Retail / grocery,Raghav Traders,Grocery,Raja Park,"Shop 24, 29 Ram Gali No 2, Frontier Colony, Raja Park, Jaipur",+919414241613,26.894701,75.830416,exact
+RP014,Retail / grocery,Kamal Kirana Store,Kirana,Raja Park,"Shop 285, Sindhi Colony, Jawahar Nagar, Raja Park, Jaipur",+919460870761,26.900365,75.838219,exact
+RP015,Retail / grocery,Gajanand Store,General store,Raja Park,"Shop 173, Sindhi Colony, Jawahar Nagar, Raja Park, Jaipur",,26.895165,75.830117,exact
+RP016,Retail / grocery,Bhagwan Kirana Store,Kirana,Raja Park,"B-18, Jawahar Nagar Road, Raja Park, Jaipur",+919462753158,26.898833,75.833333,exact
+RP017,Retail / grocery,Ambey General Store,General store,Raja Park,"Lane 2, Raja Park, Jaipur",,26.895294,75.828828,exact
+RP018,Retail / grocery,Vikky General Store,General store,Raja Park,"Shop 7, Raja Park, Jaipur",,26.894447,75.830497,exact
+RP019,Retail / grocery,Sonu Di Hatti,Grocery / household,Raja Park,"Plot 522, Gali No 6, Raja Park, Jaipur",,26.892409,75.828045,exact
+RP020,Retail / grocery,Kanha Kirana and General Store,Kirana,Raja Park,"Raja Park, Raja Park, Jaipur",,26.895008,75.830187,approximate
+RP022,Retail / grocery,Harish Kirana & General Store,Kirana,Raja Park,"Shop 71, Shri Nath Vihar, Jamdoli, Agra Road, Raja Park, Jaipur",+919772670218,26.891885,75.826163,exact
+RMN001,Retail / grocery,"Go Earth / Radha Madhav Ayurvedic, Patanjali & Organic Store",Organic + Ayurvedic store,Malviya Nagar,"Near Satkar Shopping Centre, Malviya Nagar, Jaipur",,26.851297,75.817954,approximate
+RMN002,Retail / grocery,Yadav Ayurvedic Store,Ayurvedic store,Malviya Nagar,"Apex Circle, Usha Colony, Sector 1, Malviya Nagar, Jaipur",+919509660666,26.854575,75.824603,exact
+RMN003,Retail / grocery,Krishna Ayurvedic Store,Ayurvedic / Patanjali products,Malviya Nagar,"Opp. Water Works Office, near Satkar Shopping Centre, Malviya Nagar, Jaipur",,26.850983,75.818351,approximate
+RMN004,Retail / grocery,Morarka Organic Food,Organic store,Malviya Nagar,"D-Block, Malviya Nagar, Jaipur",,26.853652,75.815184,approximate
+RMN005,Retail / grocery,Patanjali Store,Patanjali store,Malviya Nagar,"C-1-B, Ashok Vihar, Sector 3, Malviya Nagar, Jaipur",,26.847211,75.817355,exact
+RMN006,Retail / grocery,Riddhi Siddhi Departmental Store,Departmental store,Malviya Nagar,"6/53, Radha Vihar, Sector 6, Malviya Nagar, Jaipur",+919414795114,26.844128,75.808818,exact
+RMN007,Retail / grocery,Yogesh Ghar Saman,General store,Malviya Nagar,"Plot 316, Sector 7, Malviya Nagar, Jaipur",+919460060085,26.842731,75.807626,exact
+RMN009,Retail / grocery,Jai Govind Kirana Store,Kirana,Malviya Nagar,"Ganeshwar Mandir Road, Sector 3, Malviya Nagar, Jaipur",+919828837620,26.84774,75.817174,exact
+RMN010,Retail / grocery,Yes Kirana Store,Kirana,Malviya Nagar,"Bus Stop, Manoharpura, Malviya Nagar, Jaipur",+918290406986,26.83617,75.83104,exact
+RMN011,Retail / grocery,Goyal Kirana & General Store,Kirana,Malviya Nagar,"Near C2 Plaza, Malviya Nagar, Jaipur",,26.854382,75.814729,approximate
+RMN012,Retail / grocery,Laxmi Kirana General Store,Kirana,Malviya Nagar,"Near Kardhani Shopping Centre, Malviya Nagar, Jaipur",,26.854122,75.814491,approximate
+RMN013,Retail / grocery,Agarwal Kirana Store,Kirana,Malviya Nagar,"Sector 11, Malviya Nagar, Jaipur",,26.849837,75.819154,approximate
+RMN014,Retail / grocery,Jain Kirana Store,Kirana,Malviya Nagar,"Sector 2, Malviya Nagar, Jaipur",,26.85365,75.815253,approximate
+RMN015,Retail / grocery,Jagdamba Kirana General Store,Kirana / FMCG,Malviya Nagar,"Malviya Nagar, Malviya Nagar, Jaipur",,26.855925,75.820456,approximate
+TR001,Retail / grocery,Jaipur Organic,Organic store,Tonk Road,"K-8, Income Tax Colony, opp. Durgapura Goshala, Tonk Road, Jaipur",+911412545203,26.851133,75.792494,approximate
+TR002,Retail / grocery,Sunrise Organic Shoppe,Organic store,Tonk Road,"301, Mahavir Nagar-II, opp. Indian Oil petrol pump, near PNB, Maharani Farm, Tonk Road, Jaipur",+919887399005,26.847658,75.788491,approximate
+TR003,Retail / grocery,Star Dry Fruits (Pratyusha's Food Palace),Dry fruits / premium food,Tonk Road,"Tonk Road, opp. Jaipur Hospital, Jai Ambey Nagar, Gopalpura Mod, Jaipur",+918048033919,26.866192,75.79199,approximate
+TR004,Retail / grocery,Kirana India,Kirana / grocery,Tonk Road,"E-25/2, SL Marg, Income Tax Colony, Lal Bahadur Nagar, Durgapura, Jaipur",+918766160160,26.850388,75.797014,exact
+TR005,Retail / grocery,Agarwal Kirana Store,Kirana,Tonk Road,"Shop 50, Tonk Road, Mahaveer Nagar, Jaipur",+919828539253,26.862343,75.788138,exact
+TR006,Retail / grocery,Krishna Departmental Store,Departmental store,Tonk Road,"Shop 30, Mahaveer Nagar 2, Jaipur",+919799136001,26.852134,75.782944,exact
+TR007,Retail / grocery,Kamlesh Departmental Store,Departmental store,Tonk Road,"NH-12 Tonk Road, Durga Vihar, Hardev Colony, Jaipur",+918560030341,26.82976,75.794326,exact
+TR008,Retail / grocery,Mahaveer Medical & Ayurvedic Store,Chemist + Ayurvedic,Tonk Road,"Infront of Ahinsa Park street, Barkat Nagar, Jaipur",,26.879578,75.799911,approximate
+TR009,Retail / grocery,Santosh Kirana Store,Kirana,Tonk Road,"Near JP Colony Chauraha, Barkat Nagar, Jaipur",,26.878639,75.79945,approximate
+TR010,Retail / grocery,Dausa Kirana Store,Kirana,Tonk Road,"Barkat Nagar, Jaipur",,26.878802,75.799516,approximate
+TR013,Retail / grocery,Shri Ram Departmental Store,Departmental store,Tonk Road,"192/322, Sector 19, Kumbha Marg, Pratap Nagar, Jaipur",+919314524116,26.804811,75.831585,exact
+TR014,Retail / grocery,Chawla Kirana & General Store,Kirana,Tonk Road,"Shop 23, Tirupati Balaji Nagar, Pratap Nagar, Jaipur",+919460012111,26.812927,75.805572,exact
+TR015,Retail / grocery,Yash Traders,Grocery,Tonk Road,"34/501, Haldi Ghati Marg, Pratap Nagar, Jaipur",+919214813836,26.802443,75.804804,exact
+TR016,Retail / grocery,Kalpana Traders,Grocery,Tonk Road,"S No 34/40, Pratap Nagar, Jaipur",+919351451550,26.80268,75.804525,exact
+VN001,Retail / grocery,The Organic Store,Organic store,Vaishali Nagar,"Shop 27, JDA Shopping Centre, Gautam Marg, Vaishali Nagar, Jaipur",+919828026761,26.911157,75.744231,exact
+VN002,Retail / grocery,Kaju Badam Store,Dry fruits / premium food,Vaishali Nagar,"Shop 1, B-226, Vaishali Marg, opp. Karnataka Bank, Vaishali Nagar, Jaipur",+919509102222,26.914928,75.741214,exact
+VN003,Retail / grocery,Kanhaiya Dry Fruits,Dry fruits,Vaishali Nagar,"Near Style and Scissor, Vaishali Nagar, Jaipur",,26.894048,75.72412,approximate
+VN004,Retail / grocery,Organic Food (Neaselkul),Organic store,Vaishali Nagar,"Neaselkul, Vaishali Marg, Vaishali Nagar, Jaipur",+919413663389,26.914548,75.74088,approximate
+VN005,Retail / grocery,Ravi Kirana Store,Kirana,Vaishali Nagar,"75-A, Nityanand Nagar, Prince Road, opp. Sarovar Portico Hotel, Vaishali Nagar, Jaipur",+917976565932,26.904052,75.750231,exact
+VN006,Retail / grocery,Shree Store,General store,Vaishali Nagar,"71-72 Shopping Centre, Girnar Colony, Nityanand Nagar, Vaishali Nagar, Jaipur",+918432406191,26.904775,75.748864,exact
+VN007,Retail / grocery,Goyal General Store,General store,Vaishali Nagar,"Queens Road, Moti Nagar, Nityanand Nagar, Vaishali Nagar, Jaipur",+919602420402,26.903995,75.752237,exact
+VN008,Retail / grocery,Rani Sati Departmental Store,Departmental store,Vaishali Nagar,"Shop 92, Street 5, Queens Road, Vaishali Nagar, Jaipur",,26.902015,75.749686,exact
+VN009,Retail / grocery,Aman General Store,General store,Vaishali Nagar,"Shop 17, Nursery Circle, Vaishali Nagar, Jaipur",+918677800318,26.914885,75.740559,approximate
+VN010,Retail / grocery,Mangal Kirana Store,Kirana,Vaishali Nagar,"Market, Vaishali Nagar, Vaishali Nagar, Jaipur",+919950265569,26.893906,75.724608,exact
+VN011,Retail / grocery,Hyper Mart,Supermarket,Vaishali Nagar,"D-6/434, Rajawat Manor, Chitrakoot Yojna, Vaishali Nagar, Jaipur",+918003077775,26.896931,75.738984,exact
+VN012,Retail / grocery,K Mart,Supermarket,Vaishali Nagar,"C-9/10, Chitrakoot, Vaishali Nagar, Jaipur",+918003077775,26.899582,75.738948,exact
+VN013,Retail / grocery,Yadav Kirana Store,Kirana,Vaishali Nagar,"Opp. Vaishali Hospital, Vaishali Nagar, Jaipur",,26.893761,75.724471,approximate
+VN014,Retail / grocery,Kamal Kirana & General Store,Kirana,Vaishali Nagar,"Vaishali Nagar, Vaishali Nagar, Jaipur",,26.893764,75.724164,approximate
+VN015,Retail / grocery,Manhotra Grocery Store,Grocery,Vaishali Nagar,"Pawan Putra Colony, Karni Vihar, Vaishali Nagar, Jaipur",,26.912056,75.750174,exact
+VN016,Retail / grocery,Choudhary Kirana And General Store,Kirana,Vaishali Nagar,"B-67, Gandhi Path West, Moti Nagar, Vaishali Nagar, Jaipur",+919983662010,26.905454,75.749694,exact
+VN017,Retail / grocery,A To Z Store,General store,Vaishali Nagar,"R-22, SKL Shopping Centre, C-Block, Gandhi Path, Vaishali Nagar, Jaipur",+918005926337,26.905024,75.750189,approximate
+VN018,Retail / grocery,Rajesh Kirana Store,Kirana,Vaishali Nagar,"911 Sanjay Nagar, 80 Feet Road, Vaishali Nagar, Jaipur",+917597654697,26.898667,75.746833,exact
+VN019,Retail / grocery,Vimal Kirana & General Store,Kirana,Vaishali Nagar,"S.No 13, 80 Feet Road, Vaishali Nagar, Jaipur",+919875274350,26.898752,75.746869,approximate
+VN020,Retail / grocery,Sunil Kirana Store,Kirana,Vaishali Nagar,"Sirsi Road, Vaishali Nagar, Jaipur",+917877469525,26.903448,75.749154,approximate
+VN021,Retail / grocery,Laxmi General Store,General store,Vaishali Nagar,"Sirsi Road, Vaishali Nagar, Jaipur",+918696026218,26.904031,75.749171,exact
+VN022,Retail / grocery,Suraj Departmental Store,Departmental store,Vaishali Nagar,"Shop 2, Kanak Vrindavan, Manglam City Road, Sirsi Road, Vaishali Nagar, Jaipur",,26.903488,75.748729,approximate
+VN023,Retail / grocery,Bhatia General And Provisional Store,Provision store,Vaishali Nagar,"3, Manglam City Road, Sirsi Road, Vaishali Nagar, Jaipur",,26.90416,75.748985,approximate
+VN024,Retail / grocery,S. D. Kirana & General Store,Kirana,Vaishali Nagar,"Shop 36-37, Sirsi Mod, Sirsi Road, Vaishali Nagar, Jaipur",,26.904101,75.749727,approximate
+NN001,Retail / grocery,Panchmewa Dry Fruit Hub,Dry fruits,Nirman Nagar,"Near Chhabra Restaurant, Ranisati Nagar, Nirman Nagar, Jaipur",,26.886708,75.74483,approximate
+NN003,Retail / grocery,Ocean Supermarket,Supermarket,Nirman Nagar,"Shop 346, Janpath, Ranisati Nagar, Nirman Nagar, Jaipur",+918562042081,26.886224,75.745195,exact
+NN004,Retail / grocery,Bairathi Departmental Store,Departmental store,Nirman Nagar,"96, Kings Road, Rail Nagar, Shiv Shakti Nagar, Brijlalpura, Nirman Nagar, Jaipur",+919829610406,26.883321,75.752495,exact
+NN006,Retail / grocery,Kirana King (RJ14 444),Kirana / supermarket,Nirman Nagar,"Nirman Nagar, Nirman Nagar, Jaipur",,26.888095,75.755551,approximate
+NN007,Retail / grocery,Vijay Store,General store,Nirman Nagar,"Kings Road, Nirman Nagar, Jaipur",,26.887026,75.751376,exact
+NN008,Retail / grocery,Grihasti Department,Departmental store,Nirman Nagar,"15, Nirman Nagar, Nirman Nagar, Jaipur",,26.888459,75.755023,exact
+JB001,Retail / grocery,Touch Of Nature,"Grocery (natural products, by name)",Jawahar Nagar & Bapu Nagar,"4-Ta-20, Sector 4, Jaipur",,26.886889,75.836396,exact
+JB002,Retail / grocery,The Family Point,General / departmental store,Jawahar Nagar & Bapu Nagar,"3-NA-28, Mahavir Marg, Sector 3, Jaipur",+919057084855,26.889584,75.837814,exact
+JB003,Retail / grocery,Kirana King (RJ14 450),Kirana / supermarket,Jawahar Nagar & Bapu Nagar,"Shop CC-8, Shopping Centre, Jaipur",+919024329344,26.897373,75.834952,approximate
+JB004,Retail / grocery,Kirana King (RJ14 442),Kirana / supermarket,Jawahar Nagar & Bapu Nagar,"Shop 13, Tooti Puliya, Sector 5, Jaipur",+919829258862,26.886472,75.828084,exact
+JB005,Retail / grocery,Sathi Department,Departmental store,Jawahar Nagar & Bapu Nagar,"4/489, Jaipur",+918824325607,26.888667,75.834667,exact
+JB006,Retail / grocery,Supriyar General Store,General store,Jawahar Nagar & Bapu Nagar,"Tila No 6-A, Sector 4, Jaipur",+918290092068,26.886833,75.836833,exact
+JB007,Retail / grocery,Jai Mata Di General Store,General store,Jawahar Nagar & Bapu Nagar,"B-6, Jaipur",+919610050277,26.89037,75.833091,approximate
+JB008,Retail / grocery,Deepak Kirana Store,Kirana,Jawahar Nagar & Bapu Nagar,"Jawahar Nagar Road, Jaipur",+919079032282,26.897548,75.835313,approximate
+JB009,Retail / grocery,Parnami Bazaar,General store,Jawahar Nagar & Bapu Nagar,"Sector 4, Jaipur",,26.889913,75.835053,exact
+JB010,Retail / grocery,Prakash Kirana Store,Kirana,Jawahar Nagar & Bapu Nagar,"Shop 1, 5 No Bus Stand, Jaipur",,26.888797,75.83348,exact
+JB011,Retail / grocery,Mini Store,General store,Jawahar Nagar & Bapu Nagar,"Sector 1, Jaipur",,26.897861,75.838837,exact
+JB012,Retail / grocery,Lakshmi Kirana Store,Kirana,Jawahar Nagar & Bapu Nagar,"Near Mama Ka Hotel, Jaipur",,26.889863,75.833459,approximate
+JB014,Retail / grocery,Super Store,Supermarket,Jawahar Nagar & Bapu Nagar,"Shop 10-12, Pragati Path, Bajaj Nagar, near Gandhi Nagar Railway Station, Jaipur",+919351439080,26.875159,75.80176,exact
+JB015,Retail / grocery,Ration Deal,Grocery,Jawahar Nagar & Bapu Nagar,"C-86A, Nand Kishore Pareek Road, JLN Marg, Jaipur",+919660858888,26.886915,75.812564,exact
+JB016,Retail / grocery,Raja Supari & Provision Bhandar,Provision store,Jawahar Nagar & Bapu Nagar,"Shop 161-A, Bapu Bazar, Jaipur",,26.917508,75.834013,exact
+JB017,Retail / grocery,Prem Traders,Departmental store,Jawahar Nagar & Bapu Nagar,"City Pulse Mall, Narayan Singh Road, Rambagh, Jaipur",,26.892391,75.811499,exact
+JB018,Retail / grocery,Agarwal General Store,General store,Jawahar Nagar & Bapu Nagar,"SB-109, Tonk Road, Lal Kothi, Jaipur",+918947004600,26.891084,75.805424,exact
+JB019,Retail / grocery,Kamlesh Kirana Store,Kirana,Jawahar Nagar & Bapu Nagar,"Tonk Road, opp. Moti Sons, Everest Colony, Vidhayak Nagar, Lal Kothi, Jaipur",,26.890534,75.804827,exact
+RMS001,Retail / grocery,The Organic Food Store,Organic store,Mansarovar,"Near Swadesh Opticians, Madhyam Marg, Patel Marg, Mansarovar, Jaipur",,26.86535,75.762007,approximate
+RMS002,Retail / grocery,My Organic Shop,Organic store,Mansarovar,"80/90, Patel Marg, Mansarovar, Jaipur",+917665791480,26.864696,75.762496,approximate
+RMS003,Retail / grocery,Nice & Natural Lifestyles,Natural products (type unclear),Mansarovar,"G-4, Peris Tower, 122/125, near Reliance Fresh, Vijay Path Chauraha, Mansarovar, Jaipur",,26.860084,75.758648,approximate
+RMS004,Retail / grocery,Gdf Dryfruits Mart,Dry fruits,Mansarovar,"Shop 84, 262 Madhyam Marg, near Mansarovar Plaza, Mansarovar, Jaipur",,26.855679,75.766026,exact
+RMS005,Retail / grocery,Darsh Nuts & Dry Fruits,Dry fruits,Mansarovar,"7, Riddhi Siddhi Crossing, Link Road, Mansarovar, Jaipur",,26.869665,75.773392,exact
+RMS006,Retail / grocery,The Dry Fruit Hub,Dry fruits,Mansarovar,"Near Madhyam Marg, Mansarovar, Jaipur",,26.856124,75.76833,approximate
+RMS008,Retail / grocery,Mahaveer Departmental Store,Departmental store,Mansarovar,"61/287, Shraddha Marg, Narayan Pura, Sector 6, Mansarovar, Jaipur",,26.862774,75.756515,exact
+RMS009,Retail / grocery,Vinayak Super Market,Supermarket,Mansarovar,"Vishveshvaraiya Nagar Extension, Arjun Nagar, Mansarovar, Jaipur",,26.86733,75.776697,exact
+RMS010,Retail / grocery,Suman Traders,Departmental store,Mansarovar,"54/144, Heera Path, Mansarovar, Jaipur",+919828013021,26.84492,75.7708,exact
+RMS011,Retail / grocery,Mini Mart,General store,Mansarovar,"CD 442, Dadu Dayal Nagar, near Water Tank, opp. Shiv Temple, Mansarovar, Jaipur",+919024515152,26.854528,75.763973,exact
+RMS012,Retail / grocery,Pandit Ji,Grocery / household,Mansarovar,"23A, Mukta Nagar, Mansarovar, Jaipur",+917689086387,26.855327,75.760388,exact
+RMS013,Retail / grocery,Freshworldmart,Food & household,Mansarovar,"Mansarovar (plus code RQV6+M52), Mansarovar, Jaipur",+917976545542,26.844145,75.760386,exact
+RMS014,Retail / grocery,Deepak Kirana Store,Kirana,Mansarovar,"Rajat Path, Mansarovar, Jaipur",,26.850118,75.762095,approximate
+RMS015,Retail / grocery,Ramesh Kirana Store,Kirana,Mansarovar,"Near Kiran Path Circle, Mansarovar, Jaipur",,26.854197,75.759914,approximate
+JG001,Retail / grocery,Induz Organic,Organic store,Jagatpura & Mahal Road,"Old Mill, opp. Jagatpura Railway Station, Main Market, Jagatpura, Jaipur",+919602419776,26.83588,75.831383,exact
+JG002,Retail / grocery,Aryavarta Organics Pvt Ltd,Organic (company / shop),Jagatpura & Mahal Road,"Old Mill, opp. Jagatpura Railway Station, Main Market, Jagatpura, Jaipur",+918769278980,26.835451,75.831888,exact
+JG003,Retail / grocery,Royal Mart,Supermarket,Jagatpura & Mahal Road,"Ramnagariya, Jagatpura, Jaipur",+918741000010,26.815242,75.863205,exact
+JG004,Retail / grocery,Kalpataru Departmental Store,Departmental store,Jagatpura & Mahal Road,"46, Akhil Nagar Marg, Saraswati Nagar Extension, Chainpura, Jagatpura, Jaipur",+919351580801,26.839173,75.81052,exact
+JG005,Retail / grocery,Grahpurti Departmental Store,Departmental store,Jagatpura & Mahal Road,"Plot C-9, Shankar Colony, near Terminal 2, Jagatpura, Jaipur",+918947037594,26.833295,75.815825,exact
+JG006,Retail / grocery,Mahalaxmi Kirana Store,Kirana,Jagatpura & Mahal Road,"Brij Vihar, Jagatpura, Jaipur",+919460949227,26.830976,75.836663,exact
+JG007,Retail / grocery,Arvind Kumar Choudhary's Big Mart,Supermarket,Jagatpura & Mahal Road,"Shop 6, Mahima Panorama, Jagatpura, Jaipur",+918769106329,26.814187,75.864099,exact
+JG008,Retail / grocery,G-Mart,Supermarket,Jagatpura & Mahal Road,"Mahima Panache, near NRI Colony Road, Ravindra Nagar-A, Jagatpura, Jaipur",,26.81854,75.831957,exact
+JG009,Retail / grocery,Khandelwal Traders Departmental Store,Departmental store,Jagatpura & Mahal Road,"B-40, Railway Colony, Jagatpura, Jaipur",+911412753204,26.831423,75.843646,exact
+JG010,Retail / grocery,D.K. Departmental Store,Departmental store,Jagatpura & Mahal Road,"Sector 9, Khatipura, Indira Gandhi Nagar, Jagatpura, Jaipur",+919314615886,26.84332,75.879303,exact
+JG011,Retail / grocery,Jitendra General Store,General store,Jagatpura & Mahal Road,"Jagatpura, Jagatpura, Jaipur",+919680258989,26.817674,75.861717,exact
+JG012,Retail / grocery,Raj General Store,General store,Jagatpura & Mahal Road,"Jagatpura (plus code RV96+3MG), Jagatpura, Jaipur",+919928815834,26.817677,75.861715,exact
+JG013,Retail / grocery,Gurukripa Departmental Store,Departmental store,Jagatpura & Mahal Road,"G-13, Balaji Tower 7, Jagatpura, Jaipur",,26.803866,75.856323,exact
+JG014,Retail / grocery,Royal Karol Supermarket,Supermarket,Jagatpura & Mahal Road,"Shop 37, Jagatpura, Jaipur",,26.834454,75.849225,exact
+JG015,Retail / grocery,Shree Ji Kirana and General Store,Kirana,Jagatpura & Mahal Road,"190/1, Mahadev Nagar Street 5F, Ramnagariya, Jagatpura, Jaipur",,26.82328,75.859116,exact
+JG016,Retail / grocery,N.D. Provision Store,Provision store,Jagatpura & Mahal Road,"Near Jagatpura Phatak, Jagatpura, Jaipur",,26.833373,75.834454,exact
+JG017,Retail / grocery,Mahal Departmental Store,Departmental store,Jagatpura & Mahal Road,"Jagatpura (Mahal Road area, by name), Jagatpura, Jaipur",,26.819726,75.858236,approximate
+JG018,Retail / grocery,R K Departmental Store,Departmental store,Jagatpura & Mahal Road,"Near Bank of Baroda, Jagatpura, Jaipur",,26.817349,75.861146,approximate
+GA001,Retail / grocery,Pure Organic & Naturals,Organic store,Gandhi Path & Ajmer Road,"B-2/426, Roshan Marg, Jaipur",+919152356740,26.905159,75.73567,exact
+GA002,Retail / grocery,Swastik Departmental Store,Departmental store,Gandhi Path & Ajmer Road,"7A, Gandhi Path, Acharya Vinoba Bhave Nagar, Block E, Jaipur",+919929996991,26.906127,75.739711,exact
+GA003,Retail / grocery,D&D Wholesale Supermart,Supermarket (wholesale-priced),Gandhi Path & Ajmer Road,"Gandhi Path West, Moti Nagar, Jaipur",+918290471927,26.918919,75.758083,exact
+GA004,Retail / grocery,Sangra Kirana Store,Kirana,Gandhi Path & Ajmer Road,"7, Gandhi Path, Girnar Colony, Block E, Jaipur",+918696536231,26.90554,75.744092,exact
+GA005,Retail / grocery,Mohit General Store,General store,Gandhi Path & Ajmer Road,"Shop 76, Pratap Market, Gandhi Path, Jaipur",,26.909599,75.718177,exact
+GA006,Retail / grocery,Ok Grocers,Departmental store,Gandhi Path & Ajmer Road,"Near Sambhar Sweet, Vaishali Nagar, Jaipur",,26.911659,75.735523,approximate
+GA007,Retail / grocery,Vaishali Grocery & General Store,General store,Gandhi Path & Ajmer Road,"Vaishali Nagar, Jaipur",,26.911646,75.734668,approximate
+GA008,Retail / grocery,One Stop Departmental Store,Departmental store,Gandhi Path & Ajmer Road,"B-177, Sector 4, opp. Stadium, Bhomiya Marg, Jaipur",+911414021120,26.901526,75.733833,exact
+GA009,Retail / grocery,Jai Shree Kirana Store,Kirana,Gandhi Path & Ajmer Road,"Shop A-42, Stadium, Jaipur",+919828126808,26.901614,75.734753,exact
+GA010,Retail / grocery,The Value Store,General store,Gandhi Path & Ajmer Road,"Shop 2/182, Jaipur",,26.89781,75.742348,exact
+GA011,Retail / grocery,National Super Market,Supermarket,Gandhi Path & Ajmer Road,"Opp. Asopa Hospital, Ajmer Road, near Om Sweets, Jaipur",+919636362131,26.890954,75.741964,exact
+GA012,Retail / grocery,Parchun Grocers,Grocery,Gandhi Path & Ajmer Road,"Ajmer Highway, Jaipur",,26.892218,75.775532,exact
+GA013,Retail / grocery,Shree Radha Govind Super Market,Supermarket,Gandhi Path & Ajmer Road,"Ajmer Highway (map pin 26.8974, 75.7540), Jaipur",,26.897406,75.754018,exact
+GA014,Retail / grocery,Santosh Kirana Store,Kirana,Gandhi Path & Ajmer Road,"1-A, Ajmer Road, Ram Colony, Sodala, Jaipur",+919328651182,26.899787,75.767268,exact
+GA015,Retail / grocery,Patanjali Store,Patanjali store,Gandhi Path & Ajmer Road,"Near Vivek Vihar Metro Station, New Sanganer Road, Ganesh Nagar, Sodala, Jaipur",+918505006390,26.899515,75.766855,approximate
+GA016,Retail / grocery,Shree Shyam Departmental Store,Departmental store,Gandhi Path & Ajmer Road,"Kailashpuri, Ramnagar Extension, Ramnagar, Jaipur",,26.897232,75.772483,exact

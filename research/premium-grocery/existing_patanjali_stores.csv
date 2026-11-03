@@ -1,0 +1,41 @@
+﻿id,category,name,shop_type,area,address,phone,lat,lng,pin
+PJ001,Patanjali store,Punjab Hosiery Sales,Patanjali Arogya Kendra,Patanjali stores,"Plot No 132/798/1061, Khaiyan No 28/277, Hotel Jai Mangal Palace, opp. Sindhi Camp Bus Stand, Jaipur",+917014764658,26.923015,75.800757,exact
+PJ002,Patanjali store,Rajendra Vid,Patanjali Chikitsalay,Patanjali stores,"House No 17, Radha Swami Bhawan, Bhrampuri, Jaipur",+919530375925,26.934325,75.821968,exact
+PJ003,Patanjali store,Mool Chand And Brothers,Patanjali Chikitsalay,Patanjali stores,"Hindi Bhawan, Sanganeri Gate, Agra Road, near Telephone Exchange, Jaipur",+919982431117,26.914617,75.828513,exact
+PJ004,Patanjali store,Patanjali Chikitsalay,Patanjali Chikitsalay,Patanjali stores,"Shop No 4, Shree Krishna Shopping Centre, Ajmer Road, near Laxmi Sweet Caterers, Jaipur",+918619888383,26.902414,75.772626,exact
+PJ005,Patanjali store,Aman Kanwat,Patanjali Chikitsalay,Patanjali stores,"Shop No 60 & 61, Jhotwara, Kalwar Road, Jaipur",+919667713322,26.947854,75.720101,exact
+PJ006,Patanjali store,Kanha Mega Store,Patanjali Mega Store,Patanjali stores,"A/91, Khirni Phatak Road, Tara Nagar, near Maharana Pratap School, Jaipur",+911413565758,26.93637,75.743465,exact
+PJ007,Patanjali store,Ganesham Mega Store,Patanjali Mega Store,Patanjali stores,"1/A1, Tonk Road, opp. Pink City Honda Showroom, Jaipur",+919610147147,26.873157,75.797585,exact
+PJ008,Patanjali store,Anju Gupta,Patanjali Chikitsalay,Patanjali stores,"G/23 & 24, City Plaza Mall, Jhotwara Road, near Space Cinema, Jaipur",+919352948864,26.935146,75.791855,exact
+PJ009,Patanjali store,Dilip Kumar Sharma,Patanjali Arogya Kendra,Patanjali stores,"Plot No 2, Mahal Road, Brij Vihar Vistar, near Jagatpura Overbridge, Jaipur",+918559928885,26.832256,75.841577,exact
+PJ010,Patanjali store,Agarwal Enterprises,Patanjali Mega Store,Patanjali stores,"500/356, Karolan Ka Barh, near KS Petrol Pump, Jaipur",+917300076573,26.80068,75.89181,exact
+PJ011,Patanjali store,Patanjali Chikitsalay,Patanjali Chikitsalay,Patanjali stores,"E57, Girdhar Marg, Sector 12, near Ghiya Hospital, Jaipur",+919829244045,26.846638,75.809921,exact
+PJ012,Patanjali store,Pooja Yadav,Patanjali Chikitsalay,Patanjali stores,"Plot No A/121, Shivanand Marg, Jaipur",+918696546546,26.855491,75.820156,exact
+PJ013,Patanjali store,Grace Distributors,Patanjali Mega Store,Patanjali stores,"53/175, Madhyam Marg, Jaipur",+919602100400,26.861751,75.762936,exact
+PJ014,Patanjali store,Ashok Kumar Singhal,Patanjali Chikitsalay,Patanjali stores,"27, Mira Marg Shopping Center, Madhyam Marg, Sector 10, Jaipur",+919414821188,26.850109,75.768098,exact
+PJ015,Patanjali store,K P Enterprises,Patanjali Chikitsalay,Patanjali stores,"Shop No 77, Vivek Vihar, Gandhi Path, Jaipur",+918278662551,26.905017,75.723028,exact
+PJ016,Patanjali store,Pushpanjali Ayurvedic & Organic Store,Patanjali Chikitsalay,Patanjali stores,"F/28, Basement, Gautam Marg, Jaipur",+919413236785,26.909864,75.743312,exact
+PJ017,Patanjali store,Patanjali Mega Store,Patanjali Mega Store,Patanjali stores,"Plot No 1/468A, Ajmer Road, Chitrakut Marg, Jaipur",+919571038744,26.900982,75.738796,exact
+PJ018,Patanjali store,Kamlesh Choudhary,Patanjali Chikitsalay,Patanjali stores,"Plot No 10, K/5 Scheme, Khatipura Road, Jaipur",+919460855551,26.921465,75.75259,exact
+PJ019,Patanjali store,Raghunath Enterprises,Patanjali Arogya Kendra,Patanjali stores,"R/1, Vaishnavi Tower, Sector 1, near Khandelwal Tower Crossing, Jaipur",+919413575598,26.954084,75.775709,exact
+PJ020,Patanjali store,Ashok Choudhary,Patanjali Chikitsalay,Patanjali stores,"Shop No 86, Ajmer Road, near Sagar Market, Jaipur",+919983999938,26.87138,75.695091,exact
+PJ021,Patanjali store,Neelam Sharma,Patanjali Arogya Kendra,Patanjali stores,"Pratap Plaza, Agra Road, near Prem Nagar Pulia, Jaipur",+919602061191,26.886573,75.889722,exact
+PJ022,Patanjali store,Patanjali Arogya Kendra,Patanjali Arogya Kendra,Patanjali stores,"11/111/101, Tonk Road, Jaipur",+919414775246,26.798221,75.816324,exact
+PJ023,Patanjali store,Rudra Enterprises,Patanjali Arogya Kendra,Patanjali stores,"163, Murlipura Scheme, Shiv Nagar 1, near SBI Bank, Jaipur",+917737030451,26.972928,75.765346,exact
+PJ024,Patanjali store,Subhash Chand Gupta,Patanjali Chikitsalay,Patanjali stores,"G/11, Tulip Enclave, Central Spine, Jaipur",+919461664099,26.961948,75.779266,exact
+PJ025,Patanjali store,Manoharpur Gram Seva Sahakari Samiti,Patanjali Arogya Kendra,Patanjali stores,"Ground Floor, Phase 2, Main Market Road, near bus stand, Jaipur",+919413967814,27.297872,75.94826,approximate
+PJ026,Patanjali store,Patanjali store,Patanjali store,Patanjali stores,"Ground Floor, Samod Road, Nimadi, near Bypass Puliya, Jaipur",+919829389582,27.176361,75.738168,exact
+PJ027,Patanjali store,Patanjali store,Patanjali store,Patanjali stores,"Ground Floor, Jaipur",+919982510736,27.25049,75.651091,exact
+PJ028,Patanjali store,Shree Meera Govind SMG,Patanjali Gramin Arogya Kendra,Patanjali stores,"Ground Floor, Agarwal Dharamshala, Chomu, near Main Bus Stand, Jaipur",+919928214284,27.333795,75.698478,exact
+PJ029,Patanjali store,Manglam Arogya Kendra,Patanjali Gramin Arogya Kendra,Patanjali stores,"Shop No 2, Devthala, Jaipur",+919829591004,27.275756,75.729291,exact
+PJ030,Patanjali store,Patanjali Store,Patanjali Store,Patanjali stores,,,26.914847,75.781082,exact
+PJ031,Patanjali store,Patanjali Store,Patanjali Store,Patanjali stores,,,26.90222,75.772688,exact
+PJ032,Patanjali store,Patanjali Store,Patanjali Store,Patanjali stores,,,26.925187,75.816601,exact
+PJ033,Patanjali store,Patanjali Store,Patanjali Store,Patanjali stores,,,26.885172,75.78553,exact
+PJ034,Patanjali store,Patanjali Store,Patanjali Store,Patanjali stores,,,26.891016,75.799888,exact
+PJ035,Patanjali store,Patanjali Store,Patanjali Store,Patanjali stores,,,26.921369,75.752846,exact
+PJ036,Patanjali store,Patanjali Mega Store,Patanjali Mega Store,Patanjali stores,,,26.908884,75.756846,exact
+PJ037,Patanjali store,Patanjali Store,Patanjali Store,Patanjali stores,,,26.894267,75.770015,exact
+PJ038,Patanjali store,Patanjali Store,Patanjali Store,Patanjali stores,,,26.925196,75.816556,exact
+PJ039,Patanjali store,Patanjali Store,Patanjali Store,Patanjali stores,,,26.934232,75.822052,exact
+PJ040,Patanjali store,Patanjali Arogya Kendra,Patanjali Arogya Kendra,Patanjali stores,,,26.832338,75.8415,exact
