@@ -6,6 +6,7 @@ You are helping Nilesh find **independent premium grocery / gourmet / dry-fruit 
 These shops are almost never called "premium grocery". They show up as dry fruit marts, departmental stores, provision stores, organic stores, gourmet / imported-food stores, health-food stores, and supermarkets in rich neighbourhoods. You have to **judge** premium-ness from signals, not names.
 
 ## Rules
+- **Names:** record every shop's name exactly as it appears on its Google Maps listing / signboard. Never add words like "Kirana Store" or "General Store" that aren't part of the real name, and don't 'correct' spellings.
 - Everything must be free. No paid APIs, no sign-ups.
 - **Exclude chains and franchises** that buy from a head office: Reliance (Fresh/Smart), DMart, More, Easyday, Spencer's, Nature's Basket, Foodhall, Big Bazaar, 24Seven, 6Ten, Kirana King, Organic India / Himalaya / Patanjali brand stores, quick-commerce dark stores. (They can't decide to stock a new brand at the counter.) List them in `excluded.csv` with the reason, don't silently drop them.
 - Don't invent shops, phones or coordinates. Every row needs a source URL you actually opened.
@@ -18,8 +19,8 @@ These shops are almost never called "premium grocery". They show up as dry fruit
 - Ask Nilesh before anything that costs money, logs in, or posts anything.
 
 ## Benchmark: shops Nilesh knows are premium (names as he remembers them, may be inexact)
-- Exotica (Raja Park)
-- Mashhoor Punjabi (Raja Park). Already in `existing_retail_grocery_stores.csv` as RP002 "Mashhoor Punjabi Kirana Store", but labelled plain "Kirana": it must come out as premium after scoring.
+- **Exotica Mart** (Raja Park)
+- **Mashoor Punjabi** (Raja Park). Use this name as is. The old directory list has it as RP002 "Mashhoor Punjabi Kirana Store", labelled plain "Kirana". That label is wrong: score it on what the shop really is.
 - Night Jar (several locations in Jaipur). Check what it is: web search mostly shows "The Night Jar Cocktail Room" (Malviya Nagar) and "Kohhee by The Night Jar" (C-Scheme). Find the retail / gourmet outlets, if any, and say clearly if it's a café/bar and not a shop.
 - Town Market
 Nilesh may add more to `benchmark.txt`; read it if present.
