@@ -790,11 +790,26 @@ const ST={todo:["Not visited","--todo"],visit:["Visited","--visit"],int:["Intere
 const LN={P:"Patanjali",R:"Retail",M:"Medical"};
 const OUT={order:["Order taken","stock"],sample:["Sample given","int"],pitch:["Interested, will decide","int"],callback:["Call back later","int"],away:["Owner not there","visit"],no:["Not interested","no"],closed:["Shop closed / gone","no"],reorder:["Re-order","stock"],price:["Price & margin shared","int"]};
 const OUT_MAIN=["order","sample","pitch","callback","away","no","closed"];
-const KEY="jaipurBeatMap.v1";
-let D={st:{},nt:{},fix:{},plans:[],lists:{P:true,R:true,M:true},log:{},fu:{},added:[],bk:null,active:null,skip:{},stF:""};
-try{const s=JSON.parse(localStorage.getItem(KEY)||"null");if(s)D=Object.assign(D,s)}catch(e){}
+// the test link (/dev/) keeps its own records, so testing can never touch the live ones
+const DEV=/\/dev\//.test(location.pathname);
+const LIVE_KEY="jaipurBeatMap.v1";
+const KEY=DEV?"jaipurBeatMap.dev":LIVE_KEY;
+const fresh=()=>({st:{},nt:{},fix:{},plans:[],lists:{P:true,R:true,M:true},log:{},fu:{},added:[],bk:null,active:null,skip:{},stF:""});
+let D=fresh();
+// loadErr: saved records exist but could not be read. Saving is blocked so they are never overwritten.
+let loadErr=false,saveFail=false;
+try{const raw=localStorage.getItem(KEY);if(raw){try{const s=JSON.parse(raw);if(!s||typeof s!=="object"||Array.isArray(s))throw 0;D=Object.assign(D,s)}catch(e){loadErr=true;try{localStorage.setItem(KEY+".unreadable",raw)}catch(e2){}}}}catch(e){loadErr=true}
 D.skip=D.skip||{};
-function save(){try{localStorage.setItem(KEY,JSON.stringify(D))}catch(e){}}
+function save(){
+ if(loadErr){toast("<b>Not saved.</b> Your saved records could not be read, so nothing is being written over them. Close this page and tell Claude.",null,null,20000,1);return}
+ try{localStorage.setItem(KEY,JSON.stringify(D));saveFail=false}
+ catch(e){saveFail=true;toast("<b>Not saved.</b> The phone refused to store this change. Save a backup now.","Back up",()=>dl("beatmap-backup-"+today()+".json",JSON.stringify(D),"application/json"),20000,1)}}
+function doBackup(){D.bk=Date.now();save();dl("beatmap-backup-"+today()+".json",JSON.stringify(D),"application/json")}
+function isBackup(d){if(!d||typeof d!=="object"||Array.isArray(d))return false;if(!(d.log||d.st||d.inv))return false;
+ if(["log","st","inv","fu","asm","fix"].some(k=>d[k]!=null&&(typeof d[k]!=="object"||Array.isArray(d[k]))))return false;
+ if(["added","plans"].some(k=>d[k]!=null&&!Array.isArray(d[k])))return false;return true}
+function cnt(d){const n=o=>Object.values(o||{}).reduce((a,v)=>a+(Array.isArray(v)?v.length:0),0);
+ return{"Visits":n(d.log),"Stock entries":n(d.inv),"Shops with a status":Object.keys(d.st||{}).length,"Follow-ups":Object.keys(d.fu||{}).length,"Assessments":Object.keys(d.asm||{}).length,"Shops you added":(d.added||[]).length,"Pins you fixed":Object.keys(d.fix||{}).length}}
 D.added.forEach(a=>S.push(a));
 const byId={};S.forEach(s=>byId[s.id]=s);
 D.plans.forEach(p=>p.ids=p.ids.filter(id=>byId[id]));D.plans=D.plans.filter(p=>p.ids.length);if(D.active!=null&&!D.plans[D.active])D.active=null;
@@ -866,7 +881,7 @@ startWatch();
 map.on("dragstart",()=>{if(follow){follow=false;$("#bMe").classList.remove("on")}});
 
 // ---------- toast
-let tT;function toast(html,btn,fn,ms=4500){const t=$("#toast");t.innerHTML=`<span>${html}</span>`+(btn?`<button>${btn}</button>`:"");t.hidden=false;if(btn)t.querySelector("button").onclick=()=>{t.hidden=true;fn()};clearTimeout(tT);tT=setTimeout(()=>t.hidden=true,ms)}
+let tT,tHold=0;function toast(html,btn,fn,ms=4500,hold){if(!hold&&Date.now()<tHold)return;if(hold)tHold=Date.now()+ms;const t=$("#toast");t.innerHTML=`<span>${html}</span>`+(btn?`<button>${btn}</button>`:"");t.hidden=false;if(btn)t.querySelector("button").onclick=()=>{t.hidden=true;fn()};clearTimeout(tT);tT=setTimeout(()=>t.hidden=true,ms)}
 
 // ---------- sheet
 const sheet=$("#sheet");let tab="beat",view=null; // view: {k:'store',id} | {k:'log',id}
@@ -893,7 +908,8 @@ document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{tab=b.datase
 function badge(){const n=dueList().length;const b=document.querySelector('#tabs [data-t=fu]');b.innerHTML="Follow-ups"+(n?`<span class="badge">${n}</span>`:"")}
 let lastSoft=0;function softRender(){if(view)return;const t=Date.now();if(t-lastSoft<4000)return;lastSoft=t;render(true)}
 function render(keepScroll){const body=$("#body");if(!(view&&view.k==="add")){const cp=$("#crossPin");if(cp)cp.remove()}const sc=body.scrollTop;
- if(view&&view.k==="store")body.innerHTML="",storeView(body,view.id);
+ if(view&&view.k==="restore")body.innerHTML="",restoreView(body);
+ else if(view&&view.k==="store")body.innerHTML="",storeView(body,view.id);
  else if(view&&view.k==="log")body.innerHTML="",logView(body,view.id);
  else{body.innerHTML="";({beat:beatView,near:nearView,pilot:pilotView,fu:fuView,more:moreView})[tab](body)}
  if(keepScroll)body.scrollTop=sc;else body.scrollTop=0;}
@@ -1030,21 +1046,47 @@ function moreView(b){
  const nLog=Object.values(D.log).reduce((a,v)=>a+v.length,0);
  b.innerHTML=`<div class="h">Filters</div><div class="sub">Show these on the map</div><label class="f" for="areaSel2">Area</label><select class="f" id="areaSel2"><option value="">All areas</option>${AREAS.map(a=>`<option${a===D.locF?" selected":""}>${esc(a)}</option>`).join("")}</select><div class="seg" style="margin:8px 0">${Object.entries(LN).map(([k,v])=>`<button data-fl="${k}" class="${D.lists[k]?"on":""}">${v}</button>`).join("")}</div><div class="seg" style="margin-bottom:6px"><button data-fs="" class="${D.stF?"":"on"}">Any status</button>${Object.entries(ST).map(([k,v])=>`<button data-fs="${k}" class="${D.stF===k?"on":""}">${v[0]}</button>`).join("")}</div><hr><div class="h">Progress</div><div class="stat" style="grid-template-columns:repeat(5,1fr);margin:8px 0">${Object.entries(ST).map(([k,v])=>`<div><b style="color:var(${v[1]})">${c[k]}</b>${v[0]}</div>`).join("")}</div>
  <div style="overflow-x:auto"><table><tr><th>Area</th><th>Visited</th><th>Stocked</th><th>Exact pins</th></tr>${Object.entries(by).map(([k,x])=>`<tr><td>${esc(k)}</td><td>${x.d}/${x.n}</td><td>${x.st}</td><td>${x.ex}/${x.n}</td></tr>`).join("")}</table></div>
- <hr><div class="h">Backup</div><p class="sub">${D.bk?"Last backup "+new Date(D.bk).toLocaleString("en-IN")+". ":"No backup yet. "}${nLog} visits logged. Your records live only on this phone, so save a backup every few days.</p>
- <div class="grid2"><button class="btn" id="exp">Save backup</button><label class="btn alt" style="cursor:pointer">Load backup<input type="file" id="imp" accept=".json,application/json" hidden></label>
+ <hr><div class="h">Backup</div>${DEV?`<div class="card" style="border-color:var(--int);margin:6px 0"><b>Test copy</b><div class="sub">Records here are separate from your live app. Nothing you do here changes the live records.</div><button class="btn sm alt" id="cpLive" style="margin-top:8px">Copy my live records in</button></div>`:""}<p class="sub">${D.bk?"Last backup "+new Date(D.bk).toLocaleString("en-IN")+". ":"No backup yet. "}${nLog} visits logged. Your records live only on this phone, so save a backup every few days.</p>
+ ${persisted===true?'<p class="sub">✓ Protected: the browser will not clear these records on its own.</p>':persisted===false?'<p class="sub" style="color:#9a5b00">⚠ Not protected yet: the browser may clear these records if the phone runs low on space. Add this page to your home screen, then reopen it.</p>':""}
+ <div class="grid2"><button class="btn" id="exp">Save backup</button><label class="btn alt" style="cursor:pointer">Load backup<input type="file" id="imp" accept=".json,application/json" hidden></label>${hasPrev()?'<button class="btn line" id="undoL" style="grid-column:1/-1">Undo last load</button>':""}
  <button class="btn line" id="csv">Shop list (CSV)</button><button class="btn line" id="csvLog">Visit log (CSV)</button><button class="btn line" id="csvInv">Stock ledger (CSV)</button></div>
  <hr><div class="h">About the pins</div><p class="sub">Solid pins are at the shop's exact spot (from its online listing). Dashed pins are approximate (street level). When you're standing at a dashed one, open it and tap <b>I'm here</b> to fix it for good. Map © OpenStreetMap contributors. Road routes by OSRM.</p>`;
  $("#areaSel2").onchange=e=>{D.locF=e.target.value;save();redraw();zoomArea();render(true)};
  b.querySelectorAll("[data-fl]").forEach(x=>x.onclick=()=>{D.lists[x.dataset.fl]=!D.lists[x.dataset.fl];save();redraw();render(true)});
  b.querySelectorAll("[data-fs]").forEach(x=>x.onclick=()=>{D.stF=x.dataset.fs;save();redraw();render(true)});
- $("#exp").onclick=()=>{D.bk=Date.now();save();dl("beatmap-backup-"+today()+".json",JSON.stringify(D),"application/json");render(true)};
- $("#imp").onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{try{const nd=JSON.parse(t);(nd.added||[]).forEach(a=>{if(!byId[a.id]){S.push(a);byId[a.id]=a;mk(a)}});D=Object.assign(D,nd);save();S.forEach(refreshOne);redraw();render();toast("Backup loaded.")}catch(err){toast("That file isn't a Beat Map backup.")}})};
+ $("#exp").onclick=()=>{doBackup();render(true)};
+ $("#imp").onchange=e=>{const f=e.target.files[0];e.target.value="";if(!f)return;f.text().then(t=>askRestore(t,f.name))};
+ const ul=$("#undoL");if(ul)ul.onclick=()=>askRestore(localStorage.getItem(KEY+".prev"),"Records from before the last load");
+ const cl=$("#cpLive");if(cl)cl.onclick=()=>{let raw=null;try{raw=localStorage.getItem(LIVE_KEY)}catch(e){}if(!raw){toast("No live records on this device.");return}askRestore(raw,"Live records on this phone")};
  $("#csv").onclick=()=>{const rows=[["id","list","store_name","type","address","area","sub_area","phone","status","visits","last_visit","follow_up","last_note","score","qualification","suggested","decision","performance","supplied","paid_sold","in_stock","sell_through_pct","samples","tasting","reorders","lat","lng","pin"]];
   S.forEach(s=>{const lg=D.log[s.id]||[];const p=pos(s);const q=qual(s.id),i=inv(s.id);rows.push([s.id,LN[s.l],s.n,s.t,s.a,areaOf(s)||s.loc,s.s,s.ph,ST[stOf(s)][0],lg.length,lg.length?dayKey(lg[lg.length-1].t):"",D.fu[s.id]||"",lg.length?lg[lg.length-1].note:"",q.known?q.score:"",q.cat,suggest(s.id)[0],decision(s.id)||"",D.perf[s.id]||perfAuto(s.id),i.supplied,i.sale,i.remaining,i.st??"",i.sample,i.tasting,i.reorders,p[0],p[1],exact(s)?"exact":"approx"])});dl("beatmap-shops-"+today()+".csv",csvT(rows),"text/csv")};
  $("#csvLog").onclick=()=>{const rows=[["date","time","store_id","store_name","list","area","phone","person_met","outcome","jars","terms","samples","tasting","shelf_count","sold_from_review","note","next_action","follow_up"]];
   Object.entries(D.log).forEach(([id,vs])=>{const s=byId[id];if(!s)return;vs.forEach(v=>rows.push([dayKey(v.t),new Date(v.t).toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit"}),id,s.n,LN[s.l],areaOf(s)||s.loc,s.ph,v.who,OUT[v.out]?OUT[v.out][0]:v.out,v.qty,v.terms?INVT[v.terms][0]:"",v.smp,v.tst,v.shelf,v.sold,v.note,v.next,v.fu||""]))});
   rows.splice(1,rows.length,...rows.slice(1).sort((a,b)=>(a[0]+a[1])<(b[0]+b[1])?-1:1));dl("beatmap-visits-"+today()+".csv",csvT(rows),"text/csv")};
  $("#csvInv").onclick=()=>{const rows=[["date","store_id","store_name","area","type","jars","reorder","note"]];Object.entries(D.inv).forEach(([id,tx])=>{const s=byId[id];if(!s)return;tx.forEach(x=>rows.push([x.d,id,s.n,areaOf(s)||s.loc,INVT[x.type][0],x.qty,x.r?"yes":"",x.note]))});rows.splice(1,rows.length,...rows.slice(1).sort((a,b)=>a[0]<b[0]?-1:1));dl("beatmap-stock-"+today()+".csv",csvT(rows),"text/csv")};
+}
+// ---------- safe restore: nothing is replaced without a comparison, a safety copy and an undo
+let persisted=null;
+function hasPrev(){try{return !!localStorage.getItem(KEY+".prev")}catch(e){return false}}
+function askRestore(raw,name){let nd=null;try{nd=JSON.parse(raw)}catch(e){}
+ if(!isBackup(nd)){toast("That isn't a Beat Map backup. Nothing was changed.");return}
+ view={k:"restore",nd,name};setSheet("full");render()}
+function restoreView(b){
+ const nd=view.nd,a=cnt(D),c=cnt(nd);const fewer=Object.keys(a).filter(k=>c[k]<a[k]);const empty=Object.values(a).every(v=>!v);
+ b.innerHTML=`<div class="h">Load these records?</div><div class="sub">${esc(view.name)}${nd.bk?" · saved "+esc(new Date(nd.bk).toLocaleString("en-IN")):""}</div>
+ <table style="margin-top:10px"><tr><th></th><th>On this phone now</th><th>In the file</th></tr>${Object.keys(a).map(k=>`<tr><td>${k}</td><td>${a[k]}</td><td${c[k]<a[k]?' style="color:var(--no);font-weight:700"':""}>${c[k]}</td></tr>`).join("")}</table>
+ ${fewer.length?`<div class="card" style="border-color:var(--no);margin-top:10px"><b>The file has fewer records than this phone.</b><div class="sub">Fewer: ${esc(fewer.join(", "))}. Loading it would remove the difference from this phone.</div></div>`:""}
+ <p class="sub">Loading replaces everything on this phone with the file.${empty?"":" Your current records are first downloaded as a safety file, and you can undo the load from More → Backup."}</p>
+ <div class="grid2"><button class="btn line" id="rx">Cancel</button><button class="btn" id="ro"${fewer.length?' style="background:var(--no)"':""}>${fewer.length?"Replace anyway":"Replace"}</button></div>`;
+ $("#rx").onclick=()=>{view=null;setSheet("");render();toast("Nothing was changed.")};
+ $("#ro").onclick=()=>{
+  if(loadErr){save();return}
+  const cur=JSON.stringify(D);
+  if(!empty){try{localStorage.setItem(KEY+".prev",cur)}catch(e){}dl("beatmap-before-load-"+today()+".json",cur,"application/json")}
+  const old=D;D=Object.assign(fresh(),nd);save();
+  if(saveFail){D=old;save();view=null;setSheet("");render();return}
+  try{sessionStorage.setItem("bmMsg","Records loaded."+(empty?"":" To go back, use More → Backup → Undo last load."))}catch(e){}
+  $("#ro").disabled=true;$("#ro").textContent="Loading…";setTimeout(()=>location.reload(),900)};
 }
 const csvT=rows=>"﻿"+rows.map(r=>r.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\n");
 function dl(name,text,type){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>a.remove(),200)}
@@ -1299,7 +1341,7 @@ function pilotView(b){
  <div class="h" style="margin-top:16px">Need attention</div><div id="attnL" class="list"></div>
  <div class="h" style="margin-top:16px">Qualified retailers</div><div id="qualL" class="list"></div>
  <div class="h" style="margin-top:16px">Active pilot</div><div id="actL" class="list"></div>`;
- const bk=$("#bkNow");if(bk)bk.onclick=()=>{D.bk=Date.now();save();dl("beatmap-backup-"+today()+".json",JSON.stringify(D),"application/json");render(true)};
+ const bk=$("#bkNow");if(bk)bk.onclick=()=>{doBackup();render(true)};
  const fill=(sel,list,sub)=>{const l=$(sel);if(!list.length){l.innerHTML='<p class="sub">None yet.</p>';return}list.forEach(id=>{const s=byId[id];const it=document.createElement("div");it.className="it";it.innerHTML=`<div class="grow"><div class="nm">${esc(s.n)}</div><div class="sub">${sub(id)}</div></div>`;it.onclick=()=>{pTab="over";openStore(id)};l.appendChild(it)})};
  fill("#attnL",attn,id=>{const f=D.fu[id];return(f&&f<today()?"Follow-up overdue since "+f+" · ":"")+esc(suggest(id)[0])});
  fill("#qualL",qualified.map(x=>x[0]),id=>{const q=qual(id),i=inv(id);return q.score+"/12 · "+(i.supplied?i.remaining+" in stock":"no stock yet")});
@@ -1336,7 +1378,12 @@ $("#bAdd").onclick=()=>{const old=$("#crossPin");if(old)old.remove();view={k:"ad
 
 // ---------- boot
 drawChips();redraw();setSheet("");render();
-{const n=Object.values(D.log).reduce((a,v)=>a+v.length,0)+Object.values(D.inv).reduce((a,v)=>a+v.length,0);const bd=D.bk?(Date.now()-D.bk)/864e5:null;if(n&&(bd==null||bd>=3))setTimeout(()=>toast(bd==null?"Your pilot data isn't backed up yet.":"Last backup "+Math.floor(bd)+" days ago.","Back up",()=>{D.bk=Date.now();save();dl("beatmap-backup-"+today()+".json",JSON.stringify(D),"application/json")},10000),1500)}
+{const n=Object.values(D.log).reduce((a,v)=>a+v.length,0)+Object.values(D.inv).reduce((a,v)=>a+v.length,0);const bd=D.bk?(Date.now()-D.bk)/864e5:null;if(n&&(bd==null||bd>=3))setTimeout(()=>toast(bd==null?"Your pilot data isn't backed up yet.":"Last backup "+Math.floor(bd)+" days ago.","Back up",doBackup,10000),1500)}
+if(DEV){document.title="Beat Map · TEST";$("#q").placeholder="Search shops · TEST COPY"}
+if(loadErr)toast("<b>Your saved records could not be read.</b> Nothing has been deleted and nothing will be saved until this is fixed. Close this page and tell Claude.",null,null,60000,1);
+else{let m=null;try{m=sessionStorage.getItem("bmMsg");sessionStorage.removeItem("bmMsg")}catch(e){}if(m)toast(esc(m),null,null,8000,1)}
+// ask the browser not to clear these records on its own
+if(navigator.storage&&navigator.storage.persist)navigator.storage.persisted().then(p=>p||navigator.storage.persist()).then(p=>{persisted=!!p;if(tab==="more"&&!view)render(true)}).catch(()=>{});
 if(D.active!=null&&D.plans[D.active]){drawRoute();map.fitBounds(D.plans[D.active].ids.map(id=>pos(byId[id])),{padding:[60,60],maxZoom:17})}
 </script>
 </body>
