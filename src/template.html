@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="theme-color" content="#1f3d2b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Beat Map</title>
+<!--LEAFLET_CSS-->
+<style>
+:root{--bg:#f4f5f2;--card:#fff;--ink:#17231c;--mute:#66706a;--line:#e1e4de;--brand:#1f3d2b;--brand2:#2f6b45;
+--todo:#7b8580;--visit:#2563eb;--int:#d97706;--stock:#15803d;--no:#dc2626;--me:#2563eb;
+--r:14px;--sh:0 6px 24px rgba(16,30,22,.18)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0;font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);overflow:hidden}
+button,input,select,textarea{font:inherit;color:inherit}
+[hidden]{display:none!important}
+#map{position:fixed;inset:0;z-index:0;background:#e9ece6}
+/* top bar */
+#top{position:fixed;z-index:500;left:0;right:0;top:0;padding:calc(env(safe-area-inset-top,0px) + 10px) 12px 0;display:flex;gap:8px;pointer-events:none}
+#top>*{pointer-events:auto}
+#searchBox{flex:1;position:relative}
+#q{width:100%;height:46px;border:0;border-radius:23px;padding:0 16px 0 42px;background:var(--card);box-shadow:var(--sh);outline:none}
+#searchBox svg{position:absolute;left:14px;top:13px;width:20px;height:20px;color:var(--mute)}
+#results{position:absolute;left:0;right:0;top:52px;background:var(--card);border-radius:var(--r);box-shadow:var(--sh);max-height:50vh;overflow:auto}
+#results div{padding:10px 14px;border-bottom:1px solid var(--line);cursor:pointer}
+#results small{color:var(--mute);display:block}
+.fab{width:46px;height:46px;border-radius:50%;border:0;background:var(--card);box-shadow:var(--sh);display:grid;place-items:center;cursor:pointer;flex:0 0 46px}
+.fab svg{width:22px;height:22px}
+.fab.on{background:var(--brand);color:#fff}
+.fab.me{width:56px;height:56px;flex-basis:56px;background:#2563eb;color:#fff}.fab.me.on{background:#1e40af;box-shadow:0 0 0 4px rgba(37,99,235,.3),var(--sh)}.fab.me svg{width:26px;height:26px}
+.pillBtn{height:40px;padding:0 14px;border-radius:20px;border:0;background:var(--card);box-shadow:var(--sh);font-weight:600;font-size:14px;cursor:pointer;align-self:flex-end}
+#rightBtns{align-items:flex-end}
+#rightBtns{position:fixed;z-index:500;right:12px;display:flex;flex-direction:column;gap:10px;transition:bottom .25s}
+/* chips row */
+#chips{position:fixed;z-index:499;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 64px);display:flex;gap:8px;padding:0 12px;overflow-x:auto;scrollbar-width:none}
+#chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;height:34px;padding:0 14px;border-radius:17px;border:0;background:var(--card);box-shadow:0 2px 8px rgba(0,0,0,.12);cursor:pointer;font-size:14px;white-space:nowrap;display:flex;align-items:center;gap:6px}
+select.chip{appearance:none;-webkit-appearance:none;padding-right:14px;font-weight:600;width:auto;max-width:180px;field-sizing:content}
+.chip.on{background:var(--brand);color:#fff}
+.chip i{width:10px;height:10px;border-radius:50%;display:inline-block}
+/* sheet */
+#sheet{position:fixed;z-index:600;left:0;right:0;bottom:0;background:var(--card);border-radius:20px 20px 0 0;box-shadow:0 -6px 30px rgba(0,0,0,.18);display:flex;flex-direction:column;height:45vh;transition:height .22s ease;padding-bottom:env(safe-area-inset-bottom,0px)}
+#sheet.drag{transition:none}
+#sheetTop{touch-action:none;cursor:grab;user-select:none}
+#handle{padding:10px 0 8px;display:grid;place-items:center;cursor:pointer;touch-action:none}
+#handle b{width:42px;height:5px;border-radius:3px;background:#cfd4cc}
+#tabs{display:flex;gap:4px;padding:0 12px 8px;border-bottom:1px solid var(--line)}
+#tabs button{flex:1 1 auto;border:0;background:none;padding:8px 2px;border-radius:10px;color:var(--mute);font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap}
+#tabs button.on{background:#e8f0ea;color:var(--brand)}
+#tabs .badge{display:inline-block;min-width:18px;padding:0 5px;border-radius:9px;background:var(--no);color:#fff;font-size:11px;margin-left:3px}
+#body{flex:1;overflow:auto;padding:12px 14px 20px;overscroll-behavior:contain}
+.h{font-weight:700;font-size:17px;margin:0 0 4px}
+.sub{color:var(--mute);font-size:13px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.btn{height:44px;padding:0 16px;border-radius:12px;border:0;background:var(--brand);color:#fff;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;font-size:15px}
+.btn.alt{background:#e8f0ea;color:var(--brand)}
+.btn.line{background:var(--card);border:1.5px solid var(--line);color:var(--ink)}
+.btn.sm{height:36px;padding:0 12px;font-size:14px;border-radius:10px}
+.btn.big{height:52px;font-size:16px;flex:1}
+.btn svg{width:18px;height:18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.card{border:1px solid var(--line);border-radius:var(--r);padding:12px;background:var(--card)}
+.next{border:2px solid var(--brand2);background:#f6faf7}
+.list .it{display:flex;gap:10px;padding:11px 2px;border-bottom:1px solid var(--line);cursor:pointer;align-items:center}
+.list .it:last-child{border-bottom:0}
+.dot{width:12px;height:12px;border-radius:50%;flex:0 0 12px}
+.num{width:26px;height:26px;border-radius:50%;flex:0 0 26px;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:700}
+.grow{flex:1;min-width:0}
+.nm{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dist{font-size:13px;color:var(--mute);white-space:nowrap;font-variant-numeric:tabular-nums}
+a.tel{color:var(--visit);font-weight:600;text-decoration:none;white-space:nowrap}
+.pill{display:inline-block;font-size:12px;padding:2px 8px;border-radius:10px;background:#eef1ec;color:var(--mute);margin-right:4px}
+.pill.ok{background:#e3f4e8;color:var(--stock)}
+.pill.warn{background:#fdf0dc;color:#9a5b00}
+.bar{height:6px;border-radius:3px;background:#e6e9e3;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--stock)}
+.out{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.out button{min-height:56px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font-weight:600;cursor:pointer;padding:6px;font-size:14px}
+.out button.on{border-color:transparent;color:#fff}
+label.f{display:block;font-size:13px;color:var(--mute);margin:10px 0 4px}
+input.f,textarea.f,select.f{width:100%;height:44px;border:1.5px solid var(--line);border-radius:10px;padding:0 12px;background:var(--card)}
+textarea.f{height:70px;padding:10px 12px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{height:36px;padding:0 12px;border-radius:18px;border:1.5px solid var(--line);background:var(--card);cursor:pointer;font-size:14px}
+.seg button.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.hist{font-size:13px;border-left:3px solid var(--line);padding-left:10px;margin:8px 0}
+.stat{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.stat div{background:#f3f5f1;border-radius:10px;padding:8px 4px;text-align:center;font-size:12px;color:var(--mute)}
+.stat b{display:block;font-size:20px;color:var(--ink)}
+#toast{position:fixed;z-index:900;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 112px);background:var(--ink);color:#fff;border-radius:12px;padding:10px 14px;box-shadow:var(--sh);max-width:92vw;display:flex;gap:10px;align-items:center}
+#toast button{white-space:nowrap;flex:0 0 auto;background:#fff;color:var(--ink);border:0;border-radius:8px;height:34px;padding:0 12px;font-weight:600}
+.pin{border:2.5px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);display:grid;place-items:center;color:#fff;font:700 11px system-ui}
+.pin.approx{border-style:dashed;border-color:#333;opacity:.85}
+.mePulse{width:18px;height:18px;border-radius:50%;background:var(--me);border:3px solid #fff;box-shadow:0 0 0 6px rgba(37,99,235,.25)}
+.leaflet-control-attribution{font-size:10px}
+hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:6px 4px;border-bottom:1px solid var(--line);text-align:left}
+#crossPin{position:fixed;z-index:450;left:50%;top:40%;transform:translate(-50%,-100%);pointer-events:none}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="top">
+ <div id="searchBox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+  <input id="q" type="search" placeholder="Search shops" autocomplete="off"><div id="results" hidden></div></div>
+</div>
+<div id="chips"></div>
+<div id="rightBtns">
+ <button class="pillBtn" id="bAdd" title="Add a shop">+ Add shop</button>
+ <button class="fab me" id="bMe" title="Show my location" aria-label="Show my location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></button>
+</div>
+<div id="sheet">
+ <div id="sheetTop"><div id="handle"><b></b></div>
+ <div id="tabs"><button data-t="beat" class="on">Beat</button><button data-t="near">Nearby</button><button data-t="pilot">Pilot</button><button data-t="fu">Follow-ups</button><button data-t="more">More</button></div></div>
+ <div id="body"></div>
+</div>
+<div id="toast" hidden></div>
+<!--LEAFLET_JS-->
+<script>
+const S=__DATA__;
+const ST={todo:["Not visited","--todo"],visit:["Visited","--visit"],int:["Interested","--int"],stock:["Stocked","--stock"],no:["Not interested","--no"]};
+const LN={P:"Patanjali",R:"Retail",M:"Medical"};
+const OUT={order:["Order taken","stock"],sample:["Sample given","int"],pitch:["Interested, will decide","int"],callback:["Call back later","int"],away:["Owner not there","visit"],no:["Not interested","no"],closed:["Shop closed / gone","no"],reorder:["Re-order","stock"],price:["Price & margin shared","int"]};
+const OUT_MAIN=["order","sample","pitch","callback","away","no","closed"];
+const KEY="jaipurBeatMap.v1";
+let D={st:{},nt:{},fix:{},plans:[],lists:{P:true,R:true,M:true},log:{},fu:{},added:[],bk:null,active:null,skip:{},stF:""};
+try{const s=JSON.parse(localStorage.getItem(KEY)||"null");if(s)D=Object.assign(D,s)}catch(e){}
+D.skip=D.skip||{};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(D))}catch(e){}}
+D.added.forEach(a=>S.push(a));
+const byId={};S.forEach(s=>byId[s.id]=s);
+D.plans.forEach(p=>p.ids=p.ids.filter(id=>byId[id]));D.plans=D.plans.filter(p=>p.ids.length);if(D.active!=null&&!D.plans[D.active])D.active=null;
+const $=s=>document.querySelector(s);
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const esc=t=>String(t??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pos=s=>D.fix[s.id]||[s.lat,s.lng];
+const exact=s=>!!D.fix[s.id]||s.q===1;
+const stOf=s=>D.st[s.id]||"todo";
+const dayKey=t=>{const d=new Date(t);return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+const today=()=>dayKey(new Date());
+const addDays=n=>{const d=new Date();d.setDate(d.getDate()+n);return dayKey(d)};
+const fmtT=t=>{const d=new Date(t);return d.toLocaleDateString("en-IN",{day:"numeric",month:"short"})+", "+d.toLocaleTimeString("en-IN",{hour:"numeric",minute:"2-digit"})};
+function dist(a,b){const R=6371000,dl=(b[0]-a[0])*Math.PI/180,dg=(b[1]-a[1])*Math.PI/180,x=Math.sin(dl/2)**2+Math.cos(a[0]*Math.PI/180)*Math.cos(b[0]*Math.PI/180)*Math.sin(dg/2)**2;return 2*R*Math.asin(Math.sqrt(x))}
+const telA=ph=>`<a class="tel" href="tel:${esc(String(ph).replace(/[^+\d]/g,""))}" onclick="event.stopPropagation()">📞 ${esc(ph)}</a>`;
+const fmtD=m=>m<1000?Math.round(m/10)*10+" m":(m/1000).toFixed(m<10000?1:0)+" km";
+const IC={call:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>',
+nav:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 11 18-8-8 18-2-8z"/></svg>',
+ok:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m5 12 5 5L20 7"/></svg>'};
+
+// ---------- map
+const map=L.map("map",{zoomControl:false,attributionControl:true}).setView([26.89,75.79],13);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(map);
+const layer=L.layerGroup().addTo(map);
+const routeLayer=L.layerGroup().addTo(map);
+let me=null,meMarker=null,meCircle=null,follow=false;
+function pinIcon(s){
+ const col=css(ST[stOf(s)][1]);const n=beatNum(s.id);const sz=n?26:16;
+ const r=s.l==="M"?"4px":s.l==="P"?"3px":"50%";const rot=s.l==="M"?"transform:rotate(45deg);":"";
+ const lab=n?`<span style="${s.l==="M"?"transform:rotate(-45deg)":""}">${n}</span>`:"";
+ const pr=s.pc==="premium"?"box-shadow:0 0 0 3px #d4a017,0 1px 4px rgba(0,0,0,.4);":s.pc==="maybe"?"box-shadow:0 0 0 2px #e8c75a,0 1px 4px rgba(0,0,0,.4);":"";
+ return L.divIcon({className:"",iconSize:[sz,sz],iconAnchor:[sz/2,sz/2],html:`<div class="pin${exact(s)?"":" approx"}" style="width:${sz}px;height:${sz}px;background:${col};border-radius:${r};${rot}${pr}opacity:${s.c?1:.55}">${lab}</div>`});
+}
+const markers={};
+function mk(s){const m=L.marker(pos(s),{icon:pinIcon(s)});m.on("click",()=>openStore(s.id));markers[s.id]=m;return m}
+S.forEach(mk);
+let chipF={list:null,st:""};
+const _area={};function areaOf(s){if(s.area)return s.area;if(s.l!=="P"&&s.loc!=="Other")return s.loc;if(_area[s.id]!==undefined)return _area[s.id];let b=null,bd=1500;S.forEach(o=>{if(o.l==="P"||o.loc==="Other")return;const d=dist(pos(s),pos(o));if(d<bd){bd=d;b=o.loc}});return _area[s.id]=b}
+function visible(s){if(!D.lists[s.l])return false;if(D.premF&&!(s.pc==="premium"||s.pc==="maybe"))return false;if(D.ayF&&s.ay!=="yes")return false;if(D.locF&&areaOf(s)!==D.locF)return false;if(D.stF&&stOf(s)!==D.stF)return false;return true}
+function redraw(){layer.clearLayers();S.forEach(s=>{markers[s.id].setIcon(pinIcon(s));if(visible(s)||beatNum(s.id))layer.addLayer(markers[s.id])});drawChips();badge()}
+function refreshOne(s){markers[s.id].setIcon(pinIcon(s));markers[s.id].setLatLng(pos(s))}
+
+// chips
+function zoomArea(){const pts=S.filter(visible).map(pos);if(pts.length)map.fitBounds(pts,{padding:[50,50],maxZoom:16})}
+function drawChips(){
+ const c=$("#chips");
+ c.innerHTML=`<button class="chip${D.premF?" on":""}" id="premChip">★ Premium</button><button class="chip${D.ayF?" on":""}" id="ayChip">🌿 Ayurvedic shelf</button><select class="chip${D.locF?" on":""}" id="areaSel" aria-label="Area"><option value="">All areas ▾</option>${AREAS.map(a=>`<option${a===D.locF?" selected":""}>${esc(a)}</option>`).join("")}</select>`+Object.entries(LN).map(([k,v])=>`<button class="chip${D.lists[k]?" on":""}" data-l="${k}">${v}</button>`).join("")+
+ Object.entries(ST).map(([k,v])=>`<button class="chip${D.stF===k?" on":""}" data-s="${k}"><i style="background:var(${v[1]})"></i>${v[0]}</button>`).join("");
+ $("#premChip").onclick=()=>{D.premF=!D.premF;save();redraw();if(D.premF)zoomArea()};
+ $("#ayChip").onclick=()=>{D.ayF=!D.ayF;save();redraw();if(D.ayF)zoomArea()};
+ $("#areaSel").onchange=e=>{D.locF=e.target.value;save();redraw();zoomArea();if(tab==="near"||tab==="more")render(true)};
+ c.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{D.lists[b.dataset.l]=!D.lists[b.dataset.l];save();redraw()});
+ c.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{D.stF=D.stF===b.dataset.s?"":b.dataset.s;save();redraw()});
+}
+
+// ---------- location
+function onPos(p){
+ me=[p.coords.latitude,p.coords.longitude];
+ if(!meMarker){meMarker=L.marker(me,{icon:L.divIcon({className:"",iconSize:[18,18],html:'<div class="mePulse"></div>'}),zIndexOffset:1000}).addTo(map);meCircle=L.circle(me,{radius:p.coords.accuracy,color:"#2563eb",weight:1,fillOpacity:.08}).addTo(map)}
+ else{meMarker.setLatLng(me);meCircle.setLatLng(me).setRadius(p.coords.accuracy)}
+ if(follow)map.panTo(me);
+ checkArrive();
+ if(tab==="near"||tab==="beat")softRender();
+}
+let watching=false;
+function startWatch(){if(watching||!navigator.geolocation)return;watching=true;navigator.geolocation.watchPosition(onPos,e=>{watching=false;toast("Location is off. Allow location for this site in your browser settings.")},{enableHighAccuracy:true,maximumAge:5000,timeout:20000})}
+$("#bMe").onclick=()=>{if(!watching)watching=false,startWatch();navigator.geolocation&&navigator.geolocation.getCurrentPosition(onPos,()=>{},{enableHighAccuracy:true,timeout:15000});if(me){follow=!follow;$("#bMe").classList.toggle("on",follow);map.setView(me,Math.max(map.getZoom(),16))}else{follow=true;$("#bMe").classList.add("on")}};
+startWatch();
+map.on("dragstart",()=>{if(follow){follow=false;$("#bMe").classList.remove("on")}});
+
+// ---------- toast
+let tT;function toast(html,btn,fn,ms=4500){const t=$("#toast");t.innerHTML=`<span>${html}</span>`+(btn?`<button>${btn}</button>`:"");t.hidden=false;if(btn)t.querySelector("button").onclick=()=>{t.hidden=true;fn()};clearTimeout(tT);tT=setTimeout(()=>t.hidden=true,ms)}
+
+// ---------- sheet
+const sheet=$("#sheet");let tab="beat",view=null; // view: {k:'store',id} | {k:'log',id}
+// draggable bottom sheet: snaps to map-only / half / full, or stays where you leave it
+const snaps=()=>[$("#sheetTop").offsetHeight+4,Math.round(innerHeight*.45),Math.round(innerHeight*.92)];
+let sheetH=null;
+function setH(h,anim=true){const s=snaps();h=Math.max(s[0],Math.min(s[2],h));sheetH=h;sheet.classList.toggle("drag",!anim);sheet.style.height=h+"px";placeFabs()}
+function setSheet(m){const s=snaps();setH(m==="min"?s[0]:m==="full"?s[2]:s[1])}
+function isFull(){return sheetH>=snaps()[2]-4}function isMin(){return sheetH<=snaps()[0]+4}
+function placeFabs(){const h=sheetH||sheet.offsetHeight;$("#rightBtns").style.bottom=(h+12)+"px";$("#rightBtns").style.display=h>innerHeight*.75?"none":"flex"}
+addEventListener("resize",()=>setH(sheetH||innerHeight*.45));
+let dg=null;
+$("#sheetTop").addEventListener("pointerdown",e=>{dg={y:e.clientY,h:sheet.offsetHeight,moved:false,t:Date.now()};});
+addEventListener("pointermove",e=>{if(!dg)return;const dy=e.clientY-dg.y;if(Math.abs(dy)>6)dg.moved=true;if(dg.moved)setH(dg.h-dy,false)});
+addEventListener("pointerup",e=>{if(!dg)return;const d=dg;dg=null;sheet.classList.remove("drag");
+ if(!d.moved){if(e.target.closest("#handle")){const s=snaps();setH(isMin()?s[1]:isFull()?s[1]:s[2])}return}
+ noClick=true;setTimeout(()=>noClick=false,300);const s=snaps(),h=sheetH,v=(d.h-h)/(Date.now()-d.t);
+ if(Math.abs(v)>0.6){setH(v>0?(h<s[1]?s[0]:s[1]):(h>s[1]?s[2]:s[1]))}       // flick
+ else{const near=s.reduce((a,b)=>Math.abs(b-h)<Math.abs(a-h)?b:a);if(Math.abs(near-h)<60)setH(near)} // snap if close, else stay
+});
+// keep clicks on tabs working after a drag
+let noClick=false;document.addEventListener("click",e=>{if(noClick){noClick=false;e.stopPropagation();e.preventDefault()}},true);
+document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{tab=b.dataset.t;view=null;document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("on",x===b));render();if(isMin())setSheet("")});
+function badge(){const n=dueList().length;const b=document.querySelector('#tabs [data-t=fu]');b.innerHTML="Follow-ups"+(n?`<span class="badge">${n}</span>`:"")}
+let lastSoft=0;function softRender(){if(view)return;const t=Date.now();if(t-lastSoft<4000)return;lastSoft=t;render(true)}
+function render(keepScroll){const body=$("#body");if(!(view&&view.k==="add")){const cp=$("#crossPin");if(cp)cp.remove()}const sc=body.scrollTop;
+ if(view&&view.k==="store")body.innerHTML="",storeView(body,view.id);
+ else if(view&&view.k==="log")body.innerHTML="",logView(body,view.id);
+ else{body.innerHTML="";({beat:beatView,near:nearView,pilot:pilotView,fu:fuView,more:moreView})[tab](body)}
+ if(keepScroll)body.scrollTop=sc;else body.scrollTop=0;}
+
+// ---------- beats
+function beatNum(id){const p=D.active!=null&&D.plans[D.active];if(!p)return 0;const i=p.ids.indexOf(id);return i>=0?i+1:0}
+function order(ids,start){
+ if(ids.length<2)return ids.slice();
+ const P=ids.map(id=>pos(byId[id]));
+ let s0;if(start){let bd=1e18;P.forEach((p,i)=>{const d=dist(start,p);if(d<bd){bd=d;s0=i}})}else{s0=0;P.forEach((p,i)=>{if(p[1]-p[0]<P[s0][1]-P[s0][0])s0=i})}
+ const left=new Set(P.map((_,i)=>i));left.delete(s0);const r=[s0];
+ while(left.size){const c=P[r[r.length-1]];let b=null,bd=1e18;left.forEach(i=>{const d=dist(c,P[i]);if(d<bd){bd=d;b=i}});r.push(b);left.delete(b)}
+ let imp=true,g=0;while(imp&&g++<60){imp=false;for(let i=1;i<r.length-1;i++)for(let k=i+1;k<r.length;k++){const a=P[r[i-1]],b=P[r[i]],c=P[r[k]],d=k+1<r.length?P[r[k+1]]:null;if(dist(a,c)+(d?dist(b,d):0)+1e-6<dist(a,b)+(d?dist(c,d):0)){r.splice(i,k-i+1,...r.slice(i,k+1).reverse());imp=true}}}
+ return r.map(i=>ids[i]);
+}
+const locs=[...new Set(S.filter(s=>s.l!=="P").map(s=>s.loc))].concat(["Patanjali stores"]);
+const AREAS=locs.filter(l=>l!=="Patanjali stores");
+function remaining(p){return p.ids.filter(id=>stOf(byId[id])==="todo"&&!D.skip[id]&&!doneToday(id))}
+function doneToday(id){return (D.log[id]||[]).some(v=>dayKey(v.t)===today())}
+function beatView(b){
+ const p=D.active!=null?D.plans[D.active]:null;
+ if(p){
+  const rem=remaining(p);const done=p.ids.length-rem.length;
+  const nx=rem[0]?byId[rem[0]]:null;
+  b.insertAdjacentHTML("beforeend",`<div class="row" style="justify-content:space-between"><div><div class="h">${esc(p.name)}</div><div class="sub">${done} of ${p.ids.length} done${routeInfo?" · "+routeInfo:""}</div></div><button class="btn sm line" id="endB">End beat</button></div>
+  <div class="bar" style="margin:10px 0 12px"><i style="width:${p.ids.length?done/p.ids.length*100:0}%"></i></div>`);
+  if(nx){const d=me?dist(me,pos(nx)):null;
+   b.insertAdjacentHTML("beforeend",`<div class="card next"><div class="sub">NEXT STOP${d!=null?" · "+fmtD(d)+" away":""}</div>
+   <div class="h" style="margin-top:2px">${esc(nx.n)}</div><div class="sub">${LN[nx.l]} · <a class="tel" style="white-space:normal;font-weight:500" href="${gUrl(nx)}" target="_blank" rel="noopener">📍 ${esc(nx.a||nx.s)}</a></div>${nx.ph?`<div style="margin-top:4px">${telA(nx.ph)}</div>`:""}
+   ${exact(nx)?"":'<div style="margin-top:6px"><span class="pill warn">Approximate pin, ask locally</span></div>'}
+   <div class="grid3" style="margin-top:12px">
+    <a class="btn alt" href="${gUrl(nx)}" target="_blank" rel="noopener">${IC.nav}Directions</a>
+    ${nx.ph?`<a class="btn alt" href="tel:${esc(nx.ph.replace(/[^+\d]/g,""))}">${IC.call}Call</a>`:'<button class="btn alt" disabled style="opacity:.4">No phone</button>'}
+    <button class="btn" id="arr">${IC.ok}Arrived</button></div>
+   <div class="row" style="margin-top:8px;justify-content:space-between"><button class="btn sm line" id="skp">Skip for today</button><button class="btn sm line" id="det">Details</button></div></div>`);
+   $("#arr").onclick=()=>openLog(nx.id);$("#skp").onclick=()=>{D.skip[nx.id]=today();save();drawRoute();render()};$("#det").onclick=()=>openStore(nx.id);
+  }else b.insertAdjacentHTML("beforeend",`<div class="card next"><div class="h">Beat complete 🎉</div><div class="sub">All stops visited or skipped. See the day summary in Follow-ups.</div></div>`);
+  const lst=document.createElement("div");lst.className="list";lst.style.marginTop="10px";
+  p.ids.forEach((id,i)=>{const s=byId[id];const st=stOf(s);const sk=D.skip[id]===today();
+   const it=document.createElement("div");it.className="it";
+   it.innerHTML=`<span class="num" style="background:var(${ST[st][1]});${sk?"opacity:.4":""}">${i+1}</span><div class="grow"><div class="nm">${esc(s.n)}</div><div class="sub">${st!=="todo"?ST[st][0]:sk?"Skipped today":esc(s.s)}${s.ph?" · "+telA(s.ph):""}</div></div><span class="dist">${me?fmtD(dist(me,pos(s))):""}</span>`;
+   it.onclick=()=>openStore(id);lst.appendChild(it)});
+  b.appendChild(lst);
+  $("#endB").onclick=()=>{D.active=null;save();routeLayer.clearLayers();routeInfo="";redraw();render()};
+  return;
+ }
+ // no active beat
+ b.insertAdjacentHTML("beforeend",`<div class="h">Plan your beats</div><div class="sub">Pick an area. It's split into day-sized beats of nearby shops, in visiting order.</div>
+ <label class="f" for="pLoc">Area</label><select class="f" id="pLoc"><option value="">Choose an area…</option>${locs.map(l=>`<option>${esc(l)}</option>`).join("")}</select>
+ <label class="f">Shops per beat</label><div class="seg" id="pN">${[8,10,12,15].map(n=>`<button data-n="${n}" class="${n===(D.pn||10)?"on":""}">${n}</button>`).join("")}</div>
+ <div class="row" style="margin-top:12px"><button class="btn big" id="mk">Make beats</button>${me?'<button class="btn big alt" id="near12">Beat from where I am</button>':""}</div>`);
+ b.querySelectorAll("#pN button").forEach(x=>x.onclick=()=>{D.pn=+x.dataset.n;save();b.querySelectorAll("#pN button").forEach(y=>y.classList.toggle("on",y===x))});
+ $("#mk").onclick=()=>{const lo=$("#pLoc").value;if(!lo){$("#pLoc").focus();return}if(lo!=="Patanjali stores"){D.locF=lo;save();redraw()}makeBeats(lo)};
+ const n12=$("#near12");if(n12)n12.onclick=()=>{const n=D.pn||10;const pool=S.filter(s=>D.lists[s.l]&&stOf(s)==="todo"&&s.c).sort((a,b)=>dist(me,pos(a))-dist(me,pos(b))).slice(0,n);
+  D.plans.unshift({name:"Near me · "+new Date().toLocaleDateString("en-IN",{day:"numeric",month:"short"}),ids:order(pool.map(s=>s.id),me)});startBeat(0)};
+ if(D.plans.length){b.insertAdjacentHTML("beforeend",`<hr><div class="row" style="justify-content:space-between"><div class="h">Your beats</div><button class="btn sm line" id="clr">Clear all</button></div>`);
+  const lst=document.createElement("div");lst.className="list";
+  D.plans.forEach((p,i)=>{const rem=remaining(p).length;const it=document.createElement("div");it.className="it";
+   it.innerHTML=`<div class="grow"><div class="nm">${esc(p.name)}</div><div class="sub">${p.ids.length} shops · ${p.ids.length-rem} done</div></div><button class="btn sm">Start</button>`;
+   it.querySelector("button").onclick=e=>{e.stopPropagation();startBeat(i)};it.onclick=()=>{map.fitBounds(p.ids.map(id=>pos(byId[id])),{padding:[60,60],maxZoom:17})};lst.appendChild(it)});
+  b.appendChild(lst);
+  $("#clr").onclick=function(){if(this.dataset.a){D.plans=[];D.active=null;save();render();return}this.dataset.a=1;this.textContent="Tap again to clear"}}
+}
+function makeBeats(lo){
+ const n=D.pn||10;const taken=new Set(D.plans.flatMap(p=>p.ids));
+ const pool=S.filter(s=>s.loc===lo&&D.lists[s.l]&&!taken.has(s.id)&&stOf(s)==="todo");
+ if(!pool.length){toast("Nothing left to plan there with the current filters.");return}
+ const tour=order(pool.map(s=>s.id));const ch=[];for(let i=0;i<tour.length;i+=n)ch.push(tour.slice(i,i+n));
+ if(ch.length>1&&ch[ch.length-1].length<Math.ceil(n/3))ch[ch.length-2].push(...ch.pop());
+ const short=lo.replace(/\s*\(.*\)/,"");let k=D.plans.filter(p=>p.name.startsWith(short)).length;
+ ch.forEach(c=>D.plans.push({name:short+" · Beat "+(++k),ids:order(c)}));save();
+ map.fitBounds(pool.map(pos),{padding:[60,60],maxZoom:16});toast(`${ch.length} beat${ch.length>1?"s":""} made for ${esc(short)}.`);render();
+}
+function startBeat(i){D.active=i;const p=D.plans[i];if(me)p.ids=order(p.ids,me);save();redraw();drawRoute();render();map.fitBounds(p.ids.map(id=>pos(byId[id])).concat(me?[me]:[]),{padding:[60,60],maxZoom:17});setSheet("")}
+// in-app road route (OSRM public server, free)
+let routeInfo="";
+async function drawRoute(){
+ routeLayer.clearLayers();routeInfo="";const p=D.active!=null&&D.plans[D.active];if(!p)return;
+ const pts=(me?[me]:[]).concat(remaining(p).map(id=>pos(byId[id])));if(pts.length<2)return;
+ const straight=L.polyline(pts,{color:"#1f3d2b",weight:3,opacity:.5,dashArray:"6 8"}).addTo(routeLayer);
+ try{const u="https://router.project-osrm.org/route/v1/driving/"+pts.slice(0,25).map(x=>x[1].toFixed(6)+","+x[0].toFixed(6)).join(";")+"?overview=full&geometries=geojson";
+  const r=await fetch(u);const j=await r.json();if(j.code!=="Ok")throw 0;
+  routeLayer.clearLayers();
+  L.polyline(j.routes[0].geometry.coordinates.map(c=>[c[1],c[0]]),{color:"#fff",weight:9,opacity:.9}).addTo(routeLayer);
+  L.polyline(j.routes[0].geometry.coordinates.map(c=>[c[1],c[0]]),{color:"#2f6b45",weight:5}).addTo(routeLayer);
+  routeInfo=`${(j.routes[0].distance/1000).toFixed(1)} km by road · about ${Math.round(j.routes[0].duration/60)} min driving`;render(true);
+ }catch(e){routeInfo="";}
+}
+function gUrl(s){if(s.mu&&!D.fix[s.id])return s.mu;return D.fix[s.id]||s.q===1?`https://www.google.com/maps/dir/?api=1&destination=${pos(s).join(",")}`:`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.n+", "+(s.a||s.s)+", Jaipur")}`}
+let arrivedAsk={};
+function checkArrive(){const p=D.active!=null&&D.plans[D.active];if(!p||!me)return;const nx=remaining(p)[0];if(!nx||arrivedAsk[nx])return;
+ if(dist(me,pos(byId[nx]))<(exact(byId[nx])?40:120)){arrivedAsk[nx]=1;toast(`You're near <b>${esc(byId[nx].n)}</b>`,"Log visit",()=>openLog(nx),12000)}}
+
+// ---------- nearby
+function nearView(b){
+ if(!me){b.innerHTML=`<div class="h">Shops near you</div><p class="sub">Turn on location to see the closest shops first.</p><button class="btn" id="loc">Use my location</button>`;$("#loc").onclick=()=>{startWatch();follow=true};return}
+ const lst=S.filter(visible).map(s=>[s,dist(me,pos(s))]).sort((a,b)=>a[1]-b[1]).slice(0,40);
+ b.innerHTML=`<div class="sub" style="margin-bottom:6px">Closest ${lst.length} shops${D.stF?" · "+ST[D.stF][0]:""}</div>`;
+ const L2=document.createElement("div");L2.className="list";
+ lst.forEach(([s,d])=>{const it=document.createElement("div");it.className="it";
+  it.innerHTML=`<span class="dot" style="background:var(${ST[stOf(s)][1]})"></span><div class="grow"><div class="nm">${esc(s.n)}</div><div class="sub">${LN[s.l]} · ${esc(s.s)}</div></div><span class="dist">${fmtD(d)}</span>`;
+  it.onclick=()=>openStore(s.id);L2.appendChild(it)});b.appendChild(L2);
+}
+
+// ---------- follow-ups + summary
+function dueList(){const td=today();return Object.entries(D.fu).filter(([id,d])=>byId[id]&&d<=td).sort((a,b)=>a[1]<b[1]?-1:1)}
+function fuView(b){
+ const due=dueList();const up=Object.entries(D.fu).filter(([id,d])=>byId[id]&&d>today()).sort((a,b)=>a[1]<b[1]?-1:1);
+ b.innerHTML=`<div class="h">Due now</div>`;
+ const mkList=(arr,lbl)=>{const l=document.createElement("div");l.className="list";
+  if(!arr.length)l.innerHTML=`<p class="sub">${lbl}</p>`;
+  arr.forEach(([id,d])=>{const s=byId[id];const it=document.createElement("div");it.className="it";const od=d<today();
+   it.innerHTML=`<span class="dot" style="background:var(${od?"--no":"--int"})"></span><div class="grow"><div class="nm">${esc(s.n)}</div><div class="sub">${od?"Overdue · "+d:d===today()?"Today":d}${s.ph?" · "+telA(s.ph):""}</div></div>${s.ph?`<a class="btn sm alt" href="tel:${esc(s.ph.replace(/[^+\d]/g,""))}" onclick="event.stopPropagation()">${IC.call}</a>`:""}`;
+   it.onclick=()=>openStore(id);l.appendChild(it)});return l};
+ b.appendChild(mkList(due,"Nothing due. Set a follow-up when you log a visit."));
+ if(up.length){b.insertAdjacentHTML("beforeend",`<div class="h" style="margin-top:14px">Coming up</div>`);b.appendChild(mkList(up.slice(0,15),""))}
+ // summary
+ b.insertAdjacentHTML("beforeend",`<hr><div class="row" style="justify-content:space-between"><div class="h">Day summary</div><input type="date" id="sd" class="f" style="width:auto;height:38px" value="${sumDate||today()}"></div><div id="sumBox"></div>`);
+ $("#sd").onchange=e=>{sumDate=e.target.value;render(true)};
+ const sd=sumDate||today();const L2=[];Object.entries(D.log).forEach(([id,vs])=>vs.forEach(v=>{if(dayKey(v.t)===sd&&byId[id])L2.push([id,v])}));L2.sort((a,b)=>a[1].t<b[1].t?-1:1);
+ const shops=new Set(L2.map(x=>x[0])).size,ords=L2.filter(x=>OUT[x[1].out]&&OUT[x[1].out][1]==="stock").length,jars=L2.reduce((a,x)=>a+(x[1].qty||0),0),smp=L2.reduce((a,x)=>a+(x[1].smp||0),0);
+ const sb=$("#sumBox");sb.innerHTML=`<div class="stat" style="margin-top:8px"><div><b>${shops}</b>Shops</div><div><b>${ords}</b>Orders</div><div><b>${jars}</b>Jars</div><div><b>${smp}</b>Samples</div></div>`;
+ const l=document.createElement("div");l.className="list";
+ L2.forEach(([id,v])=>{const s=byId[id];const it=document.createElement("div");it.className="it";
+  it.innerHTML=`<span class="dot" style="background:var(${ST[OUT[v.out]?OUT[v.out][1]:"visit"][1]})"></span><div class="grow"><div class="nm">${esc(s.n)}</div><div class="sub">${new Date(v.t).toLocaleTimeString("en-IN",{hour:"numeric",minute:"2-digit"})} · ${esc(OUT[v.out]?OUT[v.out][0]:v.out)}${v.qty?" · "+v.qty+" jars":""}${v.who?" · "+esc(v.who):""}</div></div>`;
+  it.onclick=()=>openStore(id);l.appendChild(it)});sb.appendChild(l);
+}
+let sumDate=null;
+
+// ---------- more
+function moreView(b){
+ const by={};S.forEach(s=>{const x=by[s.loc]||(by[s.loc]={n:0,d:0,st:0,ex:0});x.n++;if(stOf(s)!=="todo")x.d++;if(stOf(s)==="stock")x.st++;if(exact(s))x.ex++});
+ const c={};Object.keys(ST).forEach(k=>c[k]=0);S.forEach(s=>c[stOf(s)]++);
+ const nLog=Object.values(D.log).reduce((a,v)=>a+v.length,0);
+ b.innerHTML=`<div class="h">Filters</div><div class="sub">Show these on the map</div><label class="f" for="areaSel2">Area</label><select class="f" id="areaSel2"><option value="">All areas</option>${AREAS.map(a=>`<option${a===D.locF?" selected":""}>${esc(a)}</option>`).join("")}</select><div class="seg" style="margin:8px 0">${Object.entries(LN).map(([k,v])=>`<button data-fl="${k}" class="${D.lists[k]?"on":""}">${v}</button>`).join("")}</div><div class="seg" style="margin-bottom:6px"><button data-fs="" class="${D.stF?"":"on"}">Any status</button>${Object.entries(ST).map(([k,v])=>`<button data-fs="${k}" class="${D.stF===k?"on":""}">${v[0]}</button>`).join("")}</div><hr><div class="h">Progress</div><div class="stat" style="grid-template-columns:repeat(5,1fr);margin:8px 0">${Object.entries(ST).map(([k,v])=>`<div><b style="color:var(${v[1]})">${c[k]}</b>${v[0]}</div>`).join("")}</div>
+ <div style="overflow-x:auto"><table><tr><th>Area</th><th>Visited</th><th>Stocked</th><th>Exact pins</th></tr>${Object.entries(by).map(([k,x])=>`<tr><td>${esc(k)}</td><td>${x.d}/${x.n}</td><td>${x.st}</td><td>${x.ex}/${x.n}</td></tr>`).join("")}</table></div>
+ <hr><div class="h">Backup</div><p class="sub">${D.bk?"Last backup "+new Date(D.bk).toLocaleString("en-IN")+". ":"No backup yet. "}${nLog} visits logged. Your records live only on this phone, so save a backup every few days.</p>
+ <div class="grid2"><button class="btn" id="exp">Save backup</button><label class="btn alt" style="cursor:pointer">Load backup<input type="file" id="imp" accept=".json,application/json" hidden></label>
+ <button class="btn line" id="csv">Shop list (CSV)</button><button class="btn line" id="csvLog">Visit log (CSV)</button><button class="btn line" id="csvInv">Stock ledger (CSV)</button></div>
+ <hr><div class="h">About the pins</div><p class="sub">Solid pins are at the shop's exact spot (from its online listing). Dashed pins are approximate (street level). When you're standing at a dashed one, open it and tap <b>I'm here</b> to fix it for good. Map © OpenStreetMap contributors. Road routes by OSRM.</p>`;
+ $("#areaSel2").onchange=e=>{D.locF=e.target.value;save();redraw();zoomArea();render(true)};
+ b.querySelectorAll("[data-fl]").forEach(x=>x.onclick=()=>{D.lists[x.dataset.fl]=!D.lists[x.dataset.fl];save();redraw();render(true)});
+ b.querySelectorAll("[data-fs]").forEach(x=>x.onclick=()=>{D.stF=x.dataset.fs;save();redraw();render(true)});
+ $("#exp").onclick=()=>{D.bk=Date.now();save();dl("beatmap-backup-"+today()+".json",JSON.stringify(D),"application/json");render(true)};
+ $("#imp").onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{try{const nd=JSON.parse(t);(nd.added||[]).forEach(a=>{if(!byId[a.id]){S.push(a);byId[a.id]=a;mk(a)}});D=Object.assign(D,nd);save();S.forEach(refreshOne);redraw();render();toast("Backup loaded.")}catch(err){toast("That file isn't a Beat Map backup.")}})};
+ $("#csv").onclick=()=>{const rows=[["id","list","store_name","type","address","area","sub_area","phone","status","visits","last_visit","follow_up","last_note","score","qualification","suggested","decision","performance","supplied","paid_sold","in_stock","sell_through_pct","samples","tasting","reorders","lat","lng","pin"]];
+  S.forEach(s=>{const lg=D.log[s.id]||[];const p=pos(s);const q=qual(s.id),i=inv(s.id);rows.push([s.id,LN[s.l],s.n,s.t,s.a,areaOf(s)||s.loc,s.s,s.ph,ST[stOf(s)][0],lg.length,lg.length?dayKey(lg[lg.length-1].t):"",D.fu[s.id]||"",lg.length?lg[lg.length-1].note:"",q.known?q.score:"",q.cat,suggest(s.id)[0],decision(s.id)||"",D.perf[s.id]||perfAuto(s.id),i.supplied,i.sale,i.remaining,i.st??"",i.sample,i.tasting,i.reorders,p[0],p[1],exact(s)?"exact":"approx"])});dl("beatmap-shops-"+today()+".csv",csvT(rows),"text/csv")};
+ $("#csvLog").onclick=()=>{const rows=[["date","time","store_id","store_name","list","area","phone","person_met","outcome","jars","terms","samples","tasting","shelf_count","sold_from_review","note","next_action","follow_up"]];
+  Object.entries(D.log).forEach(([id,vs])=>{const s=byId[id];if(!s)return;vs.forEach(v=>rows.push([dayKey(v.t),new Date(v.t).toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit"}),id,s.n,LN[s.l],areaOf(s)||s.loc,s.ph,v.who,OUT[v.out]?OUT[v.out][0]:v.out,v.qty,v.terms?INVT[v.terms][0]:"",v.smp,v.tst,v.shelf,v.sold,v.note,v.next,v.fu||""]))});
+  rows.splice(1,rows.length,...rows.slice(1).sort((a,b)=>(a[0]+a[1])<(b[0]+b[1])?-1:1));dl("beatmap-visits-"+today()+".csv",csvT(rows),"text/csv")};
+ $("#csvInv").onclick=()=>{const rows=[["date","store_id","store_name","area","type","jars","reorder","note"]];Object.entries(D.inv).forEach(([id,tx])=>{const s=byId[id];if(!s)return;tx.forEach(x=>rows.push([x.d,id,s.n,areaOf(s)||s.loc,INVT[x.type][0],x.qty,x.r?"yes":"",x.note]))});rows.splice(1,rows.length,...rows.slice(1).sort((a,b)=>a[0]<b[0]?-1:1));dl("beatmap-stock-"+today()+".csv",csvT(rows),"text/csv")};
+}
+const csvT=rows=>"﻿"+rows.map(r=>r.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\n");
+function dl(name,text,type){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>a.remove(),200)}
+
+// ================= V10: qualification, inventory ledger, decisions =================
+const ASMQ=[
+ {k:"demand",l:"Existing Chyawanprash demand",o:["None","Occasional","Regular"]},
+ {k:"base",l:"Relevant customer base",o:["Weak","Moderate","Strong"]},
+ {k:"rel",l:"Customer relationships",o:["Transactional","Moderate","Strong"]},
+ {k:"rec",l:"Willing to recommend",o:["Unwilling","Unsure","Enthusiastic"]},
+ {k:"taste",l:"Willing to do tastings",o:["No","Conditional","Yes"]},
+ {k:"prem",l:"Premium product fit",o:["Poor","Average","Strong"]}];
+const BIZ=[
+ {k:"cat",l:"Shop category",o:["Medical","Kirana","Ayurvedic","Premium grocery","Other"]},
+ {k:"sellsCP",l:"Sells Chyawanprash now?",o:["Yes","No"]},
+ {k:"brands",l:"Brands on shelf",o:["Dabur","Patanjali","Baidyanath","Others"],multi:1},
+ {k:"cpJars",l:"Chyawanprash jars sold / month (estimate)",num:1},
+ {k:"repeat",l:"Repeat customers for this kind of product",num:1,unk:1},
+ {k:"recommends",l:"Actively recommends products?",o:["Yes","Sometimes","No"]},
+ {k:"premium",l:"Already sells premium food / wellness?",o:["Yes","Some","No"]}];
+const INVT={consign:["Consignment (pay after sale)",1],purchase:["Purchased by retailer",1],sample:["Free samples",0],tasting:["Used for tasting",-1],sale:["Customer sale (paid)",-1],return:["Returned to you",-1],damage:["Damaged",-1],adjust:["Adjustment",0]};
+const NEXT=["Revisit","Call","Do a tasting","Deliver stock","Review sales","Collect payment","Nothing for now"];
+// visit outcomes: [label, status, stage]
+Object.assign(OUT,{
+ intro:["First introduction done","visit","pre"],away:["Owner unavailable","visit","pre"],tasted:["Retailer tasted product","int","pre"],
+ price:["Price discussed","int","pre"],margin:["Margin discussed","int","pre"],interested:["Interested","int","pre"],
+ declined:["Declined","no","pre"],agreed:["Agreed to pilot","int","pre"],
+ delivered:["Stock delivered","stock","pilot"],sampling:["Sampling started","stock","pilot"],review:["Sales reviewed","stock","pilot"],
+ feedback:["Customer feedback collected","stock","pilot"],reorder:["Reorder received","stock","pilot"],rejected:["Rejected / deprioritised","no","pilot"]});
+const OUT_PRE=["intro","away","tasted","price","margin","interested","agreed","declined"];
+const OUT_PILOT=["delivered","sampling","review","feedback","reorder","rejected"];
+const NEXT_DEF={intro:["Revisit",7],away:["Revisit",1],tasted:["Revisit",3],price:["Revisit",3],margin:["Revisit",3],interested:["Do a tasting",3],declined:["Nothing for now",""],agreed:["Deliver stock",2],
+ delivered:["Review sales",7],sampling:["Review sales",7],review:["Review sales",7],feedback:["Review sales",7],reorder:["Deliver stock",1],rejected:["Nothing for now",""]};
+D.asm=D.asm||{};D.inv=D.inv||{};D.dec=D.dec||{};D.perf=D.perf||{};
+
+function qual(id){
+ const a=(D.asm[id]||{}).sc||{};let score=0,known=0;const missing=[];
+ ASMQ.forEach(q=>{const v=a[q.k];if(v===0||v===1||v===2){score+=v;known++}else missing.push(q.l)});
+ const gate=a.rec===2&&a.taste===2;
+ let cat,next;
+ if(!known){cat="Not assessed";next="Do the assessment on your next visit"}
+ else if(known<6){cat=`Incomplete (${known}/6)`;next="Fill the missing answers: "+missing.join(", ")}
+ else if(score<=5){cat="Deprioritise";next="Don't spend more visits here for now"}
+ else if(score<=8){cat="Follow up";next="Revisit to raise willingness or learn more"}
+ else if(gate){cat="Eligible for pilot";next="Consider offering trial stock"}
+ else{cat="Strong, but not eligible";next="Needs 2/2 on both 'recommend' and 'tastings' before stock"}
+ return{score,known,missing,gate,cat,next,complete:known===6};
+}
+function inv(id){
+ const tx=D.inv[id]||[];const t={consign:0,purchase:0,sample:0,tasting:0,sale:0,return:0,damage:0,adjust:0};
+ let first=null,reorders=0,lastSale=null,lastReview=null;
+ tx.forEach(x=>{t[x.type]+=x.qty;if((x.type==="consign"||x.type==="purchase")){if(!first||x.d<first)first=x.d;if(x.r)reorders++}if(x.type==="sale"&&(!lastSale||x.d>lastSale))lastSale=x.d});
+ (D.log[id]||[]).forEach(v=>{if(v.out==="review"){const d=dayKey(v.t);if(!lastReview||d>lastReview)lastReview=d}});
+ const supplied=t.consign+t.purchase;
+ const remaining=supplied+t.adjust-t.tasting-t.sale-t.return-t.damage;
+ const saleable=supplied-t.tasting-t.damage;
+ const st=saleable>0?Math.round(t.sale/saleable*100):null;
+ const days=first?Math.floor((new Date(today())-new Date(first))/864e5):null;
+ return{...t,supplied,remaining,saleable,st,first,days,reorders,lastSale,lastReview,n:tx.length};
+}
+const daysSince=d=>d?Math.floor((new Date(today())-new Date(d))/864e5):null;
+const PERF=["Not yet tested","Trial underway","Sales demonstrated","Reorder demonstrated","Inactive / underperforming"];
+function perfAuto(id){const i=inv(id);if(!i.supplied)return"Not yet tested";if(i.reorders>0)return"Reorder demonstrated";
+ if(i.sale>0)return daysSince(i.lastSale)>30&&i.remaining>0?"Inactive / underperforming":"Sales demonstrated";
+ return i.days>=21?"Inactive / underperforming":"Trial underway"}
+const DECS=["Reject / Deprioritise","Follow up","Eligible for pilot","Pilot active","Increase inventory","Hold inventory","Stop supplying"];
+function lastOut(id){const l=D.log[id];return l&&l.length?l[l.length-1].out:null}
+function suggest(id){
+ const q=qual(id),i=inv(id),lo=lastOut(id);
+ if(lo==="declined"||lo==="rejected")return["Reject / Deprioritise","Last visit: "+OUT[lo][0]];
+ if(!i.supplied){
+  if(q.cat==="Eligible for pilot")return["Eligible for pilot",`Score ${q.score}/12 and 2/2 on recommend + tastings. No stock yet.`];
+  if(q.cat==="Deprioritise")return["Reject / Deprioritise",`Score ${q.score}/12.`];
+  return["Follow up",q.known<6?`Assessment ${q.known}/6 done.`:`Score ${q.score}/12 (${q.cat}).`]}
+ const base=`${i.sale} paid of ${i.saleable} saleable jars sold (${i.st??0}%), stock given ${i.days} day${i.days===1?"":"s"} ago`;
+ if(i.reorders>0)return["Increase inventory",`${i.reorders} reorder${i.reorders>1?"s":""}. `+base+"."];
+ if(i.st>=60)return["Increase inventory","Most of the stock sold: "+base+"."];
+ if(!i.sale){if(i.days<14)return["Pilot active","No paid sales yet, still early: "+base+"."];
+  if(i.days<=45)return["Hold inventory","No paid sales yet. Find out why: "+base+"."];
+  return["Stop supplying","No movement for over 45 days: "+base+"."]}
+ if(daysSince(i.lastSale)>45)return["Hold inventory",`Last paid sale ${daysSince(i.lastSale)} days ago. `+base+"."];
+ return["Pilot active","Selling, keep watching: "+base+"."];
+}
+function decision(id){return D.dec[id]?D.dec[id].v:null}
+
+// ---------- store view (shop profile = the workspace)
+let pTab="over";
+function openStore(id){view={k:"store",id};const s=byId[id];if(!layer.hasLayer(markers[id]))layer.addLayer(markers[id]);map.setView(pos(s),Math.max(map.getZoom(),17),{animate:true});if(isMin())setSheet("");render()}
+function storeView(b,id){
+ const s=byId[id];const st=stOf(s);const d=me?dist(me,pos(s)):null;const q=qual(id),i=inv(id),dec=decision(id);
+ b.innerHTML=`<div class="row" style="justify-content:space-between;flex-wrap:nowrap"><button class="btn sm line" id="back">‹ Back</button><span class="pill" style="background:var(${ST[st][1]});color:#fff">${ST[st][0]}</span></div>
+ <div class="h" style="margin-top:10px;font-size:19px">${esc(s.n)}</div>
+ <div class="sub">${LN[s.l]} · ${esc(s.t)}${s.rt?" · ★ "+esc(s.rt):""}${d!=null?" · "+fmtD(d)+" away":""}</div>${s.old?`<div class="sub">Listed before as "${esc(s.old)}"</div>`:""}
+ <div class="row" style="margin-top:6px">${s.pc==="premium"||s.pc==="maybe"?`<span class="pill" style="background:#fbf1d3;color:#7a5a00">★ ${s.pc==="premium"?"Premium":"Maybe premium"} ${esc(s.ps)}/10</span>`:""}${s.ay==="yes"?'<span class="pill ok">🌿 Ayurvedic shelf</span>':""}${s.hos==="yes"?'<span class="pill">Near hospital</span>':""}${s.tc?'<span class="pill warn">Temporarily closed</span>':""}${s.v==="ok"?'<span class="pill ok">Verified on Maps</span>':s.v==="unsure"?'<span class="pill warn">Unsure match</span>':s.v==="nf"?'<span class="pill warn">Not on Maps</span>':""}${q.known?`<span class="pill ${q.cat==="Eligible for pilot"?"ok":q.cat==="Deprioritise"?"warn":""}">${q.score}/12 · ${esc(q.cat)}</span>`:'<span class="pill">Not assessed</span>'}${i.supplied?`<span class="pill ok">${i.remaining} in stock · ${i.sale} sold</span>`:""}${dec?`<span class="pill" style="background:var(--brand);color:#fff">${esc(dec)}</span>`:""}</div>
+ <div class="grid3" style="margin-top:10px"><a class="btn alt" href="${gUrl(s)}" target="_blank" rel="noopener">${IC.nav}Directions</a>${s.ph?`<a class="btn alt" href="tel:${esc(s.ph.replace(/[^+\d]/g,""))}">${IC.call}Call</a>`:'<button class="btn alt" disabled style="opacity:.4">No phone</button>'}<button class="btn" id="lg">Log visit</button></div>
+ <div class="seg" id="ptabs" style="margin:12px 0 4px">${[["over","Overview"],["asm","Assess"+(q.complete?"":` ${q.known}/6`)],["stock","Stock"+(i.supplied?` (${i.remaining})`:"")],["visits","Visits ("+(D.log[id]||[]).length+")"]].map(([k,l])=>`<button data-p="${k}" class="${pTab===k?"on":""}">${l}</button>`).join("")}</div>
+ <div id="pbody"></div>`;
+ $("#back").onclick=()=>{view=null;render()};$("#lg").onclick=()=>openLog(id);
+ b.querySelectorAll("#ptabs button").forEach(x=>x.onclick=()=>{pTab=x.dataset.p;render(true)});
+ const pb=$("#pbody");({over:pOver,asm:pAsm,stock:pStock,visits:pVisits})[pTab](pb,id,s);
+}
+function pOver(pb,id,s){
+ const q=qual(id),i=inv(id),sg=suggest(id),dec=D.dec[id],pf=D.perf[id]||perfAuto(id);
+ pb.innerHTML=`<div class="card" style="margin-top:8px"><div class="sub">QUALIFICATION</div>
+  <div class="row" style="justify-content:space-between"><div class="h">${q.known?q.score+" / 12":"–"}</div><b>${esc(q.cat)}</b></div>
+  <div class="bar" style="margin:6px 0"><i style="width:${q.score/12*100}%;background:${q.cat==="Eligible for pilot"?"var(--stock)":q.cat==="Deprioritise"?"var(--no)":"var(--int)"}"></i></div>
+  ${q.missing.length&&q.known?`<div class="sub">Missing: ${esc(q.missing.join(", "))}</div>`:""}
+  <div style="margin-top:6px">→ ${esc(q.next)}</div>${!q.complete?'<button class="btn sm alt" id="goAsm" style="margin-top:8px">Open assessment</button>':""}</div>
+ ${s.pw?`<div class="card" style="margin-top:8px"><div class="sub">WHY ${s.pc==="premium"||s.pc==="maybe"?"PREMIUM":"NOT PREMIUM"} (from Google Maps)</div><div style="margin-top:4px">${esc(s.pw)}</div></div>`:""}
+ <div class="card" style="margin-top:8px"><div class="sub">STOCK &amp; SALES</div>
+  ${i.supplied?`<div class="stat" style="margin-top:6px"><div><b>${i.supplied}</b>Supplied</div><div><b>${i.sale}</b>Paid sold</div><div><b>${i.remaining}</b>In stock</div><div><b>${i.st??0}%</b>Sell-through</div></div>
+  <div class="sub" style="margin-top:6px">${i.sample} free samples · ${i.tasting} tasting · first stock ${i.days} days ago · ${i.reorders} reorder${i.reorders===1?"":"s"} · last sales review ${i.lastReview||"never"}</div>`:'<div class="sub">No stock given yet.</div>'}</div>
+ <div class="card next" style="margin-top:8px"><div class="sub">DECISION</div>
+  <div style="margin-top:4px">Suggested: <b>${esc(sg[0])}</b></div><div class="sub">${esc(sg[1])}</div>
+  <label class="f" for="decS">Your decision</label><select class="f" id="decS"><option value="">Not decided</option>${DECS.map(x=>`<option${dec&&dec.v===x?" selected":""}>${x}</option>`).join("")}</select>
+  ${dec?`<div class="sub" style="margin-top:4px">Set ${esc(dec.d)}</div>`:""}
+  <label class="f" for="perfS">Performance</label><select class="f" id="perfS">${PERF.map(x=>`<option${pf===x?" selected":""}>${x}</option>`).join("")}</select>
+  <div class="sub" style="margin-top:4px">${D.perf[id]?"Set by you. Auto would say: "+esc(perfAuto(id)):"Worked out from stock and sales."}</div></div>
+ <div class="card" style="margin-top:8px">
+  <div><a class="tel" style="white-space:normal" href="${gUrl(s)}" target="_blank" rel="noopener">📍 ${esc(s.a)||"Open in Google Maps"}</a></div>
+  ${s.ph?`<div style="margin-top:8px">${telA(s.ph)}</div>`:""}
+  <div style="margin-top:8px">${exact(s)?'<span class="pill ok">Exact pin</span>':'<span class="pill warn">Approximate pin</span>'}${D.fu[id]?`<span class="pill">Follow up ${esc(D.fu[id])}</span>`:""}<span class="pill">${esc(areaOf(s)||"No area")}</span></div>
+  ${s.no?`<p class="sub">${esc(s.no)}</p>`:""}
+  <div class="row" style="margin-top:8px"><button class="btn sm line" id="fix">📍 I'm here, fix pin</button><select class="btn sm line" id="addB" style="max-width:55%"><option value="">+ Add to a beat</option>${D.plans.map((p,k)=>`<option value="${k}">${esc(p.name)}</option>`).join("")}</select></div>
+  <div class="sub" style="margin-top:10px">Map status</div><div class="seg" style="margin-top:4px">${Object.entries(ST).map(([k,v])=>`<button data-k="${k}" class="${stOf(s)===k?"on":""}">${v[0]}</button>`).join("")}</div></div>`;
+ const ga=$("#goAsm");if(ga)ga.onclick=()=>{pTab="asm";render()};
+ $("#decS").onchange=e=>{if(e.target.value)D.dec[id]={v:e.target.value,d:today()};else delete D.dec[id];save();render(true)};
+ $("#perfS").onchange=e=>{if(e.target.value===perfAuto(id))delete D.perf[id];else D.perf[id]=e.target.value;save();render(true)};
+ $("#fix").onclick=()=>{startWatch();const go=()=>{D.fix[id]=me.map(x=>+x.toFixed(6));save();refreshOne(s);toast("Pin moved to where you're standing.");render(true)};if(me)go();else{toast("Finding your location…");const iv=setInterval(()=>{if(me){clearInterval(iv);go()}},800);setTimeout(()=>clearInterval(iv),20000)}};
+ $("#addB").onchange=e=>{if(e.target.value==="")return;const p=D.plans[+e.target.value];if(!p.ids.includes(id))p.ids.push(id);p.ids=order(p.ids);save();redraw();drawRoute();toast("Added to "+esc(p.name))};
+ pb.querySelectorAll(".seg [data-k]").forEach(x=>x.onclick=()=>{if(x.dataset.k==="todo")delete D.st[id];else D.st[id]=x.dataset.k;save();refreshOne(s);render(true)});
+}
+function pAsm(pb,id){
+ const a=D.asm[id]=D.asm[id]||{};a.sc=a.sc||{};a.biz=a.biz||{};const q=qual(id);
+ const row=(k,l,opts,val,attr)=>`<div style="margin-top:12px"><div style="font-weight:600;font-size:14px">${l}</div><div class="seg" style="margin-top:6px">${opts.map((o,n)=>`<button ${attr}="${k}" data-v="${n}" class="${val===n?"on":""}">${attr==="data-sc"?n+" · ":""}${o}</button>`).join("")}<button ${attr}="${k}" data-v="x" class="${val==null?"on":""}" style="opacity:.7">Don't know</button></div></div>`;
+ pb.innerHTML=`<div class="card" style="margin-top:8px"><div class="row" style="justify-content:space-between"><b>Scorecard</b><b>${q.score}/12 · ${esc(q.cat)}</b></div><div class="sub">Tap 0, 1 or 2. Leave "Don't know" if you haven't found out yet.</div>
+  ${ASMQ.map(x=>row(x.k,x.l,x.o,a.sc[x.k],"data-sc")).join("")}</div>
+  <div class="card" style="margin-top:8px"><b>Business details</b> <span class="sub">(optional)</span>
+  ${BIZ.map(x=>x.num?`<div style="margin-top:12px"><label class="f" for="bz_${x.k}" style="margin:0 0 4px;color:var(--ink);font-weight:600">${x.l}</label><input class="f" type="number" inputmode="numeric" min="0" id="bz_${x.k}" data-bn="${x.k}" value="${a.biz[x.k]??""}" placeholder="${x.unk?"Unknown":""}"></div>`
+   :x.multi?`<div style="margin-top:12px"><div style="font-weight:600;font-size:14px">${x.l}</div><div class="seg" style="margin-top:6px">${x.o.map(o=>`<button data-bm="${x.k}" data-v="${o}" class="${(a.biz[x.k]||[]).includes(o)?"on":""}">${o}</button>`).join("")}</div></div>`
+   :`<div style="margin-top:12px"><div style="font-weight:600;font-size:14px">${x.l}</div><div class="seg" style="margin-top:6px">${x.o.map(o=>`<button data-bz="${x.k}" data-v="${o}" class="${a.biz[x.k]===o?"on":""}">${o}</button>`).join("")}</div></div>`).join("")}</div>`;
+ pb.querySelectorAll("[data-sc]").forEach(x=>x.onclick=()=>{const v=x.dataset.v;if(v==="x")delete a.sc[x.dataset.sc];else a.sc[x.dataset.sc]=+v;a.t=today();save();render(true)});
+ pb.querySelectorAll("[data-bz]").forEach(x=>x.onclick=()=>{const k=x.dataset.bz;a.biz[k]=a.biz[k]===x.dataset.v?undefined:x.dataset.v;save();render(true)});
+ pb.querySelectorAll("[data-bm]").forEach(x=>x.onclick=()=>{const k=x.dataset.bm,l=a.biz[k]=a.biz[k]||[];const j=l.indexOf(x.dataset.v);j>=0?l.splice(j,1):l.push(x.dataset.v);save();render(true)});
+ pb.querySelectorAll("[data-bn]").forEach(x=>x.onchange=()=>{const v=x.value.trim();if(v==="")delete a.biz[x.dataset.bn];else a.biz[x.dataset.bn]=Math.max(0,+v);save()});
+}
+function addTx(id,type,qty,note,extra){(D.inv[id]=D.inv[id]||[]).push(Object.assign({d:today(),t:new Date().toISOString(),type,qty,note:note||""},extra||{}))}
+function pStock(pb,id){
+ const i=inv(id);const tx=(D.inv[id]||[]).slice().sort((a,b)=>(a.d+a.t)<(b.d+b.t)?1:-1);
+ pb.innerHTML=`<div class="card" style="margin-top:8px"><div class="stat"><div><b>${i.remaining}</b>In stock</div><div><b>${i.sale}</b>Paid sold</div><div><b>${i.supplied}</b>Supplied</div><div><b>${i.st??"–"}${i.st!=null?"%":""}</b>Sell-through</div></div>
+  <table style="margin-top:8px"><tr><td>Consignment</td><td>${i.consign}</td><td>Purchased by retailer</td><td>${i.purchase}</td></tr><tr><td>Free samples</td><td>${i.sample}</td><td>Used for tasting</td><td>${i.tasting}</td></tr><tr><td>Returned</td><td>${i.return}</td><td>Damaged</td><td>${i.damage}</td></tr><tr><td>Adjustments</td><td>${i.adjust>0?"+":""}${i.adjust}</td><td>Reorders</td><td>${i.reorders}</td></tr></table>
+  <div class="sub" style="margin-top:6px">In stock = supplied + adjustments − tasting − paid sales − returns − damaged. Sell-through = paid sold ÷ (supplied − tasting − damaged). Free samples are counted separately, never as stock or sales.</div></div>
+ <div class="card" style="margin-top:8px"><b>Record stock movement</b>
+  <div class="seg" id="txT" style="margin-top:8px">${Object.entries(INVT).map(([k,v])=>`<button data-t="${k}">${v[0]}</button>`).join("")}</div>
+  <div id="txF" hidden><div class="grid2" style="margin-top:8px"><div><label class="f" for="txQ">Jars</label><input class="f" id="txQ" type="number" inputmode="numeric" min="1"></div><div><label class="f" for="txD">Date</label><input class="f" id="txD" type="date" value="${today()}"></div></div>
+  <div id="txAdj" hidden><div class="seg" style="margin-top:8px"><button data-s="1" class="on">Add (+)</button><button data-s="-1">Remove (−)</button></div></div>
+  <label id="txRL" style="display:flex;gap:8px;align-items:center;margin-top:8px" hidden><input type="checkbox" id="txR"> Retailer asked for this (reorder)</label>
+  <label class="f" for="txN">Note</label><input class="f" id="txN" placeholder="Optional (required for adjustments)">
+  <div class="sub" id="txE" style="color:var(--no)"></div>
+  <button class="btn big" id="txS" style="width:100%;margin-top:10px">Save</button></div></div>
+ <div style="margin-top:12px"><b>History</b></div>${tx.length?tx.map(x=>`<div class="hist"><b>${esc(x.d)}</b> · ${esc(INVT[x.type][0])}: <b>${x.type==="adjust"&&x.qty>0?"+":""}${x.qty}</b>${x.r?" · reorder":""}${x.note?"<br>"+esc(x.note):""}${Date.now()-new Date(x.t)<6e5?` <button class="btn sm line" data-del="${esc(x.t)}" style="height:28px;margin-left:6px">Undo</button>`:""}</div>`).join(""):'<p class="sub">No stock movements yet.</p>'}`;
+ let ty=null,sign=1;
+ pb.querySelectorAll("#txT button").forEach(x=>x.onclick=()=>{ty=x.dataset.t;pb.querySelectorAll("#txT button").forEach(y=>y.classList.toggle("on",y===x));$("#txF").hidden=false;$("#txAdj").hidden=ty!=="adjust";$("#txRL").hidden=!(ty==="consign"||ty==="purchase");$("#txQ").focus()});
+ pb.querySelectorAll("#txAdj button").forEach(x=>x.onclick=()=>{sign=+x.dataset.s;pb.querySelectorAll("#txAdj button").forEach(y=>y.classList.toggle("on",y===x))});
+ $("#txS").onclick=()=>{const q=Math.floor(+$("#txQ").value);const note=$("#txN").value.trim();const e=$("#txE");
+  if(!ty||!(q>0)){e.textContent="Enter the number of jars.";return}
+  if(ty==="adjust"&&!note){e.textContent="Write why you're adjusting the stock.";return}
+  if(INVT[ty][1]===-1&&q>inv(id).remaining){e.textContent=`Only ${inv(id).remaining} jars in stock. Record the missing supply first, or use an Adjustment.`;return}
+  if(ty==="adjust"&&sign<0&&q>inv(id).remaining){e.textContent=`Only ${inv(id).remaining} jars in stock.`;return}
+  addTx(id,ty,ty==="adjust"?q*sign:q,note,(ty==="consign"||ty==="purchase")&&$("#txR").checked?{r:1}:null);D.inv[id][D.inv[id].length-1].d=$("#txD").value||today();
+  if(INVT[ty][1]===1&&stOf(byId[id])!=="stock"){D.st[id]="stock";refreshOne(byId[id])}
+  save();toast("Saved ✓");render(true)};
+ pb.querySelectorAll("[data-del]").forEach(x=>x.onclick=()=>{D.inv[id]=D.inv[id].filter(y=>y.t!==x.dataset.del);save();render(true)});
+}
+function pVisits(pb,id){
+ const lg=(D.log[id]||[]).slice().reverse();
+ pb.innerHTML=lg.length?lg.map(v=>`<div class="hist"><b>${fmtT(v.t)}</b> · ${esc(OUT[v.out]?OUT[v.out][0]:v.out)}${v.who?"<br>Met "+esc(v.who):""}${v.qty?" · "+v.qty+" jars"+(v.terms?" ("+esc(INVT[v.terms][0])+")":""):""}${v.smp?" · "+v.smp+" samples":""}${v.tst?" · "+v.tst+" tasting":""}${v.shelf!=null?" · "+v.shelf+" on shelf, "+(v.sold||0)+" sold":""}${v.note?"<br>"+esc(v.note):""}${v.next?`<br><span class="sub">Next: ${esc(v.next)}${v.fu?" by "+esc(v.fu):""}</span>`:""}</div>`).join(""):'<p class="sub" style="margin-top:8px">No visits yet. Tap Log visit.</p>';
+}
+
+// ---------- quick log (30-second visit record)
+let logState={};
+function openLog(id){view={k:"log",id};const i=inv(id);logState={out:null,fu:"",next:"",all:false,stage:(i.supplied||lastOut(id)==="agreed")?"pilot":"pre"};setSheet("full");render()}
+function logView(b,id){
+ const s=byId[id];const ls=logState;const i=inv(id);
+ const keys=ls.all?OUT_PRE.concat(OUT_PILOT):ls.stage==="pilot"?OUT_PILOT:OUT_PRE;
+ b.innerHTML=`<div class="row" style="justify-content:space-between;flex-wrap:nowrap"><button class="btn sm line" id="back">‹ Cancel</button><span class="sub">${new Date().toLocaleTimeString("en-IN",{hour:"numeric",minute:"2-digit"})}</span></div>
+ <div class="h" style="margin-top:10px">${esc(s.n)}</div>
+ <div class="row" style="justify-content:space-between"><div class="sub">What happened?</div><div class="seg"><button data-st="pre" class="${ls.stage==="pre"&&!ls.all?"on":""}">Before pilot</button><button data-st="pilot" class="${ls.stage==="pilot"&&!ls.all?"on":""}">In pilot</button><button data-st="all" class="${ls.all?"on":""}">All</button></div></div>
+ <div class="out" style="margin-top:10px">${keys.map(k=>`<button data-o="${k}" class="${ls.out===k?"on":""}" style="${ls.out===k?`background:var(${ST[OUT[k][1]][1]})`:""}">${OUT[k][0]}</button>`).join("")}</div>
+ <div id="more" ${ls.out?"":"hidden"}>
+  <div id="xDel" hidden><div class="grid2"><div><label class="f" for="qty">Jars delivered</label><input class="f" id="qty" type="number" inputmode="numeric" min="1"></div><div><label class="f">Terms</label><div class="seg" id="terms"><button data-tm="consign" class="on">Consignment</button><button data-tm="purchase">Purchased</button></div></div></div></div>
+  <div id="xSmp" hidden><div class="grid2"><div><label class="f" for="smp">Free samples given</label><input class="f" id="smp" type="number" inputmode="numeric" min="0"></div><div><label class="f" for="tst">Jars opened for tasting</label><input class="f" id="tst" type="number" inputmode="numeric" min="0"></div></div></div>
+  <div id="xRev" hidden><div class="card" style="margin-top:8px"><div class="sub">Expected in stock: <b>${i.remaining}</b> jars</div><div class="grid2"><div><label class="f" for="shelf">Jars left on shelf now</label><input class="f" id="shelf" type="number" inputmode="numeric" min="0"></div><div><label class="f" for="tst2">Opened for tasting since last time</label><input class="f" id="tst2" type="number" inputmode="numeric" min="0"></div></div><div class="sub" id="revCalc" style="margin-top:6px"></div></div></div>
+  <label class="f" for="who">Person met</label><input class="f" id="who" placeholder="Name / owner / staff" value="${esc(lastWho(id))}">
+  <label class="f">Next action</label><div class="seg" id="nxS">${NEXT.map(n=>`<button data-n="${n}">${n}</button>`).join("")}</div>
+  <label class="f">Follow up</label><div class="seg" id="fuS"><button data-d="">None</button><button data-d="1">Tomorrow</button><button data-d="3">3 days</button><button data-d="7">Next week</button><button data-d="14">2 weeks</button></div>
+  <input type="date" class="f" id="fuD" style="margin-top:6px">
+  <label class="f" for="note">Note</label><textarea class="f" id="note" placeholder="Optional: what they said, brands on shelf, margin asked…"></textarea>
+  <div class="sub" id="lgE" style="color:var(--no)"></div>
+  <button class="btn big" id="sv" style="width:100%;margin-top:14px">Save visit</button>
+ </div>`;
+ $("#back").onclick=()=>{view=null;setSheet("");render()};
+ b.querySelectorAll("[data-st]").forEach(x=>x.onclick=()=>{if(x.dataset.st==="all")ls.all=!ls.all;else{ls.stage=x.dataset.st;ls.all=false}render(true)});
+ let terms="consign";
+ b.querySelectorAll("#terms button").forEach(x=>x.onclick=()=>{terms=x.dataset.tm;b.querySelectorAll("#terms button").forEach(y=>y.classList.toggle("on",y===x))});
+ function setFu(dd){ls.fu=dd===""||dd==null?"":addDays(+dd);$("#fuD").value=ls.fu;b.querySelectorAll("#fuS button").forEach(y=>y.classList.toggle("on",y.dataset.d===String(dd??"")))}
+ function setNx(n){ls.next=n;b.querySelectorAll("#nxS button").forEach(y=>y.classList.toggle("on",y.dataset.n===n))}
+ function showFor(o){$("#xDel").hidden=!(o==="delivered"||o==="reorder");$("#xSmp").hidden=o!=="sampling";$("#xRev").hidden=o!=="review";$("#more").hidden=false}
+ b.querySelectorAll("[data-o]").forEach(x=>x.onclick=()=>{ls.out=x.dataset.o;b.querySelectorAll("[data-o]").forEach(y=>{const on=y===x;y.classList.toggle("on",on);y.style.background=on?`var(${ST[OUT[y.dataset.o][1]][1]})`:""});
+  showFor(ls.out);const nd=NEXT_DEF[ls.out]||["Revisit",3];setNx(nd[0]);setFu(nd[1]);
+  const f={delivered:"#qty",reorder:"#qty",sampling:"#smp",review:"#shelf"}[ls.out];if(f)$(f).focus()});
+ if(ls.out)showFor(ls.out);
+ b.querySelectorAll("#fuS button").forEach(x=>x.onclick=()=>setFu(x.dataset.d));
+ b.querySelectorAll("#nxS button").forEach(x=>x.onclick=()=>setNx(x.dataset.n));
+ $("#fuD").onchange=e=>{ls.fu=e.target.value;b.querySelectorAll("#fuS button").forEach(y=>y.classList.remove("on"))};
+ const revCalc=()=>{const sh=$("#shelf").value,t=+$("#tst2").value||0;if(sh===""){$("#revCalc").textContent="";return}const sold=i.remaining-t-(+sh);
+  $("#revCalc").innerHTML=sold>=0?`So <b>${sold}</b> jar${sold===1?"":"s"} sold to customers since your records.`:`Shelf has <b>${-sold}</b> more than the records. This will be saved as an adjustment.`};
+ $("#shelf").oninput=revCalc;$("#tst2").oninput=revCalc;
+ $("#sv").onclick=()=>{if(!ls.out)return;const e=$("#lgE");
+  const v={t:new Date().toISOString(),out:ls.out,who:$("#who").value.trim(),note:$("#note").value.trim(),next:ls.next||"",fu:ls.fu||""};
+  if(ls.out==="delivered"||ls.out==="reorder"){const q=Math.floor(+$("#qty").value);if(!(q>0)){e.textContent="Enter how many jars you delivered.";return}v.qty=q;v.terms=terms;addTx(id,terms,q,"From visit: "+OUT[ls.out][0],ls.out==="reorder"?{r:1}:null)}
+  if(ls.out==="sampling"){const sm=Math.floor(+$("#smp").value)||0,ts=Math.floor(+$("#tst").value)||0;if(ts>i.remaining){e.textContent=`Only ${i.remaining} jars in stock to open for tasting.`;return}v.smp=sm;v.tst=ts;if(sm)addTx(id,"sample",sm,"From visit");if(ts)addTx(id,"tasting",ts,"From visit")}
+  if(ls.out==="review"){const shv=$("#shelf").value;if(shv===""){e.textContent="Count the jars on the shelf.";return}const sh=Math.floor(+shv),ts=Math.floor(+$("#tst2").value)||0;if(ts>i.remaining){e.textContent=`Only ${i.remaining} jars in stock.`;return}
+   const sold=i.remaining-ts-sh;v.shelf=sh;v.tst=ts;v.sold=Math.max(0,sold);if(ts)addTx(id,"tasting",ts,"From sales review");
+   if(sold>0)addTx(id,"sale",sold,"From sales review: "+sh+" left on shelf");else if(sold<0)addTx(id,"adjust",-sold,"Sales review: shelf count higher than records")}
+  (D.log[id]=D.log[id]||[]).push(v);D.st[id]=OUT[v.out][1];if(ls.fu)D.fu[id]=ls.fu;else delete D.fu[id];
+  if(!exact(s)&&me&&dist(me,pos(s))<400){D.fix[id]=me.map(x=>+x.toFixed(6))}
+  save();refreshOne(s);view={k:"store",id};pTab="over";setSheet("");redraw();drawRoute();render();toast("Visit saved ✓");};
+}
+function lastWho(id){const l=D.log[id];return l&&l.length?l[l.length-1].who||"":""}
+
+// ---------- Pilot dashboard
+function pilotView(b){
+ const ids=S.map(s=>s.id);const Q=ids.map(id=>[id,qual(id),inv(id)]);
+ const approached=ids.filter(id=>(D.log[id]||[]).length).length;
+ const qualified=Q.filter(x=>x[1].cat==="Eligible for pilot");
+ const fol=ids.filter(id=>(decision(id)||suggest(id)[0])==="Follow up"&&(D.log[id]||[]).length);
+ const active=Q.filter(x=>x[2].supplied>0);
+ const T=Q.reduce((a,[,,i])=>{["supplied","sale","sample","tasting","return","damage","remaining","consign","saleable"].forEach(k=>a[k]=(a[k]||0)+i[k]);a.reorders=(a.reorders||0)+i.reorders;return a},{});
+ const st=T.saleable>0?Math.round(T.sale/T.saleable*100):0;
+ const visits=Object.values(D.log).reduce((a,v)=>a+v.length,0);
+ const due=dueList();const overdue=due.filter(([,d])=>d<today());
+ const attn=active.filter(([id])=>["Hold inventory","Stop supplying","Increase inventory"].includes(suggest(id)[0])).map(x=>x[0]).concat(overdue.map(x=>x[0])).filter((v,k,a)=>a.indexOf(v)===k);
+ const bkDays=D.bk?Math.floor((Date.now()-D.bk)/864e5):null;
+ const box=(t,arr)=>`<div class="sub" style="margin-top:12px">${t}</div><div class="stat" style="margin-top:4px;grid-template-columns:repeat(${arr.length},1fr)">${arr.map(([n,l])=>`<div><b>${n}</b>${l}</div>`).join("")}</div>`;
+ b.innerHTML=`${(visits||active.length)&&(bkDays==null||bkDays>=3)?`<div class="card" style="border-color:var(--no);margin-bottom:8px"><b>Back up your pilot data</b><div class="sub">${bkDays==null?"No backup yet.":"Last backup "+bkDays+" days ago."} Everything lives only on this phone.</div><button class="btn sm" id="bkNow" style="margin-top:8px">Save backup now</button></div>`:""}
+ <div class="h">Pilot</div>
+ ${box("RETAILERS",[[S.length,"Discovered"],[approached,"Approached"],[qualified.length,"Qualified"],[fol.length,"Follow-up"],[active.length,"Active pilot"]])}
+ ${box("SALES (paid only)",[[T.supplied||0,"Jars supplied"],[T.sample+T.tasting||0,"Sampled"],[T.sale||0,"Paid sold"],[T.reorders||0,"Reorders"],[st+"%","Sell-through"]])}
+ ${box("INVENTORY",[[T.remaining||0,"With retailers"],[Math.min(T.remaining||0,T.consign||0),"On consignment"],[T.sample+T.tasting||0,"Used as samples"],[T.return+T.damage||0,"Returned / damaged"]])}
+ ${box("FIELD",[[visits,"Visits"],[due.length,"Follow-ups due"],[overdue.length,"Overdue"],[attn.length,"Need attention"]])}
+ <div class="h" style="margin-top:16px">Need attention</div><div id="attnL" class="list"></div>
+ <div class="h" style="margin-top:16px">Qualified retailers</div><div id="qualL" class="list"></div>
+ <div class="h" style="margin-top:16px">Active pilot</div><div id="actL" class="list"></div>`;
+ const bk=$("#bkNow");if(bk)bk.onclick=()=>{D.bk=Date.now();save();dl("beatmap-backup-"+today()+".json",JSON.stringify(D),"application/json");render(true)};
+ const fill=(sel,list,sub)=>{const l=$(sel);if(!list.length){l.innerHTML='<p class="sub">None yet.</p>';return}list.forEach(id=>{const s=byId[id];const it=document.createElement("div");it.className="it";it.innerHTML=`<div class="grow"><div class="nm">${esc(s.n)}</div><div class="sub">${sub(id)}</div></div>`;it.onclick=()=>{pTab="over";openStore(id)};l.appendChild(it)})};
+ fill("#attnL",attn,id=>{const f=D.fu[id];return(f&&f<today()?"Follow-up overdue since "+f+" · ":"")+esc(suggest(id)[0])});
+ fill("#qualL",qualified.map(x=>x[0]),id=>{const q=qual(id),i=inv(id);return q.score+"/12 · "+(i.supplied?i.remaining+" in stock":"no stock yet")});
+ fill("#actL",active.map(x=>x[0]),id=>{const i=inv(id);return `${i.sale} sold of ${i.saleable} · ${i.st??0}% · ${i.remaining} left · ${esc(D.perf[id]||perfAuto(id))}`});
+}
+
+// ---------- search
+$("#q").oninput=e=>{const t=e.target.value.trim().toLowerCase();const r=$("#results");if(t.length<2){r.hidden=true;return}
+ let hits=S.filter(s=>(s.n+" "+(s.old||"")+" "+s.s+" "+s.a).toLowerCase().includes(t));if(me)hits.sort((a,b)=>dist(me,pos(a))-dist(me,pos(b)));hits=hits.slice(0,10);
+ r.innerHTML=hits.map(s=>`<div data-id="${s.id}">${esc(s.n)}<small>${LN[s.l]} · ${esc(s.s)}${me?" · "+fmtD(dist(me,pos(s))):""}</small></div>`).join("")||'<div class="sub">No shop matches.</div>';r.hidden=false;
+ r.querySelectorAll("[data-id]").forEach(x=>x.onclick=()=>{r.hidden=true;$("#q").value="";$("#q").blur();openStore(x.dataset.id)})};
+map.on("click",()=>{$("#results").hidden=true});
+
+// ---------- add shop
+$("#bAdd").onclick=()=>{const old=$("#crossPin");if(old)old.remove();view={k:"add"};setSheet("");map.setView(me||map.getCenter(),18);
+ const cp=document.createElement("div");cp.id="crossPin";cp.innerHTML='<svg width="34" height="44" viewBox="0 0 34 44"><path d="M17 43s15-15 15-26A15 15 0 0 0 2 17c0 11 15 26 15 26z" fill="#dc2626" stroke="#fff" stroke-width="2.5"/><circle cx="17" cy="17" r="5" fill="#fff"/></svg>';document.body.appendChild(cp);
+ const b=$("#body");b.innerHTML=`<div class="h">Add a shop</div><div class="sub">Move the map so the red pin sits on the shop, or use your GPS.</div><button class="btn sm alt" id="agps" style="margin-top:8px">📍 Put pin at my location</button><span class="sub" id="agpsM"></span>
+ <label class="f" for="an">Shop name</label><input class="f" id="an" placeholder="e.g. Sharma Kirana">
+ <label class="f">Type</label><div class="seg" id="al"><button data-l="R" class="on">Retail</button><button data-l="M">Medical</button><button data-l="P">Patanjali</button></div>
+ <label class="f" for="aar">Area</label><select class="f" id="aar"><option value="">Nearest area (automatic)</option>${AREAS.map(a=>`<option>${esc(a)}</option>`).join("")}</select>
+ <label class="f">Category</label><div class="seg" id="acat">${BIZ[0].o.map(o=>`<button data-c="${o}">${o}</button>`).join("")}</div>
+ <label class="f" for="ap">Phone</label><input class="f" id="ap" inputmode="tel" placeholder="Optional">
+ <label class="f" for="aa">Address / landmark</label><input class="f" id="aa" placeholder="Optional">
+ <div class="grid2" style="margin-top:14px"><button class="btn line" id="ax">Cancel</button><button class="btn" id="as">Save shop</button></div>`;
+ let cat="";b.querySelectorAll("#acat button").forEach(x=>x.onclick=()=>{cat=cat===x.dataset.c?"":x.dataset.c;b.querySelectorAll("#acat button").forEach(y=>y.classList.toggle("on",y.dataset.c===cat))});
+ let gpsLL=null;$("#agps").onclick=()=>{startWatch();$("#agpsM").textContent=" Finding you…";navigator.geolocation&&navigator.geolocation.getCurrentPosition(p=>{gpsLL=[+p.coords.latitude.toFixed(6),+p.coords.longitude.toFixed(6)];map.setView(gpsLL,18);$("#agpsM").textContent=` Location set (±${Math.round(p.coords.accuracy)} m)`},e=>{$("#agpsM").textContent=" No GPS: move the map by hand instead"},{enableHighAccuracy:true,timeout:15000})};
+ let l="R";b.querySelectorAll("#al button").forEach(x=>x.onclick=()=>{l=x.dataset.l;b.querySelectorAll("#al button").forEach(y=>y.classList.toggle("on",y===x))});
+ const close=()=>{cp.remove();view=null;render()};$("#ax").onclick=close;
+ $("#as").onclick=()=>{const n=$("#an").value.trim();if(!n){$("#an").focus();return}const sz=map.getSize();const c=map.containerPointToLatLng([sz.x/2,sz.y*.4]);const ll=[+c.lat.toFixed(6),+c.lng.toFixed(6)];const chosen=$("#aar").value;
+  let near=null,bd=1e18;S.forEach(s=>{if(s.l==="P")return;const d=dist(ll,pos(s));if(d<bd){bd=d;near=s}});
+  const s={id:"N"+Date.now().toString(36),l,n,t:"Added on the ground",a:$("#aa").value.trim(),loc:chosen?chosen:l==="P"?"Patanjali stores":(near?near.loc:"Other"),area:chosen||"",s:"Added by you",ph:$("#ap").value.trim(),no:"",c:1,lat:ll[0],lng:ll[1],q:1};
+  D.added.push(s);S.push(s);byId[s.id]=s;if(cat){D.asm[s.id]={sc:{},biz:{cat}}}save();mk(s);cp.remove();redraw();openStore(s.id);toast("Shop added.")};
+};
+
+// ---------- boot
+drawChips();redraw();setSheet("");render();
+{const n=Object.values(D.log).reduce((a,v)=>a+v.length,0)+Object.values(D.inv).reduce((a,v)=>a+v.length,0);const bd=D.bk?(Date.now()-D.bk)/864e5:null;if(n&&(bd==null||bd>=3))setTimeout(()=>toast(bd==null?"Your pilot data isn't backed up yet.":"Last backup "+Math.floor(bd)+" days ago.","Back up",()=>{D.bk=Date.now();save();dl("beatmap-backup-"+today()+".json",JSON.stringify(D),"application/json")},10000),1500)}
+if(D.active!=null&&D.plans[D.active]){drawRoute();map.fitBounds(D.plans[D.active].ids.map(id=>pos(byId[id])),{padding:[60,60],maxZoom:17})}
+</script>
+</body>
+</html>
