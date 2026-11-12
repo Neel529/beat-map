@@ -108,7 +108,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:6px 4px;b
 </div>
 <div id="chips"></div>
 <div id="rightBtns">
- <button class="pillBtn" id="bAdd" title="Add a shop">+ Add shop</button>
+ <button class="pillBtn" id="bAdd" title="New shop where I am">+ New shop</button>
  <button class="fab me" id="bMe" title="Show my location" aria-label="Show my location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></button>
 </div>
 <div id="sheet">
@@ -169,7 +169,7 @@ const map=L.map("map",{zoomControl:false,attributionControl:true}).setView([26.8
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(map);
 const layer=L.layerGroup().addTo(map);
 const routeLayer=L.layerGroup().addTo(map);
-let me=null,meMarker=null,meCircle=null,follow=false;
+let me=null,meAcc=null,meT=0,meMarker=null,meCircle=null,follow=false;
 function pinIcon(s){
  const col=css(ST[stOf(s)][1]);const n=beatNum(s.id);const sz=n?26:16;
  const r=s.l==="M"?"4px":s.l==="P"?"3px":"50%";const rot=s.l==="M"?"transform:rotate(45deg);":"";
@@ -201,7 +201,7 @@ function drawChips(){
 
 // ---------- location
 function onPos(p){
- me=[p.coords.latitude,p.coords.longitude];
+ me=[p.coords.latitude,p.coords.longitude];meAcc=p.coords.accuracy;meT=Date.now();
  if(!meMarker){meMarker=L.marker(me,{icon:L.divIcon({className:"",iconSize:[18,18],html:'<div class="mePulse"></div>'}),zIndexOffset:1000}).addTo(map);meCircle=L.circle(me,{radius:p.coords.accuracy,color:"#2563eb",weight:1,fillOpacity:.08}).addTo(map)}
  else{meMarker.setLatLng(me);meCircle.setLatLng(me).setRadius(p.coords.accuracy)}
  if(follow)map.panTo(me);
@@ -242,7 +242,8 @@ document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{tab=b.datase
 function badge(){const n=dueList().length;const b=document.querySelector('#tabs [data-t=fu]');b.innerHTML="Follow-ups"+(n?`<span class="badge">${n}</span>`:"")}
 let lastSoft=0;function softRender(){if(view)return;const t=Date.now();if(t-lastSoft<4000)return;lastSoft=t;render(true)}
 function render(keepScroll){const body=$("#body");if(!(view&&view.k==="add")){const cp=$("#crossPin");if(cp)cp.remove()}const sc=body.scrollTop;
- if(view&&view.k==="restore")body.innerHTML="",restoreView(body);
+ if(view&&view.k==="qadd")body.innerHTML="",qaddView(body);
+ else if(view&&view.k==="restore")body.innerHTML="",restoreView(body);
  else if(view&&view.k==="store")body.innerHTML="",storeView(body,view.id);
  else if(view&&view.k==="log")body.innerHTML="",logView(body,view.id);
  else{body.innerHTML="";({beat:beatView,near:nearView,pilot:pilotView,fu:fuView,more:moreView})[tab](body)}
@@ -685,12 +686,14 @@ function pilotView(b){
 // ---------- search
 $("#q").oninput=e=>{const t=e.target.value.trim().toLowerCase();const r=$("#results");if(t.length<2){r.hidden=true;return}
  let hits=S.filter(s=>(s.n+" "+(s.old||"")+" "+s.s+" "+s.a).toLowerCase().includes(t));if(me)hits.sort((a,b)=>dist(me,pos(a))-dist(me,pos(b)));hits=hits.slice(0,10);
- r.innerHTML=hits.map(s=>`<div data-id="${s.id}">${esc(s.n)}<small>${LN[s.l]} · ${esc(s.s)}${me?" · "+fmtD(dist(me,pos(s))):""}</small></div>`).join("")||'<div class="sub">No shop matches.</div>';r.hidden=false;
+ r.innerHTML=hits.map(s=>`<div data-id="${s.id}">${esc(s.n)}<small>${LN[s.l]} · ${esc(s.s)}${me?" · "+fmtD(dist(me,pos(s))):""}</small></div>`).join("")+`<div id="qaNew" style="color:var(--brand);font-weight:600">+ Add "${esc(e.target.value.trim())}" as a new shop</div>`;r.hidden=false;
+ $("#qaNew").onclick=()=>{const nm=e.target.value.trim();r.hidden=true;$("#q").value="";$("#q").blur();openQuickAdd(nm)};
  r.querySelectorAll("[data-id]").forEach(x=>x.onclick=()=>{r.hidden=true;$("#q").value="";$("#q").blur();openStore(x.dataset.id)})};
 map.on("click",()=>{$("#results").hidden=true});
 
 // ---------- add shop
-$("#bAdd").onclick=()=>{const old=$("#crossPin");if(old)old.remove();view={k:"add"};setSheet("");map.setView(me||map.getCenter(),18);
+$("#bAdd").onclick=()=>openQuickAdd("");
+function addOnMap(){const old=$("#crossPin");if(old)old.remove();view={k:"add"};setSheet("");map.setView(me||map.getCenter(),18);
  const cp=document.createElement("div");cp.id="crossPin";cp.innerHTML='<svg width="34" height="44" viewBox="0 0 34 44"><path d="M17 43s15-15 15-26A15 15 0 0 0 2 17c0 11 15 26 15 26z" fill="#dc2626" stroke="#fff" stroke-width="2.5"/><circle cx="17" cy="17" r="5" fill="#fff"/></svg>';document.body.appendChild(cp);
  const b=$("#body");b.innerHTML=`<div class="h">Add a shop</div><div class="sub">Move the map so the red pin sits on the shop, or use your GPS.</div><button class="btn sm alt" id="agps" style="margin-top:8px">📍 Put pin at my location</button><span class="sub" id="agpsM"></span>
  <label class="f" for="an">Shop name</label><input class="f" id="an" placeholder="e.g. Sharma Kirana">
@@ -708,7 +711,52 @@ $("#bAdd").onclick=()=>{const old=$("#crossPin");if(old)old.remove();view={k:"ad
   let near=null,bd=1e18;S.forEach(s=>{if(s.l==="P")return;const d=dist(ll,pos(s));if(d<bd){bd=d;near=s}});
   const s={id:"N"+Date.now().toString(36),l,n,t:"Added on the ground",a:$("#aa").value.trim(),loc:chosen?chosen:l==="P"?"Patanjali stores":(near?near.loc:"Other"),area:chosen||"",s:"Added by you",ph:$("#ap").value.trim(),no:"",c:1,lat:ll[0],lng:ll[1],q:1};
   D.added.push(s);S.push(s);byId[s.id]=s;if(cat){D.asm[s.id]={sc:{},biz:{cat}}}save();mk(s);cp.remove();redraw();openStore(s.id);toast("Shop added.")};
-};
+}
+
+// ---------- quick add at the counter: name + type, pin from GPS, straight into the visit log
+const QT=[["R","Grocery","Kirana"],["M","Chemist","Medical"],["R","Other","Other"]];
+let qa=null,qaTimer=null;
+function openQuickAdd(name){qa={name:name||"",ty:null,ph:"",lm:"",err:""};view={k:"qadd"};startWatch();
+ navigator.geolocation&&navigator.geolocation.getCurrentPosition(onPos,()=>{},{enableHighAccuracy:true,timeout:20000,maximumAge:0});setSheet("full");render()}
+const gpsOk=()=>me&&Date.now()-meT<60000;
+function qaLoc(){if(!gpsOk())return'<span style="color:#9a5b00">📍 Finding your location… (you can still save)</span>';
+ const a=Math.round(meAcc||0);return a<=50?`<span style="color:var(--stock)">📍 Location found (±${a} m)</span>`:`<span style="color:#9a5b00">📍 Rough location (±${a} m). Pin will be dashed; fix it next visit.</span>`}
+function qaNear(){if(!gpsOk())return[];const nm=qa.name.trim().toLowerCase();
+ return S.filter(s=>{const d=dist(me,pos(s));return d<60||(nm.length>=3&&d<1500&&(s.n+" "+(s.old||"")).toLowerCase().includes(nm))}).sort((a,b)=>dist(me,pos(a))-dist(me,pos(b))).slice(0,4)}
+function qaDraw(){const n=$("#qaNear");if(!n)return;$("#qaLoc").innerHTML=qaLoc();const L=qaNear();
+ n.innerHTML=L.length?`<div class="sub" style="margin-top:12px">Already on the map? Tap it instead:</div><div class="list">${L.map(s=>`<div class="it" data-qn="${s.id}"><span class="dot" style="background:var(${ST[stOf(s)][1]})"></span><div class="grow"><div class="nm">${esc(s.n)}</div><div class="sub">${LN[s.l]} · ${fmtD(dist(me,pos(s)))} away</div></div><span class="btn sm alt">Log visit</span></div>`).join("")}</div>`:"";
+ n.querySelectorAll("[data-qn]").forEach(x=>x.onclick=()=>{clearInterval(qaTimer);openLog(x.dataset.qn)})}
+function qaddView(b){
+ b.innerHTML=`<div class="row" style="justify-content:space-between;flex-wrap:nowrap"><button class="btn sm line" id="qaX">‹ Cancel</button><span class="sub" id="qaLoc">${qaLoc()}</span></div>
+ <div class="h" style="margin-top:10px">New shop</div>
+ <label class="f" for="qaN">Shop name</label><input class="f" id="qaN" placeholder="e.g. Sharma Kirana" autocomplete="off" value="${esc(qa.name)}">
+ <label class="f">Type</label><div class="out" style="grid-template-columns:1fr 1fr 1fr" id="qaT">${QT.map((x,i)=>`<button data-i="${i}" class="${qa.ty===i?"on":""}" style="${qa.ty===i?"background:var(--brand)":""}">${x[1]}</button>`).join("")}</div>
+ <details style="margin-top:10px"><summary class="sub" style="cursor:pointer">Phone, landmark (optional)</summary>
+  <label class="f" for="qaP">Phone</label><input class="f" id="qaP" inputmode="tel" value="${esc(qa.ph)}">
+  <label class="f" for="qaL">Landmark</label><input class="f" id="qaL" value="${esc(qa.lm)}"></details>
+ <div class="sub" id="qaE" style="color:var(--no)">${esc(qa.err)}</div>
+ <button class="btn big" id="qaS" style="width:100%;margin-top:12px">Save &amp; log visit</button>
+ <div class="row" style="justify-content:space-between;margin-top:8px"><button class="btn sm line" id="qaO">Save only</button><button class="btn sm line" id="qaM">Place pin on map instead</button></div>
+ <div id="qaNear"></div>`;
+ const N=$("#qaN");N.oninput=()=>{qa.name=N.value;qaDraw()};$("#qaP").oninput=e=>qa.ph=e.target.value;$("#qaL").oninput=e=>qa.lm=e.target.value;
+ b.querySelectorAll("#qaT button").forEach(x=>x.onclick=()=>{qa.ty=+x.dataset.i;b.querySelectorAll("#qaT button").forEach(y=>{const on=y===x;y.classList.toggle("on",on);y.style.background=on?"var(--brand)":""})});
+ $("#qaX").onclick=()=>{clearInterval(qaTimer);view=null;setSheet("");render()};
+ $("#qaM").onclick=()=>{clearInterval(qaTimer);addOnMap()};
+ $("#qaS").onclick=()=>qaSave(true);$("#qaO").onclick=()=>qaSave(false);
+ if(!qa.name)setTimeout(()=>N.focus(),50);
+ clearInterval(qaTimer);qaTimer=setInterval(()=>{if(!view||view.k!=="qadd"){clearInterval(qaTimer);return}qaDraw()},1500);qaDraw();
+}
+function qaSave(andLog){const n=qa.name.trim(),e=$("#qaE");
+ if(!n){e.textContent="Type the shop name.";$("#qaN").focus();return}
+ if(qa.ty==null){e.textContent="Pick a type.";return}
+ const good=gpsOk();const ll=good?me.map(x=>+x.toFixed(6)):(c=>[+c.lat.toFixed(6),+c.lng.toFixed(6)])(map.getCenter());
+ const exactPin=good&&meAcc<=50;const [l,,cat]=QT[qa.ty];
+ let near=null,bd=1e18;S.forEach(s=>{if(s.l==="P")return;const d=dist(ll,pos(s));if(d<bd){bd=d;near=s}});
+ const s={id:"N"+Date.now().toString(36),l,n,t:"Added on the ground",a:qa.lm.trim(),loc:near?near.loc:"Other",area:"",s:"Added by you",ph:qa.ph.trim(),
+  no:good?"":"Saved without GPS: pin is where the map was. Fix it next visit.",c:1,lat:ll[0],lng:ll[1],q:exactPin?1:0,acc:good?Math.round(meAcc):null,at:new Date().toISOString()};
+ D.added.push(s);S.push(s);byId[s.id]=s;D.asm[s.id]={sc:{},biz:{cat}};save();mk(s);redraw();clearInterval(qaTimer);
+ if(andLog)openLog(s.id);else{openStore(s.id);setSheet("")}
+ toast(exactPin?"Shop added ✓":"Shop added. Pin is approximate: tap “I'm here, fix pin” next visit.")}
 
 // ---------- boot
 drawChips();redraw();setSheet("");render();
